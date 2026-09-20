@@ -1,8 +1,6 @@
-version: '3.8'
-
 services:
   jupyter_spark:
-    image: jupyter/pyspark-notebook:spark-3.5.1
+    image: quay.io/jupyter/pyspark-notebook:spark-3.5.1
     container_name: task1_pyspark_ml_container
     ports:
       - "8888:8888"
