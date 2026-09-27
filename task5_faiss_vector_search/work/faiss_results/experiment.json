@@ -1,0 +1,132 @@
+{
+  "seed": 42,
+  "k": 10,
+  "target_dev_recall": 0.95,
+  "model": "BAAI/bge-small-en-v1.5",
+  "model_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+  "chunk_strategy": "fixed",
+  "selected_hnsw": "HNSW_ef12",
+  "selected_ivf": "IVF8_p4",
+  "build_repeats": 3,
+  "search_rounds": 11,
+  "warmup_rounds": 2,
+  "training_limit": 20000,
+  "ef_values": [
+    1,
+    2,
+    4,
+    8,
+    12,
+    16,
+    24,
+    32,
+    64,
+    128,
+    256
+  ],
+  "scale_ef_values": [
+    1,
+    2,
+    4,
+    8,
+    12,
+    16,
+    24,
+    32,
+    64,
+    128,
+    256,
+    512,
+    1024,
+    2048
+  ],
+  "nlist_values": [
+    4,
+    8
+  ],
+  "nprobe_values": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "real_sizes": [
+    100,
+    250,
+    430
+  ],
+  "stress_sizes": [
+    2000,
+    10000,
+    50000
+  ],
+  "synthetic_noise_norm": 0.2,
+  "environment": {
+    "platform": "Linux-6.10.14-linuxkit-aarch64-with-glibc2.35",
+    "architecture": "aarch64",
+    "logical_cpus": 8,
+    "faiss_threads": 1,
+    "faiss_compile_options": "OPTIMIZE NEON ",
+    "versions": {
+      "faiss-cpu": "1.12.0",
+      "numpy": "1.26.4",
+      "pandas": "2.1.1",
+      "matplotlib": "3.8.0",
+      "threadpoolctl": "3.2.0"
+    },
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libopenblas64_p-r0-17488984.3.23.dev.so",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libgomp",
+        "filepath": "/opt/conda/lib/python3.11/site-packages/faiss_cpu.libs/libgomp-947d5fa1.so.1.0.0",
+        "version": null
+      }
+    ]
+  },
+  "inputs": {
+    "corpus.json": {
+      "source": "task4_sentence_transformers/work/search_data/corpus.json",
+      "sha256": "ba8bea5cd3b8b977c7d1b3cdc8cc52d0431ed1531b6be02d96337d25376b0dbb"
+    },
+    "chunks_fixed.json": {
+      "source": "task4_sentence_transformers/work/search_data/chunks_fixed.json",
+      "sha256": "9cddac8c74a5ae8e1576191a56e02411c2feb77be93c9c0bf0c129996d8eab3e"
+    },
+    "queries.json": {
+      "source": "task4_sentence_transformers/work/search_data/queries.json",
+      "sha256": "3b3af057d1b7943a3b27cad7f89eaf2f825894d2ceb1a7c5011b046e861724c0"
+    },
+    "qrels.csv": {
+      "source": "task4_sentence_transformers/work/search_data/qrels.csv",
+      "sha256": "a07d98c3125181cd82aa840ec86903f99106067cdd7ea79fae376f62793aa046"
+    },
+    "model_revisions.json": {
+      "source": "task4_sentence_transformers/work/search_data/model_revisions.json",
+      "sha256": "e3373187055ccd4f076acfc56a024916099df15f36345a92c754d1441ae44fe7"
+    },
+    "previous_experiment.json": {
+      "source": "task4_sentence_transformers/work/search_results/experiment.json",
+      "sha256": "3919b23ca5e14b3245ee98d2d01cf8c3e44c9e1a6cc4c1abaa82bd897ef19958"
+    },
+    "BGE_fixed.npz": {
+      "source": "task4_sentence_transformers/work/search_cache/BGE_fixed_f731e2460697c883.npz",
+      "sha256": "fccc1657a83fc347c402a2e2b028f1c68c50bc72eed034bcc2b15f80f13701fa"
+    },
+    "BGE_queries.npz": {
+      "source": "task4_sentence_transformers/work/search_cache/BGE_queries_f6543e4ceb978c94.npz",
+      "sha256": "b60fd99a31900aa95a3d648dc6da405123e1f0466c91b08e069f93846b885b3b"
+    }
+  }
+}

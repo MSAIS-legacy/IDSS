@@ -1,0 +1,2 @@
+# Preserve the original bytes checked by the input manifest.
+work/input/qrels.csv -text

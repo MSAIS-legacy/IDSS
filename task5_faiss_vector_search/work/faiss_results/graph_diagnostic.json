@@ -1,0 +1,8 @@
+{
+  "N": 50000,
+  "M": 16,
+  "efConstruction": 100,
+  "reachable_all_levels": 32709,
+  "unreachable": 17291,
+  "reachable_fraction": 0.65418
+}

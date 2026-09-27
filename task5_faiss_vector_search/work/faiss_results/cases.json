@@ -1,0 +1,180 @@
+[
+  {
+    "query_id": "Q03",
+    "query": "Implement setup and cleanup around a with block using a generator instead of writing a class.",
+    "relevant_docs": [
+      "contextlib.contextmanager"
+    ],
+    "comparison": [
+      {
+        "index": "Flat",
+        "ANN Recall@10": 1.0,
+        "DocRecall": 1.0,
+        "MRR": 1.0,
+        "Документов в выдаче": 8
+      },
+      {
+        "index": "HNSW_ef1",
+        "ANN Recall@10": 0.5,
+        "DocRecall": 1.0,
+        "MRR": 1.0,
+        "Документов в выдаче": 7
+      },
+      {
+        "index": "HNSW_ef12",
+        "ANN Recall@10": 0.8,
+        "DocRecall": 1.0,
+        "MRR": 1.0,
+        "Документов в выдаче": 7
+      },
+      {
+        "index": "IVF8_p1",
+        "ANN Recall@10": 0.4,
+        "DocRecall": 0.0,
+        "MRR": 0.0,
+        "Документов в выдаче": 9
+      },
+      {
+        "index": "IVF8_p4",
+        "ANN Recall@10": 1.0,
+        "DocRecall": 1.0,
+        "MRR": 1.0,
+        "Документов в выдаче": 8
+      }
+    ]
+  },
+  {
+    "query_id": "Q07",
+    "query": "Several streams should behave like one long stream, one after the other, without creating a big intermediate list.",
+    "relevant_docs": [
+      "itertools.chain",
+      "itertools.chain.from_iterable"
+    ],
+    "comparison": [
+      {
+        "index": "Flat",
+        "ANN Recall@10": 1.0,
+        "DocRecall": 0.5,
+        "MRR": 0.25,
+        "Документов в выдаче": 8
+      },
+      {
+        "index": "HNSW_ef1",
+        "ANN Recall@10": 0.0,
+        "DocRecall": 0.0,
+        "MRR": 0.0,
+        "Документов в выдаче": 8
+      },
+      {
+        "index": "HNSW_ef12",
+        "ANN Recall@10": 1.0,
+        "DocRecall": 0.5,
+        "MRR": 0.25,
+        "Документов в выдаче": 8
+      },
+      {
+        "index": "IVF8_p1",
+        "ANN Recall@10": 0.8,
+        "DocRecall": 0.5,
+        "MRR": 0.25,
+        "Документов в выдаче": 9
+      },
+      {
+        "index": "IVF8_p4",
+        "ANN Recall@10": 1.0,
+        "DocRecall": 0.5,
+        "MRR": 0.25,
+        "Документов в выдаче": 8
+      }
+    ]
+  },
+  {
+    "query_id": "Q02",
+    "query": "The same calculation keeps running for arguments I have already seen. How do I reuse earlier answers?",
+    "relevant_docs": [
+      "functools.cache",
+      "functools.lru_cache"
+    ],
+    "comparison": [
+      {
+        "index": "Flat",
+        "ANN Recall@10": 1.0,
+        "DocRecall": 0.0,
+        "MRR": 0.0,
+        "Документов в выдаче": 8
+      },
+      {
+        "index": "HNSW_ef1",
+        "ANN Recall@10": 0.1,
+        "DocRecall": 0.0,
+        "MRR": 0.0,
+        "Документов в выдаче": 9
+      },
+      {
+        "index": "HNSW_ef12",
+        "ANN Recall@10": 0.9,
+        "DocRecall": 0.0,
+        "MRR": 0.0,
+        "Документов в выдаче": 7
+      },
+      {
+        "index": "IVF8_p1",
+        "ANN Recall@10": 0.6,
+        "DocRecall": 0.0,
+        "MRR": 0.0,
+        "Документов в выдаче": 7
+      },
+      {
+        "index": "IVF8_p4",
+        "ANN Recall@10": 1.0,
+        "DocRecall": 0.0,
+        "MRR": 0.0,
+        "Документов в выдаче": 8
+      }
+    ]
+  },
+  {
+    "query_id": "Q18",
+    "query": "Handle background jobs in the order they finish, not the order they were submitted.",
+    "relevant_docs": [
+      "concurrent.futures.as_completed"
+    ],
+    "comparison": [
+      {
+        "index": "Flat",
+        "ANN Recall@10": 1.0,
+        "DocRecall": 1.0,
+        "MRR": 0.14285714285714285,
+        "Документов в выдаче": 9
+      },
+      {
+        "index": "HNSW_ef1",
+        "ANN Recall@10": 0.1,
+        "DocRecall": 0.0,
+        "MRR": 0.0,
+        "Документов в выдаче": 8
+      },
+      {
+        "index": "HNSW_ef12",
+        "ANN Recall@10": 0.8,
+        "DocRecall": 1.0,
+        "MRR": 0.16666666666666666,
+        "Документов в выдаче": 9
+      },
+      {
+        "index": "IVF8_p1",
+        "ANN Recall@10": 0.6,
+        "DocRecall": 1.0,
+        "MRR": 0.2,
+        "Документов в выдаче": 8
+      },
+      {
+        "index": "IVF8_p4",
+        "ANN Recall@10": 1.0,
+        "DocRecall": 1.0,
+        "MRR": 0.14285714285714285,
+        "Документов в выдаче": 9
+      }
+    ]
+  }
+]
