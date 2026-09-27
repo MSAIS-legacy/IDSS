@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  jupyter:
+    build: .
+    container_name: task5_faiss_vector_search_container
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./work:/home/jovyan/work
+    environment:
+      JUPYTER_TOKEN: faiss_vector_search
+    restart: unless-stopped
