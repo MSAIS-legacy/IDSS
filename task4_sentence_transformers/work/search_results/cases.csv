@@ -1,0 +1,25 @@
+query_id,split,difficulty,query,TF-IDF rank,Semantic rank,MRR gain,Test leader rank,Leader MRR gain
+Q01,test,точный API,functools.lru_cache: how do maxsize and typed affect caching?,1,1,0.0,1,0.0
+Q02,test,перефразирование,The same calculation keeps running for arguments I have already seen. How do I reuse earlier answers?,1,18,-1.0,2,-0.5
+Q03,test,с ограничениями,Implement setup and cleanup around a with block using a generator instead of writing a class.,1,1,0.0,1,0.0
+Q04,test,перефразирование,"I need a scratch workspace that disappears, including everything inside it, when the block finishes.",25,6,0.0,3,0.3333333333333333
+Q05,test,с ограничениями,"I am consuming a stream and need packets of five items, without reading all of it into memory.",62,28,0.0,31,0.0
+Q06,test,перефразирование,"Given daily measurements, visit yesterday and today together, then today and tomorrow.",204,52,0.0,86,0.0
+Q07,test,перефразирование,"Several streams should behave like one long stream, one after the other, without creating a big intermediate list.",179,4,0.25,4,0.25
+Q08,test,с ограничениями,"Skip the first ten items in a generator, then take the next twenty.",41,4,0.25,3,0.3333333333333333
+Q09,test,точный API,Use json.dump to write a dictionary to an already opened file.,1,1,0.0,1,0.0
+Q10,test,точный API,Use json.load to read a Python object from an opened JSON file.,1,1,0.0,1,0.0
+Q11,test,перефразирование,Read a comma-separated table so that each row is a mapping keyed by its column headers.,4,1,0.75,1,0.75
+Q12,test,перефразирование,Find all .py files anywhere below a folder using a glob pattern.,1,1,0.0,1,0.0
+Q13,test,точный API,Path.mkdir parents=True exist_ok=True: create missing parent directories without failing if the target already exists.,1,1,0.0,1,0.0
+Q14,test,точный API,shutil.rmtree: remove a directory and its entire contents.,4,1,0.75,1,0.75
+Q15,test,перефразирование,Find out which installed executable would be launched for a command name using PATH.,1,2,-0.5,1,0.0
+Q16,test,с ограничениями,"Keep temporary file data in RAM until it becomes too large, then move it to disk.",3,2,0.16666666666666669,2,0.16666666666666669
+Q17,test,точный API,subprocess.run with capture_output=True and check=True: capture both output streams and fail for a nonzero exit status.,1,1,0.0,1,0.0
+Q18,test,с ограничениями,"Handle background jobs in the order they finish, not the order they were submitted.",66,7,0.0,13,0.0
+Q19,test,с ограничениями,The number of files I open is decided at runtime. Close all successfully opened files if a later open fails.,1,1,0.0,1,0.0
+Q20,test,с ограничениями,"Validate that an entire string obeys a regular expression, rejecting a matching substring inside extra text.",3,1,0.6666666666666667,1,0.6666666666666667
+Q21,test,с ограничениями,"Search for user-provided text literally even if it contains dots, brackets or stars with special regex meanings.",6,3,0.3333333333333333,1,1.0
+Q22,test,перефразирование,Ignore only selected exception types inside a with block and continue after the block.,4,2,0.25,1,0.75
+Q23,test,с ограничениями,"After decorating a function, preserve its original name and documentation for introspection.",2,1,0.5,1,0.5
+Q24,test,точный API,"When defaultdict.__getitem__ cannot find a key, how does __missing__ use default_factory, and does get() do the same?",1,1,0.0,1,0.0

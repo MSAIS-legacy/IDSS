@@ -1,0 +1,3 @@
+# Preserve bytes used by the recorded dataset checksums.
+work/search_data/raw_html/*.html -text
+work/search_data/qrels.csv -text
