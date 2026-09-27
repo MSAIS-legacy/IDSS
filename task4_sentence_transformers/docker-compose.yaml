@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  jupyter:
+    build: .
+    container_name: task4_sentence_transformers_container
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./work:/home/jovyan/work
+    environment:
+      JUPYTER_TOKEN: sentence_transformers
+    restart: unless-stopped
