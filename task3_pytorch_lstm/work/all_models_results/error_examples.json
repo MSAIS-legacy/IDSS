@@ -1,0 +1,42 @@
+[
+  {
+    "source_row": 83,
+    "true_class": "Бизнес",
+    "predicted_class": "Наука и технологии",
+    "pair_error_count": 158,
+    "Title": "Intel to delay product aimed for high-definition TVs",
+    "Description": "SAN FRANCISCO -- In the latest of a series of product delays, Intel Corp. has postponed the launch of a video display chip it had previously planned to introduce by year end, putting off a showdown with Texas Instruments Inc. in the fast-growing market for high-definition television displays."
+  },
+  {
+    "source_row": 9,
+    "true_class": "Наука и технологии",
+    "predicted_class": "Бизнес",
+    "pair_error_count": 130,
+    "Title": "Card fraud unit nets 36,000 cards",
+    "Description": "In its first two years, the UK's dedicated card fraud unit, has recovered 36,000 stolen cards and 171 arrests - and estimates it saved 65m."
+  },
+  {
+    "source_row": 50,
+    "true_class": "Мир",
+    "predicted_class": "Бизнес",
+    "pair_error_count": 96,
+    "Title": "US fighter squadron to be deployed in South Korea next month (AFP)",
+    "Description": "AFP - A squadron of US Air Force F-15E fighters based in Alaska will fly to South Korea next month for temporary deployment aimed at enhancing US firepower on the Korean peninsula, US authorities said."
+  },
+  {
+    "source_row": 79,
+    "true_class": "Мир",
+    "predicted_class": "Спорт",
+    "pair_error_count": 59,
+    "Title": "Live: Olympics day four",
+    "Description": "Richard Faulds and Stephen Parry are going for gold for Great Britain on day four in Athens."
+  },
+  {
+    "source_row": 378,
+    "true_class": "Бизнес",
+    "predicted_class": "Мир",
+    "pair_error_count": 56,
+    "Title": "Will High Oil Prices Lead to Recession? (AP)",
+    "Description": "AP - High oil prices, which have been a factor in virtually all U.S. recessions over the past three decades, are surging again this year. And the higher crude oil prices climb, the more risk energy costs pose to what, until recently, many expected to be a banner year for the U.S. economy."
+  }
+]

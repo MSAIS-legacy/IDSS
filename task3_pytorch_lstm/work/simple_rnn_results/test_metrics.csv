@@ -1,0 +1,3 @@
+model,accuracy,macro_f1
+SimpleRNN,0.9023684210526316,0.9023074131297928
+Most frequent train class,0.25,0.1

@@ -1,0 +1,24 @@
+{
+  "model_config": {
+    "vocab_size": 30000,
+    "embedding_dim": 64,
+    "hidden_dim": 64,
+    "num_classes": 4,
+    "dropout": 0.3,
+    "pad_idx": 0
+  },
+  "max_len": 128,
+  "seed": 42,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "max_epochs": 10,
+  "patience": 2,
+  "best_epoch": 4,
+  "best_val_loss": 0.28641370587283066,
+  "training_seconds": 640.243949668,
+  "test_loss": 0.2972358940463317,
+  "test_accuracy": 0.9023684210526316,
+  "test_macro_f1": 0.9023074131297928,
+  "pooling": "masked mean of unidirectional RNN states",
+  "device": "cpu"
+}

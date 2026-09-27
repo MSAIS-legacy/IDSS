@@ -1,0 +1,23 @@
+{
+  "model_config": {
+    "vocab_size": 30000,
+    "embedding_dim": 64,
+    "hidden_dim": 64,
+    "num_classes": 4,
+    "dropout": 0.3,
+    "pad_idx": 0
+  },
+  "seed": 42,
+  "max_len": 128,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "best_epoch": 4,
+  "best_val_loss": 0.2669941982684299,
+  "training_seconds": 2901.087966446001,
+  "test_accuracy": 0.9080263157894737,
+  "test_macro_f1": 0.9080563947707994,
+  "test_loss": 0.28316922300740294,
+  "parameter_count": 1987076,
+  "device": "cpu",
+  "threads": 2
+}
