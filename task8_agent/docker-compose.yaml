@@ -1,0 +1,51 @@
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: task8_agent_container
+    depends_on:
+      ollama:
+        condition: service_started
+      ollama-pull:
+        condition: service_completed_successfully
+    environment:
+      JUPYTER_TOKEN: agent
+      OLLAMA_HOST: http://ollama:11434
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./work:/home/jovyan/work
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama
+    container_name: task8_agent_ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - task8_agent_ollama:/root/.ollama
+    restart: unless-stopped
+
+  ollama-pull:
+    image: docker/genai:ollama-pull
+    environment:
+      OLLAMA_BASE_URL: http://ollama:11434
+      LLM: qwen3:4b-instruct
+    depends_on:
+      - ollama
+
+  mongo:
+    image: mongo:8
+    container_name: task8_agent_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - task8_agent_mongo:/data/db
+    restart: unless-stopped
+
+volumes:
+  task8_agent_ollama:
+    name: task8_agent_ollama
+  task8_agent_mongo:
+    name: task8_agent_mongo
