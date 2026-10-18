@@ -1,0 +1,133 @@
+{
+  "status": "finished",
+  "answer": "Отменено. Ничего не сохранено.",
+  "history": [
+    {
+      "role": "system",
+      "content": "Ты помощник по домашнему инвентарю. Выполняй просьбы через доступные инструменты. Отвечай кратко по-русски."
+    },
+    {
+      "role": "user",
+      "content": "Отменяю добавление фонаря. Ничего не сохраняй."
+    },
+    {
+      "role": "assistant",
+      "content": "Отменено. Ничего не сохранено."
+    }
+  ],
+  "trace": [],
+  "generations": [
+    {
+      "key": "1852157f54b3b2a892c2f78eddb04ee60d10605e76d0de9c8f9ae976ffd825c2",
+      "wall_s": 6.521939544999896,
+      "cached": true,
+      "response": {
+        "model": "qwen3:4b-instruct",
+        "created_at": "2026-10-18T08:14:29.585411043Z",
+        "message": {
+          "role": "assistant",
+          "content": "Отменено. Ничего не сохранено."
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 6519618336,
+        "load_duration": 2765125,
+        "prompt_eval_count": 556,
+        "prompt_eval_cached_count": 533,
+        "prompt_eval_duration": 3171273000,
+        "eval_count": 12,
+        "eval_duration": 3335564000
+      }
+    }
+  ],
+  "final_state": {
+    "_id": "inventory_v1:main:v1:D08:42",
+    "version": 1,
+    "positions": [
+      {
+        "item_id": "I001",
+        "name": "Батарейки AA",
+        "location": "Кладовая",
+        "quantity": 12,
+        "unit": "шт"
+      },
+      {
+        "item_id": "I002",
+        "name": "Батарейки AA",
+        "location": "Ящик стола",
+        "quantity": 4,
+        "unit": "шт"
+      },
+      {
+        "item_id": "I003",
+        "name": "Кабель USB-C",
+        "location": "Кладовая",
+        "quantity": 3,
+        "unit": "шт"
+      },
+      {
+        "item_id": "I004",
+        "name": "Лампа LED",
+        "location": "Кладовая",
+        "quantity": 2,
+        "unit": "шт"
+      },
+      {
+        "item_id": "I005",
+        "name": "Бумага A4",
+        "location": "Кабинет",
+        "quantity": 1,
+        "unit": "упаковка"
+      }
+    ],
+    "movements": [],
+    "next_item_id": 6,
+    "next_movement_id": 1
+  },
+  "case_id": "D08",
+  "variant": "v1",
+  "group": "main",
+  "seed": 42,
+  "temperature": 0,
+  "user": "Отменяю добавление фонаря. Ничего не сохраняй.",
+  "kind": "отмена",
+  "allowed": [],
+  "expected_positions": [
+    {
+      "item_id": "I001",
+      "name": "Батарейки AA",
+      "location": "Кладовая",
+      "quantity": 12,
+      "unit": "шт"
+    },
+    {
+      "item_id": "I002",
+      "name": "Батарейки AA",
+      "location": "Ящик стола",
+      "quantity": 4,
+      "unit": "шт"
+    },
+    {
+      "item_id": "I003",
+      "name": "Кабель USB-C",
+      "location": "Кладовая",
+      "quantity": 3,
+      "unit": "шт"
+    },
+    {
+      "item_id": "I004",
+      "name": "Лампа LED",
+      "location": "Кладовая",
+      "quantity": 2,
+      "unit": "шт"
+    },
+    {
+      "item_id": "I005",
+      "name": "Бумага A4",
+      "location": "Кабинет",
+      "quantity": 1,
+      "unit": "упаковка"
+    }
+  ],
+  "scope": "inventory_v1:main:v1:D08:42"
+}

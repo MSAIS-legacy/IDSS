@@ -1,0 +1,194 @@
+{
+  "key": "e55ac47011324c4e9dd7a1f8c57a59909e854c5768e9a642d25ef2b6551ba391",
+  "request": {
+    "model": "qwen3:4b-instruct",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Ты помощник по домашнему инвентарю. Выполняй просьбы через доступные инструменты. Отвечай кратко по-русски."
+      },
+      {
+        "role": "user",
+        "content": "Сколько бумаги A4 в Кабинете?"
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "ypHuG7UhqnoNo8VhNMMknPSOWeCAUoIZ",
+            "function": {
+              "index": 0,
+              "name": "find_items",
+              "arguments": {
+                "query": "бумага A4",
+                "location": "Кабинете"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "find_items",
+        "content": "{\"ok\": true, \"version\": 1, \"items\": []}"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "find_items",
+          "description": "Найти позиции по части названия или ID; location фильтрует место. Пустые строки: все позиции. Возвращает version.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "query": {
+                "default": "",
+                "maxLength": 120,
+                "type": "string"
+              },
+              "location": {
+                "default": "",
+                "maxLength": 80,
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "add_item",
+          "description": "Добавить новую позицию инвентаря. expected_version — версия хранилища.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "maxLength": 120,
+                "minLength": 1,
+                "type": "string"
+              },
+              "location": {
+                "maxLength": 80,
+                "minLength": 1,
+                "type": "string"
+              },
+              "quantity": {
+                "maximum": 10000,
+                "minimum": 1,
+                "type": "integer"
+              },
+              "unit": {
+                "enum": [
+                  "шт",
+                  "упаковка",
+                  "м"
+                ],
+                "type": "string"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "name",
+              "location",
+              "quantity",
+              "unit",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "set_quantity",
+          "description": "Установить новое общее количество позиции по ID и версии.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "quantity": {
+                "maximum": 10000,
+                "minimum": 0,
+                "type": "integer"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "quantity",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "delete_item",
+          "description": "Удалить позицию по ID и версии.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    ],
+    "stream": false,
+    "keep_alive": "30m",
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 320,
+      "num_thread": 4
+    }
+  },
+  "response": {
+    "model": "qwen3:4b-instruct",
+    "created_at": "2026-10-18T08:45:29.43469546Z",
+    "message": {
+      "role": "assistant",
+      "content": "В Кабинете нет бумаги A4."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 7406298461,
+    "load_duration": 3139708,
+    "prompt_eval_count": 613,
+    "prompt_eval_cached_count": 584,
+    "prompt_eval_duration": 4129345000,
+    "eval_count": 12,
+    "eval_duration": 3261796000
+  },
+  "wall_s": 7.408657127999959,
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0"
+}

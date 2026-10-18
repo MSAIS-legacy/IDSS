@@ -1,0 +1,214 @@
+{
+  "key": "c3de1ef23ccf496b9bfbe4722854134e267364cf1446bbf6e6dd5b92485af269",
+  "request": {
+    "model": "qwen3:4b-instruct",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Ты агент домашнего инвентаря. Пользуйся инструментами, отвечай по-русски.\nНе выполняй действий сверх просьбы. Для записи сначала прочитай актуальные позиции и version.\nСоздание требует имени, места, количества и единицы от пользователя. Неизвестное количество/единицу уточни, не подставляй значения. Для create_from_quote процитируй количество и единицу из текущего сообщения.\nЕсли найдено несколько позиций, уточни место или ID. При неизвестном месте опускай location, не пиши «всё». При пустом поиске повтори без location.\nДля «ещё N» прочитай остаток и установи сумму; это изменение существующей позиции, не дубликат.\nПолный явно разрешённый запрос выполняй без дополнительного подтверждения. После записи проверь состояние чтением. Отмену не исполняй как запись.\nОшибку не выдавай за успех. Временный сбой чтения повтори один раз. Дубликат не объединяй молча.\nКоличество и единицу инструмент создания сам извлекает из цитат, не передавай их повторно. Для поиска используй search_items."
+      },
+      {
+        "role": "user",
+        "content": "Поставь количество Лампа LED в Кладовой равным минус двум."
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "n2dbNE5ciTYHafCR8Wb5g9bNArR44TDo",
+            "function": {
+              "index": 0,
+              "name": "search_items",
+              "arguments": {
+                "query": "Лампа LED",
+                "location": "Кладова"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "search_items",
+        "content": "{\"ok\": true, \"version\": 1, \"items\": [{\"item_id\": \"I004\", \"name\": \"Лампа LED\", \"location\": \"Кладовая\", \"quantity\": 2, \"unit\": \"шт\"}], \"strategy\": \"word_similarity_0.72\", \"note\": \"Проверьте реальные имя, место и ID найденных кандидатов\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "4ySeiWvPBEV16KjM9RVTDoJjDTcTgOMe",
+            "function": {
+              "index": 0,
+              "name": "set_quantity",
+              "arguments": {
+                "item_id": "I004",
+                "quantity": -2,
+                "expected_version": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "set_quantity",
+        "content": "{\"ok\": false, \"error\": {\"code\": \"INVALID_ARGUMENTS\", \"message\": \"[{\\\"type\\\": \\\"greater_than_equal\\\", \\\"loc\\\": [\\\"quantity\\\"], \\\"msg\\\": \\\"Input should be greater than or equal to 0\\\", \\\"input\\\": -2, \\\"ctx\\\": {\\\"ge\\\": 0}}]\", \"retryable\": false}}"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "search_items",
+          "description": "Найти позиции и version по ID или словам названия/места. Допускает сходство слов. При неизвестном месте опусти location. Пустые поля: все позиции. Проверь реальные ID и места в результате.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "query": {
+                "default": "",
+                "maxLength": 120,
+                "type": "string"
+              },
+              "location": {
+                "default": "",
+                "maxLength": 80,
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "create_from_quote",
+          "description": "Создать новую позицию. Передай name, location и точные quantity_text/unit_text из текущего сообщения; числовые поля вычислит код. Нет количества или единицы — сначала уточни, не выдумывай. Перед записью нужно чтение version.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "maxLength": 120,
+                "minLength": 1,
+                "type": "string"
+              },
+              "location": {
+                "maxLength": 80,
+                "minLength": 1,
+                "type": "string"
+              },
+              "quantity_text": {
+                "default": "",
+                "description": "Точная цитата цифрового количества из текущего сообщения",
+                "maxLength": 200,
+                "type": "string"
+              },
+              "unit_text": {
+                "default": "",
+                "description": "Точная цитата единицы измерения из текущего сообщения",
+                "maxLength": 200,
+                "type": "string"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "name",
+              "location",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "set_quantity",
+          "description": "Изменить существующую позицию по прочитанному ID/version. quantity — новый общий остаток, не прибавка. Для ещё N вычисли старый остаток + N.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "quantity": {
+                "maximum": 10000,
+                "minimum": 0,
+                "type": "integer"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "quantity",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "delete_item",
+          "description": "Удалить явно указанную позицию по прочитанным ID/version. При нескольких совпадениях уточни место.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    ],
+    "stream": false,
+    "keep_alive": "30m",
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 320,
+      "num_thread": 4
+    }
+  },
+  "response": {
+    "model": "qwen3:4b-instruct",
+    "created_at": "2026-10-18T08:48:56.01568525Z",
+    "message": {
+      "role": "assistant",
+      "content": "Количество не может быть отрицательным. Остаток должен быть не меньше нуля. Проверьте запрос и уточните, возможно, вы имели в виду другое значение."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 28497705180,
+    "load_duration": 1861458,
+    "prompt_eval_count": 1228,
+    "prompt_eval_cached_count": 1141,
+    "prompt_eval_duration": 13480364000,
+    "eval_count": 46,
+    "eval_duration": 14996756000
+  },
+  "wall_s": 28.49993151300032,
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0"
+}

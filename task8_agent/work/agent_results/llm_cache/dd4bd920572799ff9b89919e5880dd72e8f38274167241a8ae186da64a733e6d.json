@@ -1,0 +1,194 @@
+{
+  "key": "dd4bd920572799ff9b89919e5880dd72e8f38274167241a8ae186da64a733e6d",
+  "request": {
+    "model": "qwen3:4b-instruct",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Ты помощник по домашнему инвентарю. Выполняй просьбы через доступные инструменты. Отвечай кратко по-русски."
+      },
+      {
+        "role": "user",
+        "content": "Сколько ламп LED находится в Кладовой? Ничего не меняй."
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "DEaSX6Ouz0ynTuS0RvuGs7yVyCm50Tua",
+            "function": {
+              "index": 0,
+              "name": "find_items",
+              "arguments": {
+                "query": "лампа LED",
+                "location": "Кладова"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "find_items",
+        "content": "{\"ok\": false, \"error\": {\"code\": \"TEMPORARY_UNAVAILABLE\", \"message\": \"Временный сбой чтения. Повторите запрос\", \"retryable\": true}}"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "find_items",
+          "description": "Найти позиции по части названия или ID; location фильтрует место. Пустые строки: все позиции. Возвращает version.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "query": {
+                "default": "",
+                "maxLength": 120,
+                "type": "string"
+              },
+              "location": {
+                "default": "",
+                "maxLength": 80,
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "add_item",
+          "description": "Добавить новую позицию инвентаря. expected_version — версия хранилища.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "maxLength": 120,
+                "minLength": 1,
+                "type": "string"
+              },
+              "location": {
+                "maxLength": 80,
+                "minLength": 1,
+                "type": "string"
+              },
+              "quantity": {
+                "maximum": 10000,
+                "minimum": 1,
+                "type": "integer"
+              },
+              "unit": {
+                "enum": [
+                  "шт",
+                  "упаковка",
+                  "м"
+                ],
+                "type": "string"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "name",
+              "location",
+              "quantity",
+              "unit",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "set_quantity",
+          "description": "Установить новое общее количество позиции по ID и версии.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "quantity": {
+                "maximum": 10000,
+                "minimum": 0,
+                "type": "integer"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "quantity",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "delete_item",
+          "description": "Удалить позицию по ID и версии.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    ],
+    "stream": false,
+    "keep_alive": "30m",
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 320,
+      "num_thread": 4
+    }
+  },
+  "response": {
+    "model": "qwen3:4b-instruct",
+    "created_at": "2026-10-18T08:14:23.058314763Z",
+    "message": {
+      "role": "assistant",
+      "content": "Временный сбой чтения. Повторите запрос."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 11864574130,
+    "load_duration": 1618458,
+    "prompt_eval_count": 643,
+    "prompt_eval_cached_count": 588,
+    "prompt_eval_duration": 7721674000,
+    "eval_count": 15,
+    "eval_duration": 4127948999
+  },
+  "wall_s": 11.866696505999926,
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0"
+}

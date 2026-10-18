@@ -1,0 +1,219 @@
+{
+  "key": "36fc3d9e87398946138a913c168b1aa7a2ca1e7eafd802d54ba72c36d1f51b98",
+  "request": {
+    "model": "qwen3:4b-instruct",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Ты агент домашнего инвентаря. Пользуйся инструментами, отвечай по-русски.\nНе выполняй действий сверх просьбы. Для записи сначала прочитай актуальные позиции и version.\nСоздание требует имени, места, количества и единицы от пользователя. Неизвестное количество/единицу уточни, не подставляй значения. Для create_from_quote процитируй количество и единицу из текущего сообщения.\nЕсли найдено несколько позиций, уточни место или ID. При неизвестном месте опускай location, не пиши «всё». При пустом поиске повтори без location.\nДля «ещё N» прочитай остаток и установи сумму; это изменение существующей позиции, не дубликат.\nПолный явно разрешённый запрос выполняй без дополнительного подтверждения. После записи проверь состояние чтением. Отмену не исполняй как запись.\nОшибку не выдавай за успех. Временный сбой чтения повтори один раз. Дубликат не объединяй молча.\nКоличество и единицу инструмент создания сам извлекает из цитат, не передавай их повторно. Для поиска используй search_items."
+      },
+      {
+        "role": "user",
+        "content": "Перенеси 99 шт Батарейки AA из Кладовой в Ящик стола."
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "search_items",
+          "description": "Найти позиции и version по ID или словам названия/места. Допускает сходство слов. При неизвестном месте опусти location. Пустые поля: все позиции. Проверь реальные ID и места в результате.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "query": {
+                "default": "",
+                "maxLength": 120,
+                "type": "string"
+              },
+              "location": {
+                "default": "",
+                "maxLength": 80,
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "create_from_quote",
+          "description": "Создать новую позицию. Передай name, location и точные quantity_text/unit_text из текущего сообщения; числовые поля вычислит код. Нет количества или единицы — сначала уточни, не выдумывай. Перед записью нужно чтение version.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "maxLength": 120,
+                "minLength": 1,
+                "type": "string"
+              },
+              "location": {
+                "maxLength": 80,
+                "minLength": 1,
+                "type": "string"
+              },
+              "quantity_text": {
+                "default": "",
+                "description": "Точная цитата цифрового количества из текущего сообщения",
+                "maxLength": 200,
+                "type": "string"
+              },
+              "unit_text": {
+                "default": "",
+                "description": "Точная цитата единицы измерения из текущего сообщения",
+                "maxLength": 200,
+                "type": "string"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "name",
+              "location",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "set_quantity",
+          "description": "Изменить существующую позицию по прочитанному ID/version. quantity — новый общий остаток, не прибавка. Для ещё N вычисли старый остаток + N.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "quantity": {
+                "maximum": 10000,
+                "minimum": 0,
+                "type": "integer"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "quantity",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "delete_item",
+          "description": "Удалить явно указанную позицию по прочитанным ID/version. При нескольких совпадениях уточни место.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "move_stock",
+          "description": "Перенести quantity единиц из source_id в destination_location. Сохраняет общий запас и журнал. Сначала прочитай исходную позицию и version через search_items. При нехватке запаса не переносит ничего.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "source_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "destination_location": {
+                "maxLength": 80,
+                "minLength": 1,
+                "type": "string"
+              },
+              "quantity": {
+                "maximum": 10000,
+                "minimum": 1,
+                "type": "integer"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "source_id",
+              "destination_location",
+              "quantity",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    ],
+    "stream": false,
+    "keep_alive": "30m",
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 320,
+      "num_thread": 4
+    }
+  },
+  "response": {
+    "model": "qwen3:4b-instruct",
+    "created_at": "2026-10-18T09:03:56.645090417Z",
+    "message": {
+      "role": "assistant",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "UbJ1fgtKs5SW1SCfmRHF19B9YlxFfj5g",
+          "function": {
+            "index": 0,
+            "name": "search_items",
+            "arguments": {
+              "query": "Батарейки AA",
+              "location": "Кладова"
+            }
+          }
+        }
+      ]
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 15555682216,
+    "load_duration": 2253625,
+    "prompt_eval_count": 1126,
+    "prompt_eval_cached_count": 1101,
+    "prompt_eval_duration": 4674498000,
+    "eval_count": 33,
+    "eval_duration": 10863706000
+  },
+  "wall_s": 15.559112298999935,
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0"
+}

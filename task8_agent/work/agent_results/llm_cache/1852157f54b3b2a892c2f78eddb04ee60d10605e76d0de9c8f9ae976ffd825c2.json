@@ -1,0 +1,172 @@
+{
+  "key": "1852157f54b3b2a892c2f78eddb04ee60d10605e76d0de9c8f9ae976ffd825c2",
+  "request": {
+    "model": "qwen3:4b-instruct",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Ты помощник по домашнему инвентарю. Выполняй просьбы через доступные инструменты. Отвечай кратко по-русски."
+      },
+      {
+        "role": "user",
+        "content": "Отменяю добавление фонаря. Ничего не сохраняй."
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "find_items",
+          "description": "Найти позиции по части названия или ID; location фильтрует место. Пустые строки: все позиции. Возвращает version.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "query": {
+                "default": "",
+                "maxLength": 120,
+                "type": "string"
+              },
+              "location": {
+                "default": "",
+                "maxLength": 80,
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "add_item",
+          "description": "Добавить новую позицию инвентаря. expected_version — версия хранилища.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "maxLength": 120,
+                "minLength": 1,
+                "type": "string"
+              },
+              "location": {
+                "maxLength": 80,
+                "minLength": 1,
+                "type": "string"
+              },
+              "quantity": {
+                "maximum": 10000,
+                "minimum": 1,
+                "type": "integer"
+              },
+              "unit": {
+                "enum": [
+                  "шт",
+                  "упаковка",
+                  "м"
+                ],
+                "type": "string"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "name",
+              "location",
+              "quantity",
+              "unit",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "set_quantity",
+          "description": "Установить новое общее количество позиции по ID и версии.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "quantity": {
+                "maximum": 10000,
+                "minimum": 0,
+                "type": "integer"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "quantity",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "delete_item",
+          "description": "Удалить позицию по ID и версии.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    ],
+    "stream": false,
+    "keep_alive": "30m",
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 320,
+      "num_thread": 4
+    }
+  },
+  "response": {
+    "model": "qwen3:4b-instruct",
+    "created_at": "2026-10-18T08:14:29.585411043Z",
+    "message": {
+      "role": "assistant",
+      "content": "Отменено. Ничего не сохранено."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 6519618336,
+    "load_duration": 2765125,
+    "prompt_eval_count": 556,
+    "prompt_eval_cached_count": 533,
+    "prompt_eval_duration": 3171273000,
+    "eval_count": 12,
+    "eval_duration": 3335564000
+  },
+  "wall_s": 6.521939544999896,
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0"
+}

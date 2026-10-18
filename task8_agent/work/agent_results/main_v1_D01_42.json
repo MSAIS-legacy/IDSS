@@ -1,0 +1,330 @@
+{
+  "status": "finished",
+  "answer": "Позиция «Свечи» добавлена в Кухню. Количество: 4 шт. Версия хранилища: 2.",
+  "history": [
+    {
+      "role": "system",
+      "content": "Ты помощник по домашнему инвентарю. Выполняй просьбы через доступные инструменты. Отвечай кратко по-русски."
+    },
+    {
+      "role": "user",
+      "content": "Добавь новую позицию: Свечи, Кухня, 4 шт."
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "0sOhzADjyCLVnlHlaXYssKOnK48ZjhZo",
+          "function": {
+            "index": 0,
+            "name": "add_item",
+            "arguments": {
+              "name": "Свечи",
+              "location": "Кухня",
+              "quantity": 4,
+              "unit": "шт",
+              "expected_version": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_name": "add_item",
+      "content": "{\"ok\": true, \"version\": 2, \"item\": {\"name\": \"Свечи\", \"location\": \"Кухня\", \"quantity\": 4, \"unit\": \"шт\", \"item_id\": \"I006\"}}"
+    },
+    {
+      "role": "assistant",
+      "content": "Позиция «Свечи» добавлена в Кухню. Количество: 4 шт. Версия хранилища: 2."
+    }
+  ],
+  "trace": [
+    {
+      "tool": "add_item",
+      "arguments": {
+        "name": "Свечи",
+        "location": "Кухня",
+        "quantity": 4,
+        "unit": "шт",
+        "expected_version": 1
+      },
+      "result": {
+        "ok": true,
+        "version": 2,
+        "item": {
+          "name": "Свечи",
+          "location": "Кухня",
+          "quantity": 4,
+          "unit": "шт",
+          "item_id": "I006"
+        }
+      },
+      "before": {
+        "_id": "inventory_v1:main:v1:D01:42",
+        "version": 1,
+        "positions": [
+          {
+            "item_id": "I001",
+            "name": "Батарейки AA",
+            "location": "Кладовая",
+            "quantity": 12,
+            "unit": "шт"
+          },
+          {
+            "item_id": "I002",
+            "name": "Батарейки AA",
+            "location": "Ящик стола",
+            "quantity": 4,
+            "unit": "шт"
+          },
+          {
+            "item_id": "I003",
+            "name": "Кабель USB-C",
+            "location": "Кладовая",
+            "quantity": 3,
+            "unit": "шт"
+          },
+          {
+            "item_id": "I004",
+            "name": "Лампа LED",
+            "location": "Кладовая",
+            "quantity": 2,
+            "unit": "шт"
+          },
+          {
+            "item_id": "I005",
+            "name": "Бумага A4",
+            "location": "Кабинет",
+            "quantity": 1,
+            "unit": "упаковка"
+          }
+        ],
+        "movements": [],
+        "next_item_id": 6,
+        "next_movement_id": 1
+      },
+      "after": {
+        "_id": "inventory_v1:main:v1:D01:42",
+        "version": 2,
+        "positions": [
+          {
+            "item_id": "I001",
+            "name": "Батарейки AA",
+            "location": "Кладовая",
+            "quantity": 12,
+            "unit": "шт"
+          },
+          {
+            "item_id": "I002",
+            "name": "Батарейки AA",
+            "location": "Ящик стола",
+            "quantity": 4,
+            "unit": "шт"
+          },
+          {
+            "item_id": "I003",
+            "name": "Кабель USB-C",
+            "location": "Кладовая",
+            "quantity": 3,
+            "unit": "шт"
+          },
+          {
+            "item_id": "I004",
+            "name": "Лампа LED",
+            "location": "Кладовая",
+            "quantity": 2,
+            "unit": "шт"
+          },
+          {
+            "item_id": "I005",
+            "name": "Бумага A4",
+            "location": "Кабинет",
+            "quantity": 1,
+            "unit": "упаковка"
+          },
+          {
+            "name": "Свечи",
+            "location": "Кухня",
+            "quantity": 4,
+            "unit": "шт",
+            "item_id": "I006"
+          }
+        ],
+        "movements": [],
+        "next_item_id": 7,
+        "next_movement_id": 1
+      },
+      "wall_s": 0.0010795830003189621
+    }
+  ],
+  "generations": [
+    {
+      "key": "27fa6792092f542b4f2c7d6c732e673646866e4dbabb7ca269ee12ea97770678",
+      "wall_s": 81.34384057900002,
+      "cached": true,
+      "response": {
+        "model": "qwen3:4b-instruct",
+        "created_at": "2026-10-18T08:10:07.178038214Z",
+        "message": {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "0sOhzADjyCLVnlHlaXYssKOnK48ZjhZo",
+              "function": {
+                "index": 0,
+                "name": "add_item",
+                "arguments": {
+                  "name": "Свечи",
+                  "location": "Кухня",
+                  "quantity": 4,
+                  "unit": "шт",
+                  "expected_version": 1
+                }
+              }
+            }
+          ]
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 81337031745,
+        "load_duration": 13254499631,
+        "prompt_eval_count": 560,
+        "prompt_eval_cached_count": 0,
+        "prompt_eval_duration": 53134140000,
+        "eval_count": 50,
+        "eval_duration": 14928728000
+      }
+    },
+    {
+      "key": "78fc9803c93cd0ec4e57866702c3c3573c7a0e35857f2869fab05460f9c86641",
+      "wall_s": 20.101735300999962,
+      "cached": true,
+      "response": {
+        "model": "qwen3:4b-instruct",
+        "created_at": "2026-10-18T08:10:27.304971292Z",
+        "message": {
+          "role": "assistant",
+          "content": "Позиция «Свечи» добавлена в Кухню. Количество: 4 шт. Версия хранилища: 2."
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 20097394718,
+        "load_duration": 4762042,
+        "prompt_eval_count": 675,
+        "prompt_eval_cached_count": 609,
+        "prompt_eval_duration": 9361445000,
+        "eval_count": 37,
+        "eval_duration": 10719225000
+      }
+    }
+  ],
+  "final_state": {
+    "_id": "inventory_v1:main:v1:D01:42",
+    "version": 2,
+    "positions": [
+      {
+        "item_id": "I001",
+        "name": "Батарейки AA",
+        "location": "Кладовая",
+        "quantity": 12,
+        "unit": "шт"
+      },
+      {
+        "item_id": "I002",
+        "name": "Батарейки AA",
+        "location": "Ящик стола",
+        "quantity": 4,
+        "unit": "шт"
+      },
+      {
+        "item_id": "I003",
+        "name": "Кабель USB-C",
+        "location": "Кладовая",
+        "quantity": 3,
+        "unit": "шт"
+      },
+      {
+        "item_id": "I004",
+        "name": "Лампа LED",
+        "location": "Кладовая",
+        "quantity": 2,
+        "unit": "шт"
+      },
+      {
+        "item_id": "I005",
+        "name": "Бумага A4",
+        "location": "Кабинет",
+        "quantity": 1,
+        "unit": "упаковка"
+      },
+      {
+        "name": "Свечи",
+        "location": "Кухня",
+        "quantity": 4,
+        "unit": "шт",
+        "item_id": "I006"
+      }
+    ],
+    "movements": [],
+    "next_item_id": 7,
+    "next_movement_id": 1
+  },
+  "case_id": "D01",
+  "variant": "v1",
+  "group": "main",
+  "seed": 42,
+  "temperature": 0,
+  "user": "Добавь новую позицию: Свечи, Кухня, 4 шт.",
+  "kind": "добавление",
+  "allowed": [
+    "add_item"
+  ],
+  "expected_positions": [
+    {
+      "item_id": "I001",
+      "name": "Батарейки AA",
+      "location": "Кладовая",
+      "quantity": 12,
+      "unit": "шт"
+    },
+    {
+      "item_id": "I002",
+      "name": "Батарейки AA",
+      "location": "Ящик стола",
+      "quantity": 4,
+      "unit": "шт"
+    },
+    {
+      "item_id": "I003",
+      "name": "Кабель USB-C",
+      "location": "Кладовая",
+      "quantity": 3,
+      "unit": "шт"
+    },
+    {
+      "item_id": "I004",
+      "name": "Лампа LED",
+      "location": "Кладовая",
+      "quantity": 2,
+      "unit": "шт"
+    },
+    {
+      "item_id": "I005",
+      "name": "Бумага A4",
+      "location": "Кабинет",
+      "quantity": 1,
+      "unit": "упаковка"
+    },
+    {
+      "item_id": "I006",
+      "name": "Свечи",
+      "location": "Кухня",
+      "quantity": 4,
+      "unit": "шт"
+    }
+  ],
+  "scope": "inventory_v1:main:v1:D01:42"
+}

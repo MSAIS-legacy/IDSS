@@ -1,0 +1,258 @@
+{
+  "key": "805c90824b8f932eb9f6e053c5405a82316648e39a600073b6386cf8fa6b84d1",
+  "request": {
+    "model": "qwen3:4b-instruct",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Ты агент домашнего инвентаря. Пользуйся инструментами, отвечай по-русски.\nНе выполняй действий сверх просьбы. Для записи сначала прочитай актуальные позиции и version.\nСоздание требует имени, места, количества и единицы от пользователя. Неизвестное количество/единицу уточни, не подставляй значения. Для create_from_quote процитируй количество и единицу из текущего сообщения.\nЕсли найдено несколько позиций, уточни место или ID. При неизвестном месте опускай location, не пиши «всё». При пустом поиске повтори без location.\nДля «ещё N» прочитай остаток и установи сумму; это изменение существующей позиции, не дубликат.\nПолный явно разрешённый запрос выполняй без дополнительного подтверждения. После записи проверь состояние чтением. Отмену не исполняй как запись.\nОшибку не выдавай за успех. Временный сбой чтения повтори один раз. Дубликат не объединяй молча.\nКоличество и единицу инструмент создания сам извлекает из цитат, не передавай их повторно. Для поиска используй search_items."
+      },
+      {
+        "role": "user",
+        "content": "Установи общее количество Кабель USB-C в Кладовой равным 5 шт."
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "jX8qIOsoEMO6WqBDbTTPy0yb3tLgBeFS",
+            "function": {
+              "index": 0,
+              "name": "search_items",
+              "arguments": {
+                "query": "Кабель USB-C",
+                "location": "Кладова"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "search_items",
+        "content": "{\"ok\": true, \"version\": 1, \"items\": [{\"item_id\": \"I003\", \"name\": \"Кабель USB-C\", \"location\": \"Кладовая\", \"quantity\": 3, \"unit\": \"шт\"}], \"strategy\": \"word_similarity_0.72\", \"note\": \"Проверьте реальные имя, место и ID найденных кандидатов\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "t8XaU5HpAJbE4nxTsSiLisVbeFk0DFj6",
+            "function": {
+              "index": 0,
+              "name": "set_quantity",
+              "arguments": {
+                "item_id": "I003",
+                "quantity": 5,
+                "expected_version": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "set_quantity",
+        "content": "{\"ok\": true, \"version\": 2, \"item\": {\"item_id\": \"I003\", \"name\": \"Кабель USB-C\", \"location\": \"Кладовая\", \"quantity\": 5, \"unit\": \"шт\"}}"
+      },
+      {
+        "role": "assistant",
+        "content": "Количество Кабель USB-C в Кладовой успешно обновлено до 5 шт."
+      },
+      {
+        "role": "user",
+        "content": "В Кладовую поступило ещё 2 кабеля USB-C. Прибавь их к существующему остатку."
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "1orMxw6Qnoq2hscWLdUBiebRtv3ypo9R",
+            "function": {
+              "index": 0,
+              "name": "search_items",
+              "arguments": {
+                "query": "Кабель USB-C",
+                "location": "Кладова"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "search_items",
+        "content": "{\"ok\": true, \"version\": 2, \"items\": [{\"item_id\": \"I003\", \"name\": \"Кабель USB-C\", \"location\": \"Кладовая\", \"quantity\": 5, \"unit\": \"шт\"}], \"strategy\": \"word_similarity_0.72\", \"note\": \"Проверьте реальные имя, место и ID найденных кандидатов\"}"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "search_items",
+          "description": "Найти позиции и version по ID или словам названия/места. Допускает сходство слов. При неизвестном месте опусти location. Пустые поля: все позиции. Проверь реальные ID и места в результате.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "query": {
+                "default": "",
+                "maxLength": 120,
+                "type": "string"
+              },
+              "location": {
+                "default": "",
+                "maxLength": 80,
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "create_from_quote",
+          "description": "Создать новую позицию. Передай name, location и точные quantity_text/unit_text из текущего сообщения; числовые поля вычислит код. Нет количества или единицы — сначала уточни, не выдумывай. Перед записью нужно чтение version.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "maxLength": 120,
+                "minLength": 1,
+                "type": "string"
+              },
+              "location": {
+                "maxLength": 80,
+                "minLength": 1,
+                "type": "string"
+              },
+              "quantity_text": {
+                "default": "",
+                "description": "Точная цитата цифрового количества из текущего сообщения",
+                "maxLength": 200,
+                "type": "string"
+              },
+              "unit_text": {
+                "default": "",
+                "description": "Точная цитата единицы измерения из текущего сообщения",
+                "maxLength": 200,
+                "type": "string"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "name",
+              "location",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "set_quantity",
+          "description": "Изменить существующую позицию по прочитанному ID/version. quantity — новый общий остаток, не прибавка. Для ещё N вычисли старый остаток + N.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "quantity": {
+                "maximum": 10000,
+                "minimum": 0,
+                "type": "integer"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "quantity",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "delete_item",
+          "description": "Удалить явно указанную позицию по прочитанным ID/version. При нескольких совпадениях уточни место.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    ],
+    "stream": false,
+    "keep_alive": "30m",
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 320,
+      "num_thread": 4
+    }
+  },
+  "response": {
+    "model": "qwen3:4b-instruct",
+    "created_at": "2026-10-18T09:10:41.43529634Z",
+    "message": {
+      "role": "assistant",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "SlqFQdOf1FBVII6gNrbTSNCvbqZMfCfr",
+          "function": {
+            "index": 0,
+            "name": "set_quantity",
+            "arguments": {
+              "item_id": "I003",
+              "quantity": 7,
+              "expected_version": 2
+            }
+          }
+        }
+      ]
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 28742073179,
+    "load_duration": 3838500,
+    "prompt_eval_count": 1409,
+    "prompt_eval_cached_count": 1306,
+    "prompt_eval_duration": 16171975000,
+    "eval_count": 37,
+    "eval_duration": 12546894000
+  },
+  "wall_s": 28.744452805000037,
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0"
+}

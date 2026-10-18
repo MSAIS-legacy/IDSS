@@ -1,0 +1,232 @@
+{
+  "key": "08f620bc5e7c6d35073b7dc16b19632305338af220f573c05bbd24e794096db5",
+  "request": {
+    "model": "qwen3:4b-instruct",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Ты агент домашнего инвентаря. Пользуйся инструментами, отвечай по-русски.\nНе выполняй действий сверх просьбы. Для записи сначала прочитай актуальные позиции и version.\nСоздание требует имени, места, количества и единицы от пользователя. Неизвестное количество/единицу уточни, не подставляй значения. Для create_from_quote процитируй количество и единицу из текущего сообщения.\nЕсли найдено несколько позиций, уточни место или ID. При неизвестном месте опускай location, не пиши «всё». При пустом поиске повтори без location.\nДля «ещё N» прочитай остаток и установи сумму; это изменение существующей позиции, не дубликат.\nПолный явно разрешённый запрос выполняй без дополнительного подтверждения. После записи проверь состояние чтением. Отмену не исполняй как запись.\nОшибку не выдавай за успех. Временный сбой чтения повтори один раз. Дубликат не объединяй молча.\nКоличество и единицу инструмент создания сам извлекает из цитат, не передавай их повторно. Для поиска используй search_items."
+      },
+      {
+        "role": "user",
+        "content": "Создай отдельную запись: Батарейки AA, Кладовая, 12 шт."
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "ugfrEypD742oKZ32oemV8t8zG4Zx5kEj",
+            "function": {
+              "index": 0,
+              "name": "create_from_quote",
+              "arguments": {
+                "name": "Батарейки AA",
+                "location": "Кладовая",
+                "expected_version": 1,
+                "quantity_text": "12 шт.",
+                "unit_text": "шт."
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "create_from_quote",
+        "content": "{\"ok\": false, \"error\": {\"code\": \"READ_REQUIRED\", \"message\": \"Перед записью прочитайте актуальные позиции и version через доступный инструмент поиска\", \"retryable\": false}}"
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "tvtnkUn37fKZwD6MLqSe3wKZ9VqRhMcu",
+            "function": {
+              "index": 0,
+              "name": "search_items",
+              "arguments": {
+                "query": "Батарейки AA",
+                "location": "Кладовая"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "search_items",
+        "content": "{\"ok\": true, \"version\": 1, \"items\": [{\"item_id\": \"I001\", \"name\": \"Батарейки AA\", \"location\": \"Кладовая\", \"quantity\": 12, \"unit\": \"шт\"}], \"strategy\": \"word_similarity_0.72\", \"note\": \"Проверьте реальные имя, место и ID найденных кандидатов\"}"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "search_items",
+          "description": "Найти позиции и version по ID или словам названия/места. Допускает сходство слов. При неизвестном месте опусти location. Пустые поля: все позиции. Проверь реальные ID и места в результате.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "query": {
+                "default": "",
+                "maxLength": 120,
+                "type": "string"
+              },
+              "location": {
+                "default": "",
+                "maxLength": 80,
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "create_from_quote",
+          "description": "Создать новую позицию. Передай name, location и точные quantity_text/unit_text из текущего сообщения; числовые поля вычислит код. Нет количества или единицы — сначала уточни, не выдумывай. Перед записью нужно чтение version.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "maxLength": 120,
+                "minLength": 1,
+                "type": "string"
+              },
+              "location": {
+                "maxLength": 80,
+                "minLength": 1,
+                "type": "string"
+              },
+              "quantity_text": {
+                "default": "",
+                "description": "Точная цитата цифрового количества из текущего сообщения",
+                "maxLength": 200,
+                "type": "string"
+              },
+              "unit_text": {
+                "default": "",
+                "description": "Точная цитата единицы измерения из текущего сообщения",
+                "maxLength": 200,
+                "type": "string"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "name",
+              "location",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "set_quantity",
+          "description": "Изменить существующую позицию по прочитанному ID/version. quantity — новый общий остаток, не прибавка. Для ещё N вычисли старый остаток + N.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "quantity": {
+                "maximum": 10000,
+                "minimum": 0,
+                "type": "integer"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "quantity",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "delete_item",
+          "description": "Удалить явно указанную позицию по прочитанным ID/version. При нескольких совпадениях уточни место.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    ],
+    "stream": false,
+    "keep_alive": "30m",
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 320,
+      "num_thread": 4
+    }
+  },
+  "response": {
+    "model": "qwen3:4b-instruct",
+    "created_at": "2026-10-18T08:43:33.725257087Z",
+    "message": {
+      "role": "assistant",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "bwnGZFweOUtkp7C9rLtgxBg9HmI8dt8k",
+          "function": {
+            "index": 0,
+            "name": "create_from_quote",
+            "arguments": {
+              "name": "Батарейки AA",
+              "location": "Кладовая",
+              "expected_version": 1,
+              "quantity_text": "12 шт.",
+              "unit_text": "шт."
+            }
+          }
+        }
+      ]
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 35392876766,
+    "load_duration": 4711250,
+    "prompt_eval_count": 1239,
+    "prompt_eval_cached_count": 1134,
+    "prompt_eval_duration": 15125372000,
+    "eval_count": 60,
+    "eval_duration": 20241710000
+  },
+  "wall_s": 35.398703723999915,
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0"
+}

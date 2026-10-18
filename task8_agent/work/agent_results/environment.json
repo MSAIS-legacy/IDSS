@@ -1,0 +1,30 @@
+{
+  "python": "3.13.16",
+  "cpu_count": 8,
+  "machine": "aarch64",
+  "mongo_ping": 1.0,
+  "ollama": {
+    "version": "0.40.5"
+  },
+  "model": "qwen3:4b-instruct",
+  "digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "model_details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "qwen3",
+    "families": [
+      "qwen3"
+    ],
+    "parameter_size": "4.0B",
+    "quantization_level": "Q4_K_M",
+    "context_length": 262144,
+    "embedding_length": 2560,
+    "runner": "ggml"
+  },
+  "libraries": {
+    "pymongo": "4.19.0",
+    "pydantic": "2.14.1",
+    "requests": "2.34.2",
+    "pandas": "3.0.6"
+  }
+}

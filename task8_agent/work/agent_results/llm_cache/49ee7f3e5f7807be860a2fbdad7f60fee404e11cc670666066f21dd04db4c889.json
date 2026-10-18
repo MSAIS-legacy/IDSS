@@ -1,0 +1,191 @@
+{
+  "key": "49ee7f3e5f7807be860a2fbdad7f60fee404e11cc670666066f21dd04db4c889",
+  "request": {
+    "model": "qwen3:4b-instruct",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Ты агент домашнего инвентаря. Пользуйся инструментами, отвечай по-русски.\nНе выполняй действий сверх просьбы. Для записи сначала прочитай актуальные позиции и version.\nСоздание требует имени, места, количества и единицы от пользователя. Неизвестное количество/единицу уточни, не подставляй значения. Для create_from_quote процитируй количество и единицу из текущего сообщения.\nЕсли найдено несколько позиций, уточни место или ID. При неизвестном месте опускай location, не пиши «всё». При пустом поиске повтори без location.\nДля «ещё N» прочитай остаток и установи сумму; это изменение существующей позиции, не дубликат.\nПолный явно разрешённый запрос выполняй без дополнительного подтверждения. После записи проверь состояние чтением. Отмену не исполняй как запись.\nОшибку не выдавай за успех. Временный сбой чтения повтори один раз. Дубликат не объединяй молча.\nКоличество и единицу инструмент создания сам извлекает из цитат, не передавай их повторно. Для поиска используй search_items."
+      },
+      {
+        "role": "user",
+        "content": "Сколько бумаги A4 в Кабинете?"
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "FxEGqFcPW8zv3KOCq946TjoSE3AY2vsX",
+            "function": {
+              "index": 0,
+              "name": "search_items",
+              "arguments": {
+                "query": "бумага A4",
+                "location": "Кабинете"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "search_items",
+        "content": "{\"ok\": true, \"version\": 1, \"items\": [{\"item_id\": \"I005\", \"name\": \"Бумага A4\", \"location\": \"Кабинет\", \"quantity\": 1, \"unit\": \"упаковка\"}], \"strategy\": \"word_similarity_0.72\", \"note\": \"Проверьте реальные имя, место и ID найденных кандидатов\"}"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "search_items",
+          "description": "Найти позиции и version по ID или словам названия/места. Допускает сходство слов. При неизвестном месте опусти location. Пустые поля: все позиции. Проверь реальные ID и места в результате.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "query": {
+                "default": "",
+                "maxLength": 120,
+                "type": "string"
+              },
+              "location": {
+                "default": "",
+                "maxLength": 80,
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "create_from_quote",
+          "description": "Создать новую позицию. Передай name, location и точные quantity_text/unit_text из текущего сообщения; числовые поля вычислит код. Нет количества или единицы — сначала уточни, не выдумывай. Перед записью нужно чтение version.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "maxLength": 120,
+                "minLength": 1,
+                "type": "string"
+              },
+              "location": {
+                "maxLength": 80,
+                "minLength": 1,
+                "type": "string"
+              },
+              "quantity_text": {
+                "default": "",
+                "description": "Точная цитата цифрового количества из текущего сообщения",
+                "maxLength": 200,
+                "type": "string"
+              },
+              "unit_text": {
+                "default": "",
+                "description": "Точная цитата единицы измерения из текущего сообщения",
+                "maxLength": 200,
+                "type": "string"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "name",
+              "location",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "set_quantity",
+          "description": "Изменить существующую позицию по прочитанному ID/version. quantity — новый общий остаток, не прибавка. Для ещё N вычисли старый остаток + N.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "quantity": {
+                "maximum": 10000,
+                "minimum": 0,
+                "type": "integer"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "quantity",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "delete_item",
+          "description": "Удалить явно указанную позицию по прочитанным ID/version. При нескольких совпадениях уточни место.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    ],
+    "stream": false,
+    "keep_alive": "30m",
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 320,
+      "num_thread": 4
+    }
+  },
+  "response": {
+    "model": "qwen3:4b-instruct",
+    "created_at": "2026-10-18T08:47:08.858776339Z",
+    "message": {
+      "role": "assistant",
+      "content": "В Кабинете есть 1 упаковка бумаги A4."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 21010498509,
+    "load_duration": 2004500,
+    "prompt_eval_count": 1106,
+    "prompt_eval_cached_count": 999,
+    "prompt_eval_duration": 14841975000,
+    "eval_count": 19,
+    "eval_duration": 6147184000
+  },
+  "wall_s": 21.014305634000266,
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0"
+}

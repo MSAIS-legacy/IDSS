@@ -1,0 +1,217 @@
+{
+  "key": "f82fb965191f8df8160262392cbb86054c12597ac408006f1597e7a75b0fc30a",
+  "request": {
+    "model": "qwen3:4b-instruct",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Ты помощник по домашнему инвентарю. Выполняй просьбы через доступные инструменты. Отвечай кратко по-русски."
+      },
+      {
+        "role": "user",
+        "content": "В Кладовую добавили ещё 2 кабеля USB-C. Обнови существующую позицию."
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "rFRCpoEtIc6FhUoN9ssZSNXWBuNjTmbQ",
+            "function": {
+              "index": 0,
+              "name": "find_items",
+              "arguments": {
+                "query": "кабель USB-C",
+                "location": "Кладовая"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "find_items",
+        "content": "{\"ok\": true, \"version\": 1, \"items\": [{\"item_id\": \"I003\", \"name\": \"Кабель USB-C\", \"location\": \"Кладовая\", \"quantity\": 3, \"unit\": \"шт\"}]}"
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "CNazzIIkgnrVADZ29eOoiCSf3BCJQNRv",
+            "function": {
+              "index": 0,
+              "name": "set_quantity",
+              "arguments": {
+                "item_id": "I003",
+                "quantity": 5,
+                "expected_version": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "set_quantity",
+        "content": "{\"ok\": true, \"version\": 2, \"item\": {\"item_id\": \"I003\", \"name\": \"Кабель USB-C\", \"location\": \"Кладовая\", \"quantity\": 5, \"unit\": \"шт\"}}"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "find_items",
+          "description": "Найти позиции по части названия или ID; location фильтрует место. Пустые строки: все позиции. Возвращает version.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "query": {
+                "default": "",
+                "maxLength": 120,
+                "type": "string"
+              },
+              "location": {
+                "default": "",
+                "maxLength": 80,
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "add_item",
+          "description": "Добавить новую позицию инвентаря. expected_version — версия хранилища.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "maxLength": 120,
+                "minLength": 1,
+                "type": "string"
+              },
+              "location": {
+                "maxLength": 80,
+                "minLength": 1,
+                "type": "string"
+              },
+              "quantity": {
+                "maximum": 10000,
+                "minimum": 1,
+                "type": "integer"
+              },
+              "unit": {
+                "enum": [
+                  "шт",
+                  "упаковка",
+                  "м"
+                ],
+                "type": "string"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "name",
+              "location",
+              "quantity",
+              "unit",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "set_quantity",
+          "description": "Установить новое общее количество позиции по ID и версии.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "quantity": {
+                "maximum": 10000,
+                "minimum": 0,
+                "type": "integer"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "quantity",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "delete_item",
+          "description": "Удалить позицию по ID и версии.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "pattern": "^I[0-9]{3,}$",
+                "type": "string"
+              },
+              "expected_version": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "expected_version"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    ],
+    "stream": false,
+    "keep_alive": "30m",
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 320,
+      "num_thread": 4
+    }
+  },
+  "response": {
+    "model": "qwen3:4b-instruct",
+    "created_at": "2026-10-18T08:12:45.342601384Z",
+    "message": {
+      "role": "assistant",
+      "content": "Количество кабелей USB-C в Кладовой обновлено до 5 шт."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 16806206175,
+    "load_duration": 1580042,
+    "prompt_eval_count": 769,
+    "prompt_eval_cached_count": 701,
+    "prompt_eval_duration": 9619010000,
+    "eval_count": 23,
+    "eval_duration": 7168758000
+  },
+  "wall_s": 16.81134375800002,
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0"
+}

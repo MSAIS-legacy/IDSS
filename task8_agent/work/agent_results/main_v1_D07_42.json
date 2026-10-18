@@ -1,0 +1,295 @@
+{
+  "status": "finished",
+  "answer": "Временный сбой чтения. Повторите запрос.",
+  "history": [
+    {
+      "role": "system",
+      "content": "Ты помощник по домашнему инвентарю. Выполняй просьбы через доступные инструменты. Отвечай кратко по-русски."
+    },
+    {
+      "role": "user",
+      "content": "Сколько ламп LED находится в Кладовой? Ничего не меняй."
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "DEaSX6Ouz0ynTuS0RvuGs7yVyCm50Tua",
+          "function": {
+            "index": 0,
+            "name": "find_items",
+            "arguments": {
+              "query": "лампа LED",
+              "location": "Кладова"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_name": "find_items",
+      "content": "{\"ok\": false, \"error\": {\"code\": \"TEMPORARY_UNAVAILABLE\", \"message\": \"Временный сбой чтения. Повторите запрос\", \"retryable\": true}}"
+    },
+    {
+      "role": "assistant",
+      "content": "Временный сбой чтения. Повторите запрос."
+    }
+  ],
+  "trace": [
+    {
+      "tool": "find_items",
+      "arguments": {
+        "query": "лампа LED",
+        "location": "Кладова"
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "TEMPORARY_UNAVAILABLE",
+          "message": "Временный сбой чтения. Повторите запрос",
+          "retryable": true
+        }
+      },
+      "before": {
+        "_id": "inventory_v1:main:v1:D07:42",
+        "version": 1,
+        "positions": [
+          {
+            "item_id": "I001",
+            "name": "Батарейки AA",
+            "location": "Кладовая",
+            "quantity": 12,
+            "unit": "шт"
+          },
+          {
+            "item_id": "I002",
+            "name": "Батарейки AA",
+            "location": "Ящик стола",
+            "quantity": 4,
+            "unit": "шт"
+          },
+          {
+            "item_id": "I003",
+            "name": "Кабель USB-C",
+            "location": "Кладовая",
+            "quantity": 3,
+            "unit": "шт"
+          },
+          {
+            "item_id": "I004",
+            "name": "Лампа LED",
+            "location": "Кладовая",
+            "quantity": 2,
+            "unit": "шт"
+          },
+          {
+            "item_id": "I005",
+            "name": "Бумага A4",
+            "location": "Кабинет",
+            "quantity": 1,
+            "unit": "упаковка"
+          }
+        ],
+        "movements": [],
+        "next_item_id": 6,
+        "next_movement_id": 1
+      },
+      "after": {
+        "_id": "inventory_v1:main:v1:D07:42",
+        "version": 1,
+        "positions": [
+          {
+            "item_id": "I001",
+            "name": "Батарейки AA",
+            "location": "Кладовая",
+            "quantity": 12,
+            "unit": "шт"
+          },
+          {
+            "item_id": "I002",
+            "name": "Батарейки AA",
+            "location": "Ящик стола",
+            "quantity": 4,
+            "unit": "шт"
+          },
+          {
+            "item_id": "I003",
+            "name": "Кабель USB-C",
+            "location": "Кладовая",
+            "quantity": 3,
+            "unit": "шт"
+          },
+          {
+            "item_id": "I004",
+            "name": "Лампа LED",
+            "location": "Кладовая",
+            "quantity": 2,
+            "unit": "шт"
+          },
+          {
+            "item_id": "I005",
+            "name": "Бумага A4",
+            "location": "Кабинет",
+            "quantity": 1,
+            "unit": "упаковка"
+          }
+        ],
+        "movements": [],
+        "next_item_id": 6,
+        "next_movement_id": 1
+      },
+      "wall_s": 5.920799958403222e-05
+    }
+  ],
+  "generations": [
+    {
+      "key": "44f20354dec438b0e75ec89f58ce67f117a703c52695756e3b43c7013e9b3e64",
+      "wall_s": 12.300316422999913,
+      "cached": true,
+      "response": {
+        "model": "qwen3:4b-instruct",
+        "created_at": "2026-10-18T08:14:11.188331299Z",
+        "message": {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "DEaSX6Ouz0ynTuS0RvuGs7yVyCm50Tua",
+              "function": {
+                "index": 0,
+                "name": "find_items",
+                "arguments": {
+                  "query": "лампа LED",
+                  "location": "Кладова"
+                }
+              }
+            }
+          ]
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 12298156130,
+        "load_duration": 1475750,
+        "prompt_eval_count": 558,
+        "prompt_eval_cached_count": 534,
+        "prompt_eval_duration": 3245375000,
+        "eval_count": 31,
+        "eval_duration": 9040763000
+      }
+    },
+    {
+      "key": "dd4bd920572799ff9b89919e5880dd72e8f38274167241a8ae186da64a733e6d",
+      "wall_s": 11.866696505999926,
+      "cached": true,
+      "response": {
+        "model": "qwen3:4b-instruct",
+        "created_at": "2026-10-18T08:14:23.058314763Z",
+        "message": {
+          "role": "assistant",
+          "content": "Временный сбой чтения. Повторите запрос."
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 11864574130,
+        "load_duration": 1618458,
+        "prompt_eval_count": 643,
+        "prompt_eval_cached_count": 588,
+        "prompt_eval_duration": 7721674000,
+        "eval_count": 15,
+        "eval_duration": 4127948999
+      }
+    }
+  ],
+  "final_state": {
+    "_id": "inventory_v1:main:v1:D07:42",
+    "version": 1,
+    "positions": [
+      {
+        "item_id": "I001",
+        "name": "Батарейки AA",
+        "location": "Кладовая",
+        "quantity": 12,
+        "unit": "шт"
+      },
+      {
+        "item_id": "I002",
+        "name": "Батарейки AA",
+        "location": "Ящик стола",
+        "quantity": 4,
+        "unit": "шт"
+      },
+      {
+        "item_id": "I003",
+        "name": "Кабель USB-C",
+        "location": "Кладовая",
+        "quantity": 3,
+        "unit": "шт"
+      },
+      {
+        "item_id": "I004",
+        "name": "Лампа LED",
+        "location": "Кладовая",
+        "quantity": 2,
+        "unit": "шт"
+      },
+      {
+        "item_id": "I005",
+        "name": "Бумага A4",
+        "location": "Кабинет",
+        "quantity": 1,
+        "unit": "упаковка"
+      }
+    ],
+    "movements": [],
+    "next_item_id": 6,
+    "next_movement_id": 1
+  },
+  "case_id": "D07",
+  "variant": "v1",
+  "group": "main",
+  "seed": 42,
+  "temperature": 0,
+  "user": "Сколько ламп LED находится в Кладовой? Ничего не меняй.",
+  "kind": "ошибка инструмента",
+  "allowed": [],
+  "expected_positions": [
+    {
+      "item_id": "I001",
+      "name": "Батарейки AA",
+      "location": "Кладовая",
+      "quantity": 12,
+      "unit": "шт"
+    },
+    {
+      "item_id": "I002",
+      "name": "Батарейки AA",
+      "location": "Ящик стола",
+      "quantity": 4,
+      "unit": "шт"
+    },
+    {
+      "item_id": "I003",
+      "name": "Кабель USB-C",
+      "location": "Кладовая",
+      "quantity": 3,
+      "unit": "шт"
+    },
+    {
+      "item_id": "I004",
+      "name": "Лампа LED",
+      "location": "Кладовая",
+      "quantity": 2,
+      "unit": "шт"
+    },
+    {
+      "item_id": "I005",
+      "name": "Бумага A4",
+      "location": "Кабинет",
+      "quantity": 1,
+      "unit": "упаковка"
+    }
+  ],
+  "scope": "inventory_v1:main:v1:D07:42"
+}
