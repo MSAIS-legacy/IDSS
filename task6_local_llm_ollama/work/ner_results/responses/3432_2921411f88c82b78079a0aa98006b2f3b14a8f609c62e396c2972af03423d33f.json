@@ -1,0 +1,102 @@
+{
+  "id": 3432,
+  "split": "test",
+  "request": {
+    "model": "qwen3:4b-instruct",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Extract every named entity mention using CoNLL-2003 conventions.\nPER: names of individual people; exclude titles, roles and pronouns.\nLOC: geographical places, including country and city names.\nORG: named organizations, companies, agencies, political groups and sports clubs.\nMISC: other proper named entities, especially nationalities and nationality\nadjectives, ethnic or religious names, and named events or works.\nMISC is not a catch-all for ordinary words: dates, months, weekdays, numbers,\njob titles and general descriptions are not named entities in this task.\nDo not extract scores, phone numbers or measurements. Treat -LPR- and -RPR-\nas punctuation, not entity names.\nUse the context to distinguish a place from a sports club named after a place.\nCopy the complete entity as an exact contiguous substring, preserving spaces,\ncase and punctuation. Do not expand abbreviations or resolve pronouns.\nExtract only explicit mentions; do not infer names that are absent.\nUse non-overlapping spans and one type per mention; keep each repeated occurrence.\nReturn only schema-compliant JSON, with empty lists where no entities occur.\nGroup mentions by type. Keep repeated mentions.\nJSON Schema:\n{\"$defs\": {\"EntityGroups\": {\"additionalProperties\": false, \"properties\": {\"PER\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Per\", \"type\": \"array\"}, \"LOC\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Loc\", \"type\": \"array\"}, \"ORG\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Org\", \"type\": \"array\"}, \"MISC\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Misc\", \"type\": \"array\"}}, \"required\": [\"PER\", \"LOC\", \"ORG\", \"MISC\"], \"title\": \"EntityGroups\", \"type\": \"object\"}}, \"additionalProperties\": false, \"properties\": {\"entities\": {\"$ref\": \"#/$defs/EntityGroups\"}}, \"required\": [\"entities\"], \"title\": \"GroupedNER\", \"type\": \"object\"}\nSentence:\nTENNIS - RESULTS AT TOSHIBA CLASSIC ."
+      }
+    ],
+    "format": {
+      "$defs": {
+        "EntityGroups": {
+          "additionalProperties": false,
+          "properties": {
+            "PER": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Per",
+              "type": "array"
+            },
+            "LOC": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Loc",
+              "type": "array"
+            },
+            "ORG": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Org",
+              "type": "array"
+            },
+            "MISC": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Misc",
+              "type": "array"
+            }
+          },
+          "required": [
+            "PER",
+            "LOC",
+            "ORG",
+            "MISC"
+          ],
+          "title": "EntityGroups",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "entities": {
+          "$ref": "#/$defs/EntityGroups"
+        }
+      },
+      "required": [
+        "entities"
+      ],
+      "title": "GroupedNER",
+      "type": "object"
+    },
+    "stream": false,
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 4096,
+      "num_predict": 512,
+      "num_thread": 4
+    },
+    "keep_alive": "15m"
+  },
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "response": {
+    "model": "qwen3:4b-instruct",
+    "created_at": "2026-10-04T10:05:12.028335674Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"entities\": {\n    \"LOC\": [\n      \"TOSHIBA\"\n    ],\n    \"MISC\": [\n      \"CLASSIC\"\n    ],\n    \"ORG\": [\n      \"TOSHIBA\"\n    ],\n    \"PER\": []\n  }\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 13401312132,
+    "load_duration": 984792,
+    "prompt_eval_count": 483,
+    "prompt_eval_cached_count": 465,
+    "prompt_eval_duration": 1866500000,
+    "eval_count": 56,
+    "eval_duration": 11525255000
+  },
+  "wall_s": 13.402502756000104,
+  "created_at": "2026-10-04T10:05:12.029125+00:00"
+}

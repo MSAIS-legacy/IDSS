@@ -1,0 +1,102 @@
+{
+  "id": 8935,
+  "split": "dev",
+  "request": {
+    "model": "qwen3:4b-instruct",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Extract all named entity mentions from the English sentence.\nUse PER for people, LOC for locations, ORG for organizations, and MISC for\nother named entities. Copy each entity exactly from the sentence.\nReturn only the JSON required by the schema, including empty lists.\nDo not include explanations.\nGroup mentions by type. Keep repeated mentions.\nJSON Schema:\n{\"$defs\": {\"EntityGroups\": {\"additionalProperties\": false, \"properties\": {\"PER\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Per\", \"type\": \"array\"}, \"LOC\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Loc\", \"type\": \"array\"}, \"ORG\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Org\", \"type\": \"array\"}, \"MISC\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Misc\", \"type\": \"array\"}}, \"required\": [\"PER\", \"LOC\", \"ORG\", \"MISC\"], \"title\": \"EntityGroups\", \"type\": \"object\"}}, \"additionalProperties\": false, \"properties\": {\"entities\": {\"$ref\": \"#/$defs/EntityGroups\"}}, \"required\": [\"entities\"], \"title\": \"GroupedNER\", \"type\": \"object\"}\nSentence:\nThe Russian army commander in the region , General Vyacheslav Tikhomirov , arrived at the rebel-held village of Novye Atagi , some 20 km -LPR- 12 miles -RPR- south of the Chechen capital Grozny for discussions with rebel chief-of-staff Aslan Maskhadov ."
+      }
+    ],
+    "format": {
+      "$defs": {
+        "EntityGroups": {
+          "additionalProperties": false,
+          "properties": {
+            "PER": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Per",
+              "type": "array"
+            },
+            "LOC": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Loc",
+              "type": "array"
+            },
+            "ORG": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Org",
+              "type": "array"
+            },
+            "MISC": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Misc",
+              "type": "array"
+            }
+          },
+          "required": [
+            "PER",
+            "LOC",
+            "ORG",
+            "MISC"
+          ],
+          "title": "EntityGroups",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "entities": {
+          "$ref": "#/$defs/EntityGroups"
+        }
+      },
+      "required": [
+        "entities"
+      ],
+      "title": "GroupedNER",
+      "type": "object"
+    },
+    "stream": false,
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 4096,
+      "num_predict": 512,
+      "num_thread": 4
+    },
+    "keep_alive": "15m"
+  },
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "response": {
+    "model": "qwen3:4b-instruct",
+    "created_at": "2026-10-04T09:12:05.597860508Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"entities\": {\n    \"LOC\": [\n      \"Novye Atagi\",\n      \"Grozny\"\n    ],\n    \"MISC\": [\n      \"20 km\",\n      \"12 miles\"\n    ],\n    \"ORG\": [\n      \"LPR\",\n      \"RPR\"\n    ],\n    \"PER\": [\n      \"General Vyacheslav Tikhomirov\",\n      \"Aslan Maskhadov\"\n    ]\n  }\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 32441060015,
+    "load_duration": 1606584,
+    "prompt_eval_count": 368,
+    "prompt_eval_cached_count": 294,
+    "prompt_eval_duration": 8498031000,
+    "eval_count": 94,
+    "eval_duration": 23929937000
+  },
+  "wall_s": 32.44270855700006,
+  "created_at": "2026-10-04T09:12:05.598912+00:00"
+}

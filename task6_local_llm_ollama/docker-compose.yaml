@@ -1,0 +1,39 @@
+services:
+  jupyter:
+    build: .
+    container_name: task6_local_llm_ollama_container
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./work:/home/jovyan/work
+      - ./.env:/home/jovyan/.env
+    environment:
+      JUPYTER_TOKEN: local_llm_ollama
+      OLLAMA_HOST: http://ollama:11434
+    depends_on:
+      ollama:
+        condition: service_started
+      ollama-pull:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama
+    container_name: task6_local_llm_ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - local_llm_ollama:/root/.ollama
+    restart: unless-stopped
+
+  ollama-pull:
+    image: docker/genai:ollama-pull
+    environment:
+      OLLAMA_BASE_URL: http://ollama:11434
+      LLM: qwen3:4b-instruct
+    depends_on:
+      - ollama
+
+volumes:
+  local_llm_ollama:
+    name: local_llm_ollama

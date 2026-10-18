@@ -1,0 +1,102 @@
+{
+  "id": 11498,
+  "split": "test",
+  "request": {
+    "model": "qwen3:4b-instruct",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Extract all named entity mentions from the English sentence.\nUse PER for people, LOC for locations, ORG for organizations, and MISC for\nother named entities. Copy each entity exactly from the sentence.\nReturn only the JSON required by the schema, including empty lists.\nDo not include explanations.\nGroup mentions by type. Keep repeated mentions.\nJSON Schema:\n{\"$defs\": {\"EntityGroups\": {\"additionalProperties\": false, \"properties\": {\"PER\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Per\", \"type\": \"array\"}, \"LOC\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Loc\", \"type\": \"array\"}, \"ORG\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Org\", \"type\": \"array\"}, \"MISC\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Misc\", \"type\": \"array\"}}, \"required\": [\"PER\", \"LOC\", \"ORG\", \"MISC\"], \"title\": \"EntityGroups\", \"type\": \"object\"}}, \"additionalProperties\": false, \"properties\": {\"entities\": {\"$ref\": \"#/$defs/EntityGroups\"}}, \"required\": [\"entities\"], \"title\": \"GroupedNER\", \"type\": \"object\"}\nSentence:\n\" These -LPR- African -RPR- brothers should have been the first to bind the wounds of Burundi , \" Terence said of the economic embargo . \""
+      }
+    ],
+    "format": {
+      "$defs": {
+        "EntityGroups": {
+          "additionalProperties": false,
+          "properties": {
+            "PER": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Per",
+              "type": "array"
+            },
+            "LOC": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Loc",
+              "type": "array"
+            },
+            "ORG": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Org",
+              "type": "array"
+            },
+            "MISC": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Misc",
+              "type": "array"
+            }
+          },
+          "required": [
+            "PER",
+            "LOC",
+            "ORG",
+            "MISC"
+          ],
+          "title": "EntityGroups",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "entities": {
+          "$ref": "#/$defs/EntityGroups"
+        }
+      },
+      "required": [
+        "entities"
+      ],
+      "title": "GroupedNER",
+      "type": "object"
+    },
+    "stream": false,
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 4096,
+      "num_predict": 512,
+      "num_thread": 4
+    },
+    "keep_alive": "15m"
+  },
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "response": {
+    "model": "qwen3:4b-instruct",
+    "created_at": "2026-10-04T09:43:03.389759212Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"entities\": {\n    \"LOC\": [\n      \"Burundi\"\n    ],\n    \"MISC\": [\n      \"-LPR-\",\n      \"-RPR-\",\n      \"economic embargo\"\n    ],\n    \"ORG\": [],\n    \"PER\": [\n      \"Terence\"\n    ]\n  }\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 16216741424,
+    "load_duration": 1114542,
+    "prompt_eval_count": 333,
+    "prompt_eval_cached_count": 294,
+    "prompt_eval_duration": 3558996000,
+    "eval_count": 64,
+    "eval_duration": 12647654000
+  },
+  "wall_s": 16.2189891740004,
+  "created_at": "2026-10-04T09:43:03.391543+00:00"
+}

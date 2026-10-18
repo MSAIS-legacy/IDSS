@@ -1,0 +1,34 @@
+{
+  "locked_at": "2026-10-04T09:16:25.504338+00:00",
+  "prompt": "Extract every named entity mention using CoNLL-2003 conventions.\nPER: names of individual people; exclude titles, roles and pronouns.\nLOC: geographical places, including country and city names.\nORG: named organizations, companies, agencies, political groups and sports clubs.\nMISC: other proper named entities, especially nationalities and nationality\nadjectives, ethnic or religious names, and named events or works.\nMISC is not a catch-all for ordinary words: dates, months, weekdays, numbers,\njob titles and general descriptions are not named entities in this task.\nDo not extract scores, phone numbers or measurements. Treat -LPR- and -RPR-\nas punctuation, not entity names.\nUse the context to distinguish a place from a sports club named after a place.\nCopy the complete entity as an exact contiguous substring, preserving spaces,\ncase and punctuation. Do not expand abbreviations or resolve pronouns.\nExtract only explicit mentions; do not infer names that are absent.\nUse non-overlapping spans and one type per mention; keep each repeated occurrence.\nReturn only schema-compliant JSON, with empty lists where no entities occur.",
+  "sha256": "833a06969680eaf700392771dcbd48a5c5a72952011349c0e171860fbc36fe65",
+  "dev_ids": [
+    10476,
+    1824,
+    409,
+    12149,
+    4506,
+    4012,
+    3657,
+    2286,
+    12066,
+    1679,
+    11087,
+    12135,
+    8935,
+    1424,
+    9674,
+    6912,
+    520,
+    488,
+    1535,
+    3582
+  ],
+  "basis": [
+    "exclude ordinary descriptions, numbers and pronouns",
+    "one non-overlapping type per mention",
+    "nationality adjectives as MISC",
+    "sports clubs as ORG when context supports it",
+    "exact surface form; exclude markup and role titles"
+  ]
+}

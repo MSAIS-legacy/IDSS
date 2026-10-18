@@ -1,0 +1,102 @@
+{
+  "id": 11490,
+  "split": "test",
+  "request": {
+    "model": "qwen3:4b-instruct",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Extract all named entity mentions from the English sentence.\nUse PER for people, LOC for locations, ORG for organizations, and MISC for\nother named entities. Copy each entity exactly from the sentence.\nReturn only the JSON required by the schema, including empty lists.\nDo not include explanations.\nGroup mentions by type. Keep repeated mentions.\nJSON Schema:\n{\"$defs\": {\"EntityGroups\": {\"additionalProperties\": false, \"properties\": {\"PER\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Per\", \"type\": \"array\"}, \"LOC\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Loc\", \"type\": \"array\"}, \"ORG\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Org\", \"type\": \"array\"}, \"MISC\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Misc\", \"type\": \"array\"}}, \"required\": [\"PER\", \"LOC\", \"ORG\", \"MISC\"], \"title\": \"EntityGroups\", \"type\": \"object\"}}, \"additionalProperties\": false, \"properties\": {\"entities\": {\"$ref\": \"#/$defs/EntityGroups\"}}, \"required\": [\"entities\"], \"title\": \"GroupedNER\", \"type\": \"object\"}\nSentence:\nThe former Soviet Union was displaced as contractor of the potentially rich Shabwa oilfields once it collapsed in December 1991 , according to the International Petroleum Encyclopedia ."
+      }
+    ],
+    "format": {
+      "$defs": {
+        "EntityGroups": {
+          "additionalProperties": false,
+          "properties": {
+            "PER": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Per",
+              "type": "array"
+            },
+            "LOC": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Loc",
+              "type": "array"
+            },
+            "ORG": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Org",
+              "type": "array"
+            },
+            "MISC": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Misc",
+              "type": "array"
+            }
+          },
+          "required": [
+            "PER",
+            "LOC",
+            "ORG",
+            "MISC"
+          ],
+          "title": "EntityGroups",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "entities": {
+          "$ref": "#/$defs/EntityGroups"
+        }
+      },
+      "required": [
+        "entities"
+      ],
+      "title": "GroupedNER",
+      "type": "object"
+    },
+    "stream": false,
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 4096,
+      "num_predict": 512,
+      "num_thread": 4
+    },
+    "keep_alive": "15m"
+  },
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "response": {
+    "model": "qwen3:4b-instruct",
+    "created_at": "2026-10-04T09:17:06.707998383Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"entities\": {\n    \"LOC\": [\n      \"Soviet Union\",\n      \"Shabwa\",\n      \"December 1991\"\n    ],\n    \"MISC\": [\n      \"International Petroleum Encyclopedia\"\n    ],\n    \"ORG\": [\n      \"International Petroleum Encyclopedia\"\n    ],\n    \"PER\": []\n  }\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 22693618969,
+    "load_duration": 1332750,
+    "prompt_eval_count": 333,
+    "prompt_eval_cached_count": 293,
+    "prompt_eval_duration": 4593384000,
+    "eval_count": 71,
+    "eval_duration": 18087624000
+  },
+  "wall_s": 22.694861843999888,
+  "created_at": "2026-10-04T09:17:06.708727+00:00"
+}

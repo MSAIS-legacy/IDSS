@@ -1,0 +1,87 @@
+{
+  "id": 8785,
+  "split": "test",
+  "request": {
+    "model": "gemma3:1b",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Extract every named entity mention using CoNLL-2003 conventions.\nPER: names of individual people; exclude titles, roles and pronouns.\nLOC: geographical places, including country and city names.\nORG: named organizations, companies, agencies, political groups and sports clubs.\nMISC: other proper named entities, especially nationalities and nationality\nadjectives, ethnic or religious names, and named events or works.\nMISC is not a catch-all for ordinary words: dates, months, weekdays, numbers,\njob titles and general descriptions are not named entities in this task.\nDo not extract scores, phone numbers or measurements. Treat -LPR- and -RPR-\nas punctuation, not entity names.\nUse the context to distinguish a place from a sports club named after a place.\nCopy the complete entity as an exact contiguous substring, preserving spaces,\ncase and punctuation. Do not expand abbreviations or resolve pronouns.\nExtract only explicit mentions; do not infer names that are absent.\nUse non-overlapping spans and one type per mention; keep each repeated occurrence.\nReturn only schema-compliant JSON, with empty lists where no entities occur.\nList every mention in its original order, including repetitions.\nJSON Schema:\n{\"$defs\": {\"Entity\": {\"additionalProperties\": false, \"properties\": {\"text\": {\"minLength\": 1, \"title\": \"Text\", \"type\": \"string\"}, \"type\": {\"enum\": [\"PER\", \"LOC\", \"ORG\", \"MISC\"], \"title\": \"Type\", \"type\": \"string\"}}, \"required\": [\"text\", \"type\"], \"title\": \"Entity\", \"type\": \"object\"}}, \"additionalProperties\": false, \"properties\": {\"entities\": {\"items\": {\"$ref\": \"#/$defs/Entity\"}, \"title\": \"Entities\", \"type\": \"array\"}}, \"required\": [\"entities\"], \"title\": \"OrderedNER\", \"type\": \"object\"}\nSentence:\n5. Wim Omloop -LPR- Belgium -RPR- Collstrop same time"
+      }
+    ],
+    "format": {
+      "$defs": {
+        "Entity": {
+          "additionalProperties": false,
+          "properties": {
+            "text": {
+              "minLength": 1,
+              "title": "Text",
+              "type": "string"
+            },
+            "type": {
+              "enum": [
+                "PER",
+                "LOC",
+                "ORG",
+                "MISC"
+              ],
+              "title": "Type",
+              "type": "string"
+            }
+          },
+          "required": [
+            "text",
+            "type"
+          ],
+          "title": "Entity",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "entities": {
+          "items": {
+            "$ref": "#/$defs/Entity"
+          },
+          "title": "Entities",
+          "type": "array"
+        }
+      },
+      "required": [
+        "entities"
+      ],
+      "title": "OrderedNER",
+      "type": "object"
+    },
+    "stream": false,
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 4096,
+      "num_predict": 512,
+      "num_thread": 4
+    },
+    "keep_alive": "15m"
+  },
+  "model_digest": "8648f39daa8fbf5b18c7b4e6a8fb4990c692751d49917417b8842ca5758e7ffc",
+  "response": {
+    "model": "gemma3:1b",
+    "created_at": "2026-10-04T11:07:42.849090174Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\"entities\": [{\"text\": \"Wim Omloop\", \"type\": \"LOC\"}, {\"text\": \"Belgium\", \"type\": \"LOC\"}, {\"text\": \"Collstrop\", \"type\": \"MISC\"}]}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 13500959924,
+    "load_duration": 740209,
+    "prompt_eval_count": 440,
+    "prompt_eval_cached_count": 1,
+    "prompt_eval_duration": 10509365000,
+    "eval_count": 47,
+    "eval_duration": 2986833000
+  },
+  "wall_s": 13.50185963199965,
+  "created_at": "2026-10-04T11:07:42.849696+00:00"
+}

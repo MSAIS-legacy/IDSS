@@ -1,0 +1,102 @@
+{
+  "id": 11543,
+  "split": "test",
+  "request": {
+    "model": "qwen3:4b-instruct",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Extract all named entity mentions from the English sentence.\nUse PER for people, LOC for locations, ORG for organizations, and MISC for\nother named entities. Copy each entity exactly from the sentence.\nReturn only the JSON required by the schema, including empty lists.\nDo not include explanations.\nGroup mentions by type. Keep repeated mentions.\nJSON Schema:\n{\"$defs\": {\"EntityGroups\": {\"additionalProperties\": false, \"properties\": {\"PER\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Per\", \"type\": \"array\"}, \"LOC\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Loc\", \"type\": \"array\"}, \"ORG\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Org\", \"type\": \"array\"}, \"MISC\": {\"items\": {\"minLength\": 1, \"type\": \"string\"}, \"title\": \"Misc\", \"type\": \"array\"}}, \"required\": [\"PER\", \"LOC\", \"ORG\", \"MISC\"], \"title\": \"EntityGroups\", \"type\": \"object\"}}, \"additionalProperties\": false, \"properties\": {\"entities\": {\"$ref\": \"#/$defs/EntityGroups\"}}, \"required\": [\"entities\"], \"title\": \"GroupedNER\", \"type\": \"object\"}\nSentence:\nIn the primary market , Eksportfinans and Suedwest LB launched issues for 100 million and 300 million Swiss francs , respectively ."
+      }
+    ],
+    "format": {
+      "$defs": {
+        "EntityGroups": {
+          "additionalProperties": false,
+          "properties": {
+            "PER": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Per",
+              "type": "array"
+            },
+            "LOC": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Loc",
+              "type": "array"
+            },
+            "ORG": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Org",
+              "type": "array"
+            },
+            "MISC": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Misc",
+              "type": "array"
+            }
+          },
+          "required": [
+            "PER",
+            "LOC",
+            "ORG",
+            "MISC"
+          ],
+          "title": "EntityGroups",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "entities": {
+          "$ref": "#/$defs/EntityGroups"
+        }
+      },
+      "required": [
+        "entities"
+      ],
+      "title": "GroupedNER",
+      "type": "object"
+    },
+    "stream": false,
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 4096,
+      "num_predict": 512,
+      "num_thread": 4
+    },
+    "keep_alive": "15m"
+  },
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "response": {
+    "model": "qwen3:4b-instruct",
+    "created_at": "2026-10-04T09:31:31.110878714Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"entities\": {\n    \"LOC\": [\n      \"primary market\"\n    ],\n    \"MISC\": [\n      \"100 million\",\n      \"300 million Swiss francs\"\n    ],\n    \"ORG\": [\n      \"Eksportfinans\",\n      \"Suedwest LB\"\n    ],\n    \"PER\": []\n  }\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 23535144135,
+    "load_duration": 1258958,
+    "prompt_eval_count": 333,
+    "prompt_eval_cached_count": 293,
+    "prompt_eval_duration": 4575035000,
+    "eval_count": 74,
+    "eval_duration": 18947473000
+  },
+  "wall_s": 23.53685442699998,
+  "created_at": "2026-10-04T09:31:31.112169+00:00"
+}

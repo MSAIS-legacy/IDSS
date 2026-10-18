@@ -1,0 +1,177 @@
+[
+  {
+    "id": 10647,
+    "text": "Euro 96 star Vladimir Smicer of the Czech Republic scored at the last second for Lens , allowing them to retain the lead in the French soccer league on Wednesday .",
+    "gold": [
+      [
+        "Euro 96",
+        "MISC"
+      ],
+      [
+        "Vladimir Smicer",
+        "PER"
+      ],
+      [
+        "Czech Republic",
+        "LOC"
+      ],
+      [
+        "Lens",
+        "ORG"
+      ],
+      [
+        "French",
+        "MISC"
+      ]
+    ],
+    "prediction": [
+      [
+        "Euro 96",
+        "LOC"
+      ],
+      [
+        "Czech Republic",
+        "LOC"
+      ],
+      [
+        "Lens",
+        "ORG"
+      ],
+      [
+        "French soccer league",
+        "LOC"
+      ],
+      [
+        "Wednesday",
+        "LOC"
+      ],
+      [
+        "last second",
+        "LOC"
+      ],
+      [
+        "permitting them to retain the lead",
+        "MISC"
+      ]
+    ]
+  },
+  {
+    "id": 3811,
+    "text": "Standings after games played on Friday -LPR- tabulate under won ,",
+    "gold": [],
+    "prediction": [
+      [
+        "Friday",
+        "MISC"
+      ],
+      [
+        "tabulate",
+        "MISC"
+      ],
+      [
+        "games",
+        "MISC"
+      ],
+      [
+        "played",
+        "MISC"
+      ],
+      [
+        "on",
+        "MISC"
+      ],
+      [
+        "Friday",
+        "MISC"
+      ],
+      [
+        "tabulate",
+        "MISC"
+      ],
+      [
+        "under",
+        "MISC"
+      ],
+      [
+        "won",
+        "MISC"
+      ]
+    ]
+  },
+  {
+    "id": 8279,
+    "text": "Rotherham 1 Blackpool 2",
+    "gold": [
+      [
+        "Rotherham",
+        "ORG"
+      ],
+      [
+        "Blackpool",
+        "ORG"
+      ]
+    ],
+    "prediction": [
+      [
+        "Rotherham",
+        "LOC"
+      ],
+      [
+        "Blackpool",
+        "LOC"
+      ],
+      [
+        "1",
+        "MISC"
+      ]
+    ]
+  },
+  {
+    "id": 8928,
+    "text": "The Bosnian Serb cabinet , in a letter to the OSCE , said on Monday that any delay of local elections would be \" a direct and flagrant violation fo the Dayton agreement \" .",
+    "gold": [
+      [
+        "Bosnian Serb",
+        "MISC"
+      ],
+      [
+        "OSCE",
+        "ORG"
+      ],
+      [
+        "Dayton",
+        "LOC"
+      ]
+    ],
+    "prediction": [
+      [
+        "Bosnia and Herzegovina",
+        "LOC"
+      ],
+      [
+        "OSCE",
+        "ORG"
+      ],
+      [
+        "Monday",
+        "MISC"
+      ],
+      [
+        "Dayton agreement",
+        "MISC"
+      ],
+      [
+        "local elections",
+        "MISC"
+      ],
+      [
+        "a direct and flagrant violation",
+        "MISC"
+      ],
+      [
+        "violation",
+        "MISC"
+      ]
+    ]
+  }
+]

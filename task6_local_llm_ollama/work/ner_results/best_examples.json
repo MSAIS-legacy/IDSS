@@ -1,0 +1,105 @@
+[
+  {
+    "id": 434,
+    "text": "52 -RPR- v Worcestershire .",
+    "gold": [
+      [
+        "Worcestershire",
+        "ORG"
+      ]
+    ],
+    "prediction": []
+  },
+  {
+    "id": 8279,
+    "text": "Rotherham 1 Blackpool 2",
+    "gold": [
+      [
+        "Rotherham",
+        "ORG"
+      ],
+      [
+        "Blackpool",
+        "ORG"
+      ]
+    ],
+    "prediction": [
+      [
+        "Rotherham",
+        "LOC"
+      ],
+      [
+        "Blackpool",
+        "LOC"
+      ]
+    ]
+  },
+  {
+    "id": 9863,
+    "text": "-- Tokyo Commodities Desk -LPR- 81-3 3432 6179 -RPR-",
+    "gold": [
+      [
+        "Tokyo Commodities Desk",
+        "ORG"
+      ]
+    ],
+    "prediction": [
+      [
+        "Tokyo",
+        "LOC"
+      ],
+      [
+        "Commodities Desk",
+        "ORG"
+      ]
+    ]
+  },
+  {
+    "id": 10647,
+    "text": "Euro 96 star Vladimir Smicer of the Czech Republic scored at the last second for Lens , allowing them to retain the lead in the French soccer league on Wednesday .",
+    "gold": [
+      [
+        "Euro 96",
+        "MISC"
+      ],
+      [
+        "Vladimir Smicer",
+        "PER"
+      ],
+      [
+        "Czech Republic",
+        "LOC"
+      ],
+      [
+        "Lens",
+        "ORG"
+      ],
+      [
+        "French",
+        "MISC"
+      ]
+    ],
+    "prediction": [
+      [
+        "Vladimir Smicer",
+        "PER"
+      ],
+      [
+        "Czech Republic",
+        "LOC"
+      ],
+      [
+        "Lens",
+        "ORG"
+      ],
+      [
+        "French soccer league",
+        "MISC"
+      ],
+      [
+        "Wednesday",
+        "MISC"
+      ]
+    ]
+  }
+]

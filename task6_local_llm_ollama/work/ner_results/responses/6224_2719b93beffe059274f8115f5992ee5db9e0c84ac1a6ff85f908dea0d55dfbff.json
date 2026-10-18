@@ -1,0 +1,87 @@
+{
+  "id": 6224,
+  "split": "test",
+  "request": {
+    "model": "gemma3:1b",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Extract every named entity mention using CoNLL-2003 conventions.\nPER: names of individual people; exclude titles, roles and pronouns.\nLOC: geographical places, including country and city names.\nORG: named organizations, companies, agencies, political groups and sports clubs.\nMISC: other proper named entities, especially nationalities and nationality\nadjectives, ethnic or religious names, and named events or works.\nMISC is not a catch-all for ordinary words: dates, months, weekdays, numbers,\njob titles and general descriptions are not named entities in this task.\nDo not extract scores, phone numbers or measurements. Treat -LPR- and -RPR-\nas punctuation, not entity names.\nUse the context to distinguish a place from a sports club named after a place.\nCopy the complete entity as an exact contiguous substring, preserving spaces,\ncase and punctuation. Do not expand abbreviations or resolve pronouns.\nExtract only explicit mentions; do not infer names that are absent.\nUse non-overlapping spans and one type per mention; keep each repeated occurrence.\nReturn only schema-compliant JSON, with empty lists where no entities occur.\nList every mention in its original order, including repetitions.\nJSON Schema:\n{\"$defs\": {\"Entity\": {\"additionalProperties\": false, \"properties\": {\"text\": {\"minLength\": 1, \"title\": \"Text\", \"type\": \"string\"}, \"type\": {\"enum\": [\"PER\", \"LOC\", \"ORG\", \"MISC\"], \"title\": \"Type\", \"type\": \"string\"}}, \"required\": [\"text\", \"type\"], \"title\": \"Entity\", \"type\": \"object\"}}, \"additionalProperties\": false, \"properties\": {\"entities\": {\"items\": {\"$ref\": \"#/$defs/Entity\"}, \"title\": \"Entities\", \"type\": \"array\"}}, \"required\": [\"entities\"], \"title\": \"OrderedNER\", \"type\": \"object\"}\nSentence:\nGencor Ltd on Monday said it had swelled its year attributable profit and streamlined operations to strengthen it for the current financial year despite a variety of divisional setbacks ."
+      }
+    ],
+    "format": {
+      "$defs": {
+        "Entity": {
+          "additionalProperties": false,
+          "properties": {
+            "text": {
+              "minLength": 1,
+              "title": "Text",
+              "type": "string"
+            },
+            "type": {
+              "enum": [
+                "PER",
+                "LOC",
+                "ORG",
+                "MISC"
+              ],
+              "title": "Type",
+              "type": "string"
+            }
+          },
+          "required": [
+            "text",
+            "type"
+          ],
+          "title": "Entity",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "entities": {
+          "items": {
+            "$ref": "#/$defs/Entity"
+          },
+          "title": "Entities",
+          "type": "array"
+        }
+      },
+      "required": [
+        "entities"
+      ],
+      "title": "OrderedNER",
+      "type": "object"
+    },
+    "stream": false,
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 4096,
+      "num_predict": 512,
+      "num_thread": 4
+    },
+    "keep_alive": "15m"
+  },
+  "model_digest": "8648f39daa8fbf5b18c7b4e6a8fb4990c692751d49917417b8842ca5758e7ffc",
+  "response": {
+    "model": "gemma3:1b",
+    "created_at": "2026-10-04T11:04:56.783085125Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\"entities\": [{\"text\": \"Gencor Ltd\", \"type\": \"ORG\"}, {\"text\": \"Monday\", \"type\": \"PER\"}, {\"text\": \"it\", \"type\": \"PER\"}, {\"text\": \"had swelled\", \"type\": \"PER\"}, {\"text\": \"its\", \"type\": \"PER\"}, {\"text\": \"year attributable profit\", \"type\": \"MISC\"}, {\"text\": \"streamlined\", \"type\": \"PER\"}, {\"text\": \"operations\", \"type\": \"PER\"}, {\"text\": \"to strengthen\", \"type\": \"PER\"}, {\"text\": \"it\", \"type\": \"PER\"}, {\"text\": \"for the current financial year\", \"type\": \"PER\"}, {\"text\": \"despite\", \"type\": \"PER\"}, {\"text\": \"a variety of divisional setbacks\", \"type\": \"MISC\"}]}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 23018759676,
+    "load_duration": 1320625,
+    "prompt_eval_count": 453,
+    "prompt_eval_cached_count": 1,
+    "prompt_eval_duration": 10882927000,
+    "eval_count": 179,
+    "eval_duration": 12126636000
+  },
+  "wall_s": 23.023342634999608,
+  "created_at": "2026-10-04T11:04:56.783821+00:00"
+}

@@ -1,0 +1,23 @@
+{
+  "recorded_at": "2026-10-04T11:32:08.216559+00:00",
+  "platform": "Linux-6.10.14-linuxkit-aarch64-with-glibc2.43",
+  "architecture": "aarch64",
+  "logical_cpus": 8,
+  "options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_ctx": 4096,
+    "num_predict": 512,
+    "num_thread": 4
+  },
+  "versions": {
+    "httpx": "0.28.1",
+    "pydantic": "2.13.5",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "matplotlib": "3.11.2"
+  },
+  "ollama": {
+    "version": "0.35.1"
+  }
+}

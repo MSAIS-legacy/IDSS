@@ -1,0 +1,1996 @@
+[
+  {
+    "id": 10476,
+    "split": "dev",
+    "entities": [
+      {
+        "text": "CINCINNATI",
+        "type": "ORG",
+        "start": 0,
+        "end": 10,
+        "token_start": 0,
+        "token_end": 1
+      },
+      {
+        "text": "COLORADO",
+        "type": "LOC",
+        "start": 14,
+        "end": 22,
+        "token_start": 2,
+        "token_end": 3
+      }
+    ]
+  },
+  {
+    "id": 1824,
+    "split": "dev",
+    "entities": [
+      {
+        "text": "Russia",
+        "type": "LOC",
+        "start": 15,
+        "end": 21,
+        "token_start": 2,
+        "token_end": 3
+      },
+      {
+        "text": "Kuchma",
+        "type": "PER",
+        "start": 78,
+        "end": 84,
+        "token_start": 15,
+        "token_end": 16
+      }
+    ]
+  },
+  {
+    "id": 409,
+    "split": "dev",
+    "entities": []
+  },
+  {
+    "id": 12149,
+    "split": "dev",
+    "entities": [
+      {
+        "text": "Steve Weizman",
+        "type": "PER",
+        "start": 3,
+        "end": 16,
+        "token_start": 1,
+        "token_end": 3
+      },
+      {
+        "text": "Copenhagen",
+        "type": "LOC",
+        "start": 19,
+        "end": 29,
+        "token_start": 4,
+        "token_end": 5
+      }
+    ]
+  },
+  {
+    "id": 4506,
+    "split": "dev",
+    "entities": []
+  },
+  {
+    "id": 4012,
+    "split": "dev",
+    "entities": [
+      {
+        "text": "Graafschap Doetinchem",
+        "type": "ORG",
+        "start": 0,
+        "end": 21,
+        "token_start": 0,
+        "token_end": 2
+      },
+      {
+        "text": "RKC Waalwijk",
+        "type": "ORG",
+        "start": 24,
+        "end": 36,
+        "token_start": 3,
+        "token_end": 5
+      }
+    ]
+  },
+  {
+    "id": 3657,
+    "split": "dev",
+    "entities": [
+      {
+        "text": "Nottingham Forest",
+        "type": "ORG",
+        "start": 0,
+        "end": 17,
+        "token_start": 0,
+        "token_end": 2
+      },
+      {
+        "text": "Middlesbrough",
+        "type": "ORG",
+        "start": 20,
+        "end": 33,
+        "token_start": 3,
+        "token_end": 4
+      }
+    ]
+  },
+  {
+    "id": 2286,
+    "split": "dev",
+    "entities": [
+      {
+        "text": "Jose Maria Canizares",
+        "type": "PER",
+        "start": 8,
+        "end": 28,
+        "token_start": 3,
+        "token_end": 6
+      },
+      {
+        "text": "Spain",
+        "type": "LOC",
+        "start": 35,
+        "end": 40,
+        "token_start": 7,
+        "token_end": 8
+      },
+      {
+        "text": "Paul Lawrie",
+        "type": "PER",
+        "start": 55,
+        "end": 66,
+        "token_start": 12,
+        "token_end": 14
+      }
+    ]
+  },
+  {
+    "id": 12066,
+    "split": "dev",
+    "entities": [
+      {
+        "text": "Hwa Kay",
+        "type": "PER",
+        "start": 0,
+        "end": 7,
+        "token_start": 0,
+        "token_end": 2
+      }
+    ]
+  },
+  {
+    "id": 1679,
+    "split": "dev",
+    "entities": []
+  },
+  {
+    "id": 11087,
+    "split": "dev",
+    "entities": [
+      {
+        "text": "Reuters",
+        "type": "ORG",
+        "start": 119,
+        "end": 126,
+        "token_start": 22,
+        "token_end": 23
+      }
+    ]
+  },
+  {
+    "id": 12135,
+    "split": "dev",
+    "entities": [
+      {
+        "text": "Iceland",
+        "type": "LOC",
+        "start": 86,
+        "end": 93,
+        "token_start": 14,
+        "token_end": 15
+      }
+    ]
+  },
+  {
+    "id": 8935,
+    "split": "dev",
+    "entities": [
+      {
+        "text": "Russian",
+        "type": "MISC",
+        "start": 4,
+        "end": 11,
+        "token_start": 1,
+        "token_end": 2
+      },
+      {
+        "text": "Vyacheslav Tikhomirov",
+        "type": "PER",
+        "start": 51,
+        "end": 72,
+        "token_start": 9,
+        "token_end": 11
+      },
+      {
+        "text": "Novye Atagi",
+        "type": "LOC",
+        "start": 112,
+        "end": 123,
+        "token_start": 18,
+        "token_end": 20
+      },
+      {
+        "text": "Chechen",
+        "type": "MISC",
+        "start": 171,
+        "end": 178,
+        "token_start": 31,
+        "token_end": 32
+      },
+      {
+        "text": "Grozny",
+        "type": "LOC",
+        "start": 187,
+        "end": 193,
+        "token_start": 33,
+        "token_end": 34
+      },
+      {
+        "text": "Aslan Maskhadov",
+        "type": "PER",
+        "start": 236,
+        "end": 251,
+        "token_start": 39,
+        "token_end": 41
+      }
+    ]
+  },
+  {
+    "id": 1424,
+    "split": "dev",
+    "entities": []
+  },
+  {
+    "id": 9674,
+    "split": "dev",
+    "entities": [
+      {
+        "text": "Reuters",
+        "type": "ORG",
+        "start": 8,
+        "end": 15,
+        "token_start": 2,
+        "token_end": 3
+      },
+      {
+        "text": "Arab",
+        "type": "MISC",
+        "start": 130,
+        "end": 134,
+        "token_start": 23,
+        "token_end": 24
+      },
+      {
+        "text": "U.S.",
+        "type": "LOC",
+        "start": 155,
+        "end": 159,
+        "token_start": 27,
+        "token_end": 28
+      },
+      {
+        "text": "Israeli",
+        "type": "MISC",
+        "start": 164,
+        "end": 171,
+        "token_start": 29,
+        "token_end": 30
+      }
+    ]
+  },
+  {
+    "id": 6912,
+    "split": "dev",
+    "entities": [
+      {
+        "text": "Sporting Sale",
+        "type": "ORG",
+        "start": 0,
+        "end": 13,
+        "token_start": 0,
+        "token_end": 2
+      },
+      {
+        "text": "Meknes",
+        "type": "ORG",
+        "start": 16,
+        "end": 22,
+        "token_start": 3,
+        "token_end": 4
+      }
+    ]
+  },
+  {
+    "id": 520,
+    "split": "dev",
+    "entities": [
+      {
+        "text": "Bistrita",
+        "type": "LOC",
+        "start": 3,
+        "end": 11,
+        "token_start": 1,
+        "token_end": 2
+      },
+      {
+        "text": "Gloria Bistrita",
+        "type": "ORG",
+        "start": 14,
+        "end": 29,
+        "token_start": 3,
+        "token_end": 5
+      },
+      {
+        "text": "Romania",
+        "type": "LOC",
+        "start": 36,
+        "end": 43,
+        "token_start": 6,
+        "token_end": 7
+      },
+      {
+        "text": "Valletta",
+        "type": "LOC",
+        "start": 52,
+        "end": 60,
+        "token_start": 9,
+        "token_end": 10
+      },
+      {
+        "text": "Malta",
+        "type": "LOC",
+        "start": 67,
+        "end": 72,
+        "token_start": 11,
+        "token_end": 12
+      }
+    ]
+  },
+  {
+    "id": 488,
+    "split": "dev",
+    "entities": [
+      {
+        "text": "MaliVai Washington",
+        "type": "PER",
+        "start": 4,
+        "end": 22,
+        "token_start": 2,
+        "token_end": 4
+      },
+      {
+        "text": "U.S.",
+        "type": "LOC",
+        "start": 29,
+        "end": 33,
+        "token_start": 5,
+        "token_end": 6
+      },
+      {
+        "text": "Alex Corretja",
+        "type": "PER",
+        "start": 45,
+        "end": 58,
+        "token_start": 8,
+        "token_end": 10
+      },
+      {
+        "text": "Spain",
+        "type": "LOC",
+        "start": 65,
+        "end": 70,
+        "token_start": 11,
+        "token_end": 12
+      }
+    ]
+  },
+  {
+    "id": 1535,
+    "split": "dev",
+    "entities": [
+      {
+        "text": "Clinton",
+        "type": "PER",
+        "start": 0,
+        "end": 7,
+        "token_start": 0,
+        "token_end": 1
+      },
+      {
+        "text": "Irish",
+        "type": "MISC",
+        "start": 26,
+        "end": 31,
+        "token_start": 4,
+        "token_end": 5
+      },
+      {
+        "text": "Northern Ireland",
+        "type": "LOC",
+        "start": 47,
+        "end": 63,
+        "token_start": 9,
+        "token_end": 11
+      },
+      {
+        "text": "Ballybunion",
+        "type": "ORG",
+        "start": 101,
+        "end": 112,
+        "token_start": 18,
+        "token_end": 19
+      }
+    ]
+  },
+  {
+    "id": 3582,
+    "split": "dev",
+    "entities": [
+      {
+        "text": "Essex",
+        "type": "ORG",
+        "start": 0,
+        "end": 5,
+        "token_start": 0,
+        "token_end": 1
+      }
+    ]
+  },
+  {
+    "id": 3811,
+    "split": "test",
+    "entities": []
+  },
+  {
+    "id": 8279,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Rotherham",
+        "type": "ORG",
+        "start": 0,
+        "end": 9,
+        "token_start": 0,
+        "token_end": 1
+      },
+      {
+        "text": "Blackpool",
+        "type": "ORG",
+        "start": 12,
+        "end": 21,
+        "token_start": 2,
+        "token_end": 3
+      }
+    ]
+  },
+  {
+    "id": 9863,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Tokyo Commodities Desk",
+        "type": "ORG",
+        "start": 3,
+        "end": 25,
+        "token_start": 1,
+        "token_end": 4
+      }
+    ]
+  },
+  {
+    "id": 434,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Worcestershire",
+        "type": "ORG",
+        "start": 11,
+        "end": 25,
+        "token_start": 3,
+        "token_end": 4
+      }
+    ]
+  },
+  {
+    "id": 9195,
+    "split": "test",
+    "entities": []
+  },
+  {
+    "id": 3257,
+    "split": "test",
+    "entities": []
+  },
+  {
+    "id": 11731,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Prodi",
+        "type": "PER",
+        "start": 0,
+        "end": 5,
+        "token_start": 0,
+        "token_end": 1
+      },
+      {
+        "text": "Suleyman Demirel",
+        "type": "PER",
+        "start": 31,
+        "end": 47,
+        "token_start": 5,
+        "token_end": 7
+      },
+      {
+        "text": "Tansu Ciller",
+        "type": "PER",
+        "start": 69,
+        "end": 81,
+        "token_start": 10,
+        "token_end": 12
+      },
+      {
+        "text": "Akbel",
+        "type": "PER",
+        "start": 84,
+        "end": 89,
+        "token_start": 13,
+        "token_end": 14
+      }
+    ]
+  },
+  {
+    "id": 10647,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Euro 96",
+        "type": "MISC",
+        "start": 0,
+        "end": 7,
+        "token_start": 0,
+        "token_end": 2
+      },
+      {
+        "text": "Vladimir Smicer",
+        "type": "PER",
+        "start": 13,
+        "end": 28,
+        "token_start": 3,
+        "token_end": 5
+      },
+      {
+        "text": "Czech Republic",
+        "type": "LOC",
+        "start": 36,
+        "end": 50,
+        "token_start": 7,
+        "token_end": 9
+      },
+      {
+        "text": "Lens",
+        "type": "ORG",
+        "start": 81,
+        "end": 85,
+        "token_start": 15,
+        "token_end": 16
+      },
+      {
+        "text": "French",
+        "type": "MISC",
+        "start": 128,
+        "end": 134,
+        "token_start": 25,
+        "token_end": 26
+      }
+    ]
+  },
+  {
+    "id": 11490,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Soviet Union",
+        "type": "LOC",
+        "start": 11,
+        "end": 23,
+        "token_start": 2,
+        "token_end": 4
+      },
+      {
+        "text": "Shabwa",
+        "type": "LOC",
+        "start": 76,
+        "end": 82,
+        "token_start": 12,
+        "token_end": 13
+      },
+      {
+        "text": "International Petroleum Encyclopedia",
+        "type": "MISC",
+        "start": 147,
+        "end": 183,
+        "token_start": 24,
+        "token_end": 27
+      }
+    ]
+  },
+  {
+    "id": 8928,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Bosnian Serb",
+        "type": "MISC",
+        "start": 4,
+        "end": 16,
+        "token_start": 1,
+        "token_end": 3
+      },
+      {
+        "text": "OSCE",
+        "type": "ORG",
+        "start": 46,
+        "end": 50,
+        "token_start": 10,
+        "token_end": 11
+      },
+      {
+        "text": "Dayton",
+        "type": "LOC",
+        "start": 152,
+        "end": 158,
+        "token_start": 31,
+        "token_end": 32
+      }
+    ]
+  },
+  {
+    "id": 6873,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Pohang",
+        "type": "ORG",
+        "start": 0,
+        "end": 6,
+        "token_start": 0,
+        "token_end": 1
+      },
+      {
+        "text": "Chonbuk",
+        "type": "ORG",
+        "start": 9,
+        "end": 16,
+        "token_start": 2,
+        "token_end": 3
+      }
+    ]
+  },
+  {
+    "id": 3611,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Hibernian",
+        "type": "ORG",
+        "start": 0,
+        "end": 9,
+        "token_start": 0,
+        "token_end": 1
+      },
+      {
+        "text": "Dunfermline",
+        "type": "ORG",
+        "start": 12,
+        "end": 23,
+        "token_start": 2,
+        "token_end": 3
+      }
+    ]
+  },
+  {
+    "id": 7359,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Croatia",
+        "type": "LOC",
+        "start": 0,
+        "end": 7,
+        "token_start": 0,
+        "token_end": 1
+      }
+    ]
+  },
+  {
+    "id": 9654,
+    "split": "test",
+    "entities": [
+      {
+        "text": "DEM",
+        "type": "MISC",
+        "start": 22,
+        "end": 25,
+        "token_start": 5,
+        "token_end": 6
+      }
+    ]
+  },
+  {
+    "id": 4557,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Kenneth Eriksson",
+        "type": "PER",
+        "start": 3,
+        "end": 19,
+        "token_start": 1,
+        "token_end": 3
+      },
+      {
+        "text": "Sweden",
+        "type": "LOC",
+        "start": 26,
+        "end": 32,
+        "token_start": 4,
+        "token_end": 5
+      },
+      {
+        "text": "Subaru Impreza",
+        "type": "MISC",
+        "start": 39,
+        "end": 53,
+        "token_start": 6,
+        "token_end": 8
+      }
+    ]
+  },
+  {
+    "id": 13261,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Southern California Edison Co",
+        "type": "ORG",
+        "start": 0,
+        "end": 29,
+        "token_start": 0,
+        "token_end": 4
+      },
+      {
+        "text": "California",
+        "type": "LOC",
+        "start": 103,
+        "end": 113,
+        "token_start": 17,
+        "token_end": 18
+      },
+      {
+        "text": "Los Angeles",
+        "type": "LOC",
+        "start": 214,
+        "end": 225,
+        "token_start": 35,
+        "token_end": 37
+      }
+    ]
+  },
+  {
+    "id": 106,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Syrian",
+        "type": "MISC",
+        "start": 36,
+        "end": 42,
+        "token_start": 8,
+        "token_end": 9
+      },
+      {
+        "text": "Hafez al-",
+        "type": "PER",
+        "start": 53,
+        "end": 62,
+        "token_start": 10,
+        "token_end": 12
+      },
+      {
+        "text": "Assad",
+        "type": "PER",
+        "start": 69,
+        "end": 74,
+        "token_start": 13,
+        "token_end": 14
+      },
+      {
+        "text": "Israel",
+        "type": "LOC",
+        "start": 83,
+        "end": 89,
+        "token_start": 16,
+        "token_end": 17
+      },
+      {
+        "text": "Israeli",
+        "type": "MISC",
+        "start": 165,
+        "end": 172,
+        "token_start": 30,
+        "token_end": 31
+      },
+      {
+        "text": "David Levy",
+        "type": "PER",
+        "start": 190,
+        "end": 200,
+        "token_start": 33,
+        "token_end": 35
+      },
+      {
+        "text": "Israel Radio",
+        "type": "ORG",
+        "start": 206,
+        "end": 218,
+        "token_start": 36,
+        "token_end": 38
+      }
+    ]
+  },
+  {
+    "id": 12432,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Suwon",
+        "type": "ORG",
+        "start": 0,
+        "end": 5,
+        "token_start": 0,
+        "token_end": 1
+      }
+    ]
+  },
+  {
+    "id": 13202,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Nawaz Sharif",
+        "type": "PER",
+        "start": 20,
+        "end": 32,
+        "token_start": 3,
+        "token_end": 5
+      },
+      {
+        "text": "Pakistan People 's Party",
+        "type": "ORG",
+        "start": 62,
+        "end": 86,
+        "token_start": 11,
+        "token_end": 15
+      },
+      {
+        "text": "Benazir Bhutto",
+        "type": "PER",
+        "start": 123,
+        "end": 137,
+        "token_start": 20,
+        "token_end": 22
+      }
+    ]
+  },
+  {
+    "id": 2615,
+    "split": "test",
+    "entities": []
+  },
+  {
+    "id": 11438,
+    "split": "test",
+    "entities": [
+      {
+        "text": "U.S. Municipal Desk",
+        "type": "ORG",
+        "start": 3,
+        "end": 22,
+        "token_start": 1,
+        "token_end": 4
+      }
+    ]
+  },
+  {
+    "id": 6924,
+    "split": "test",
+    "entities": [
+      {
+        "text": "U.S. Open",
+        "type": "MISC",
+        "start": 0,
+        "end": 9,
+        "token_start": 0,
+        "token_end": 2
+      }
+    ]
+  },
+  {
+    "id": 5574,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Zurich",
+        "type": "ORG",
+        "start": 0,
+        "end": 6,
+        "token_start": 0,
+        "token_end": 1
+      }
+    ]
+  },
+  {
+    "id": 4552,
+    "split": "test",
+    "entities": []
+  },
+  {
+    "id": 2547,
+    "split": "test",
+    "entities": [
+      {
+        "text": "SRI LANKA",
+        "type": "LOC",
+        "start": 10,
+        "end": 19,
+        "token_start": 2,
+        "token_end": 4
+      },
+      {
+        "text": "AUSTRALIA",
+        "type": "LOC",
+        "start": 24,
+        "end": 33,
+        "token_start": 5,
+        "token_end": 6
+      }
+    ]
+  },
+  {
+    "id": 3527,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Halifax",
+        "type": "ORG",
+        "start": 0,
+        "end": 7,
+        "token_start": 0,
+        "token_end": 1
+      }
+    ]
+  },
+  {
+    "id": 12509,
+    "split": "test",
+    "entities": [
+      {
+        "text": "MAJOR LEAGUE",
+        "type": "MISC",
+        "start": 11,
+        "end": 23,
+        "token_start": 2,
+        "token_end": 4
+      }
+    ]
+  },
+  {
+    "id": 5514,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Brann",
+        "type": "ORG",
+        "start": 0,
+        "end": 5,
+        "token_start": 0,
+        "token_end": 1
+      }
+    ]
+  },
+  {
+    "id": 1674,
+    "split": "test",
+    "entities": [
+      {
+        "text": "News Corp",
+        "type": "ORG",
+        "start": 42,
+        "end": 51,
+        "token_start": 6,
+        "token_end": 8
+      },
+      {
+        "text": "U.S.",
+        "type": "LOC",
+        "start": 88,
+        "end": 92,
+        "token_start": 14,
+        "token_end": 15
+      }
+    ]
+  },
+  {
+    "id": 1519,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Aegon",
+        "type": "ORG",
+        "start": 0,
+        "end": 5,
+        "token_start": 0,
+        "token_end": 1
+      },
+      {
+        "text": "Paribas",
+        "type": "ORG",
+        "start": 12,
+        "end": 19,
+        "token_start": 2,
+        "token_end": 3
+      }
+    ]
+  },
+  {
+    "id": 6224,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Gencor Ltd",
+        "type": "ORG",
+        "start": 0,
+        "end": 10,
+        "token_start": 0,
+        "token_end": 2
+      }
+    ]
+  },
+  {
+    "id": 1584,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Mia",
+        "type": "PER",
+        "start": 0,
+        "end": 3,
+        "token_start": 0,
+        "token_end": 1
+      },
+      {
+        "text": "London",
+        "type": "LOC",
+        "start": 65,
+        "end": 71,
+        "token_start": 14,
+        "token_end": 15
+      }
+    ]
+  },
+  {
+    "id": 5881,
+    "split": "test",
+    "entities": [
+      {
+        "text": "league-Australian",
+        "type": "MISC",
+        "start": 6,
+        "end": 23,
+        "token_start": 1,
+        "token_end": 2
+      }
+    ]
+  },
+  {
+    "id": 13885,
+    "split": "test",
+    "entities": [
+      {
+        "text": "GACETA DE LOS NEGOCIOS",
+        "type": "ORG",
+        "start": 0,
+        "end": 22,
+        "token_start": 0,
+        "token_end": 4
+      }
+    ]
+  },
+  {
+    "id": 5635,
+    "split": "test",
+    "entities": []
+  },
+  {
+    "id": 9891,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Benjamin Netanyahu",
+        "type": "PER",
+        "start": 15,
+        "end": 33,
+        "token_start": 2,
+        "token_end": 4
+      },
+      {
+        "text": "Authority",
+        "type": "ORG",
+        "start": 109,
+        "end": 118,
+        "token_start": 20,
+        "token_end": 21
+      },
+      {
+        "text": "Gaza Strip",
+        "type": "LOC",
+        "start": 184,
+        "end": 194,
+        "token_start": 35,
+        "token_end": 37
+      },
+      {
+        "text": "West Bank",
+        "type": "LOC",
+        "start": 199,
+        "end": 208,
+        "token_start": 38,
+        "token_end": 40
+      },
+      {
+        "text": "Jerusalem",
+        "type": "LOC",
+        "start": 225,
+        "end": 234,
+        "token_start": 44,
+        "token_end": 45
+      }
+    ]
+  },
+  {
+    "id": 4333,
+    "split": "test",
+    "entities": []
+  },
+  {
+    "id": 13223,
+    "split": "test",
+    "entities": [
+      {
+        "text": "SALANG",
+        "type": "LOC",
+        "start": 0,
+        "end": 6,
+        "token_start": 0,
+        "token_end": 1
+      },
+      {
+        "text": "Afghanistan",
+        "type": "LOC",
+        "start": 16,
+        "end": 27,
+        "token_start": 3,
+        "token_end": 4
+      }
+    ]
+  },
+  {
+    "id": 711,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Stefan Edberg",
+        "type": "PER",
+        "start": 0,
+        "end": 13,
+        "token_start": 0,
+        "token_end": 2
+      },
+      {
+        "text": "Sweden",
+        "type": "LOC",
+        "start": 20,
+        "end": 26,
+        "token_start": 3,
+        "token_end": 4
+      },
+      {
+        "text": "Richard Krajicek",
+        "type": "PER",
+        "start": 41,
+        "end": 57,
+        "token_start": 8,
+        "token_end": 10
+      },
+      {
+        "text": "Netherlands",
+        "type": "LOC",
+        "start": 64,
+        "end": 75,
+        "token_start": 11,
+        "token_end": 12
+      }
+    ]
+  },
+  {
+    "id": 11955,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Newcrest Mining Ltd",
+        "type": "ORG",
+        "start": 11,
+        "end": 30,
+        "token_start": 2,
+        "token_end": 5
+      },
+      {
+        "text": "A$",
+        "type": "MISC",
+        "start": 61,
+        "end": 63,
+        "token_start": 11,
+        "token_end": 12
+      }
+    ]
+  },
+  {
+    "id": 7527,
+    "split": "test",
+    "entities": []
+  },
+  {
+    "id": 8785,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Wim Omloop",
+        "type": "PER",
+        "start": 3,
+        "end": 13,
+        "token_start": 1,
+        "token_end": 3
+      },
+      {
+        "text": "Belgium",
+        "type": "LOC",
+        "start": 20,
+        "end": 27,
+        "token_start": 4,
+        "token_end": 5
+      },
+      {
+        "text": "Collstrop",
+        "type": "ORG",
+        "start": 34,
+        "end": 43,
+        "token_start": 6,
+        "token_end": 7
+      }
+    ]
+  },
+  {
+    "id": 2045,
+    "split": "test",
+    "entities": [
+      {
+        "text": "JOHANNESBURG",
+        "type": "LOC",
+        "start": 0,
+        "end": 12,
+        "token_start": 0,
+        "token_end": 1
+      }
+    ]
+  },
+  {
+    "id": 6201,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Ukraine",
+        "type": "LOC",
+        "start": 21,
+        "end": 28,
+        "token_start": 3,
+        "token_end": 4
+      }
+    ]
+  },
+  {
+    "id": 1291,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Gorgona",
+        "type": "LOC",
+        "start": 81,
+        "end": 88,
+        "token_start": 15,
+        "token_end": 16
+      },
+      {
+        "text": "Colombia",
+        "type": "LOC",
+        "start": 93,
+        "end": 101,
+        "token_start": 17,
+        "token_end": 18
+      },
+      {
+        "text": "Narino",
+        "type": "LOC",
+        "start": 158,
+        "end": 164,
+        "token_start": 28,
+        "token_end": 29
+      },
+      {
+        "text": "Ecuador",
+        "type": "LOC",
+        "start": 197,
+        "end": 204,
+        "token_start": 35,
+        "token_end": 36
+      }
+    ]
+  },
+  {
+    "id": 9044,
+    "split": "test",
+    "entities": [
+      {
+        "text": "BRATISLAVA",
+        "type": "LOC",
+        "start": 0,
+        "end": 10,
+        "token_start": 0,
+        "token_end": 1
+      }
+    ]
+  },
+  {
+    "id": 4803,
+    "split": "test",
+    "entities": []
+  },
+  {
+    "id": 13588,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Puglisi",
+        "type": "PER",
+        "start": 0,
+        "end": 7,
+        "token_start": 0,
+        "token_end": 1
+      }
+    ]
+  },
+  {
+    "id": 10299,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Partizan",
+        "type": "ORG",
+        "start": 0,
+        "end": 8,
+        "token_start": 0,
+        "token_end": 1
+      },
+      {
+        "text": "Yugoslavia",
+        "type": "LOC",
+        "start": 15,
+        "end": 25,
+        "token_start": 2,
+        "token_end": 3
+      },
+      {
+        "text": "Alba",
+        "type": "ORG",
+        "start": 34,
+        "end": 38,
+        "token_start": 5,
+        "token_end": 6
+      },
+      {
+        "text": "Germany",
+        "type": "LOC",
+        "start": 45,
+        "end": 52,
+        "token_start": 7,
+        "token_end": 8
+      },
+      {
+        "text": "Dinamo",
+        "type": "ORG",
+        "start": 61,
+        "end": 67,
+        "token_start": 10,
+        "token_end": 11
+      },
+      {
+        "text": "Russia",
+        "type": "LOC",
+        "start": 74,
+        "end": 80,
+        "token_start": 12,
+        "token_end": 13
+      },
+      {
+        "text": "Benetton",
+        "type": "ORG",
+        "start": 91,
+        "end": 99,
+        "token_start": 15,
+        "token_end": 16
+      },
+      {
+        "text": "Italy",
+        "type": "LOC",
+        "start": 106,
+        "end": 111,
+        "token_start": 17,
+        "token_end": 18
+      }
+    ]
+  },
+  {
+    "id": 10133,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Peter Pieters",
+        "type": "PER",
+        "start": 3,
+        "end": 16,
+        "token_start": 1,
+        "token_end": 3
+      },
+      {
+        "text": "Tomas Post",
+        "type": "PER",
+        "start": 19,
+        "end": 29,
+        "token_start": 4,
+        "token_end": 6
+      },
+      {
+        "text": "Netherlands",
+        "type": "LOC",
+        "start": 36,
+        "end": 47,
+        "token_start": 7,
+        "token_end": 8
+      }
+    ]
+  },
+  {
+    "id": 5925,
+    "split": "test",
+    "entities": []
+  },
+  {
+    "id": 9459,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Mother Teresa",
+        "type": "PER",
+        "start": 0,
+        "end": 13,
+        "token_start": 0,
+        "token_end": 2
+      }
+    ]
+  },
+  {
+    "id": 3150,
+    "split": "test",
+    "entities": []
+  },
+  {
+    "id": 11543,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Eksportfinans",
+        "type": "ORG",
+        "start": 24,
+        "end": 37,
+        "token_start": 5,
+        "token_end": 6
+      },
+      {
+        "text": "Suedwest LB",
+        "type": "ORG",
+        "start": 42,
+        "end": 53,
+        "token_start": 7,
+        "token_end": 9
+      },
+      {
+        "text": "Swiss",
+        "type": "MISC",
+        "start": 102,
+        "end": 107,
+        "token_start": 17,
+        "token_end": 18
+      }
+    ]
+  },
+  {
+    "id": 1139,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Daniel Vacek",
+        "type": "PER",
+        "start": 138,
+        "end": 150,
+        "token_start": 27,
+        "token_end": 29
+      },
+      {
+        "text": "Czech Republic",
+        "type": "LOC",
+        "start": 158,
+        "end": 172,
+        "token_start": 31,
+        "token_end": 33
+      }
+    ]
+  },
+  {
+    "id": 750,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Baltimore Orioles",
+        "type": "ORG",
+        "start": 0,
+        "end": 17,
+        "token_start": 0,
+        "token_end": 2
+      },
+      {
+        "text": "Davey Johnson",
+        "type": "PER",
+        "start": 26,
+        "end": 39,
+        "token_start": 3,
+        "token_end": 5
+      },
+      {
+        "text": "Seattle Mariners",
+        "type": "ORG",
+        "start": 85,
+        "end": 101,
+        "token_start": 13,
+        "token_end": 15
+      }
+    ]
+  },
+  {
+    "id": 10834,
+    "split": "test",
+    "entities": [
+      {
+        "text": "COLOMBO",
+        "type": "LOC",
+        "start": 0,
+        "end": 7,
+        "token_start": 0,
+        "token_end": 1
+      }
+    ]
+  },
+  {
+    "id": 3733,
+    "split": "test",
+    "entities": [
+      {
+        "text": "PRETORIA",
+        "type": "LOC",
+        "start": 0,
+        "end": 8,
+        "token_start": 0,
+        "token_end": 1
+      },
+      {
+        "text": "South Africa",
+        "type": "LOC",
+        "start": 11,
+        "end": 23,
+        "token_start": 2,
+        "token_end": 4
+      }
+    ]
+  },
+  {
+    "id": 12665,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Graafschap Doetinchem",
+        "type": "ORG",
+        "start": 0,
+        "end": 21,
+        "token_start": 0,
+        "token_end": 2
+      }
+    ]
+  },
+  {
+    "id": 4741,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Martin Brundle",
+        "type": "PER",
+        "start": 4,
+        "end": 18,
+        "token_start": 1,
+        "token_end": 3
+      },
+      {
+        "text": "Britain",
+        "type": "LOC",
+        "start": 25,
+        "end": 32,
+        "token_start": 4,
+        "token_end": 5
+      },
+      {
+        "text": "Jordan",
+        "type": "ORG",
+        "start": 39,
+        "end": 45,
+        "token_start": 6,
+        "token_end": 7
+      }
+    ]
+  },
+  {
+    "id": 1307,
+    "split": "test",
+    "entities": []
+  },
+  {
+    "id": 14013,
+    "split": "test",
+    "entities": [
+      {
+        "text": "British Masters",
+        "type": "MISC",
+        "start": 23,
+        "end": 38,
+        "token_start": 5,
+        "token_end": 7
+      }
+    ]
+  },
+  {
+    "id": 3814,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Haitai",
+        "type": "ORG",
+        "start": 0,
+        "end": 6,
+        "token_start": 0,
+        "token_end": 1
+      }
+    ]
+  },
+  {
+    "id": 1654,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Nirmal Hriday",
+        "type": "LOC",
+        "start": 8,
+        "end": 21,
+        "token_start": 2,
+        "token_end": 4
+      },
+      {
+        "text": "Tender Heart",
+        "type": "LOC",
+        "start": 30,
+        "end": 42,
+        "token_start": 6,
+        "token_end": 8
+      }
+    ]
+  },
+  {
+    "id": 6227,
+    "split": "test",
+    "entities": []
+  },
+  {
+    "id": 4554,
+    "split": "test",
+    "entities": []
+  },
+  {
+    "id": 7428,
+    "split": "test",
+    "entities": [
+      {
+        "text": "BOGOTA",
+        "type": "LOC",
+        "start": 0,
+        "end": 6,
+        "token_start": 0,
+        "token_end": 1
+      }
+    ]
+  },
+  {
+    "id": 10415,
+    "split": "test",
+    "entities": []
+  },
+  {
+    "id": 13666,
+    "split": "test",
+    "entities": []
+  },
+  {
+    "id": 5977,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Guerrero",
+        "type": "LOC",
+        "start": 41,
+        "end": 49,
+        "token_start": 8,
+        "token_end": 9
+      }
+    ]
+  },
+  {
+    "id": 2664,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Tenacity",
+        "type": "ORG",
+        "start": 0,
+        "end": 8,
+        "token_start": 0,
+        "token_end": 1
+      },
+      {
+        "text": "Mideast",
+        "type": "LOC",
+        "start": 18,
+        "end": 25,
+        "token_start": 3,
+        "token_end": 4
+      },
+      {
+        "text": "South Korea",
+        "type": "LOC",
+        "start": 28,
+        "end": 39,
+        "token_start": 5,
+        "token_end": 7
+      },
+      {
+        "text": "Samsung",
+        "type": "ORG",
+        "start": 45,
+        "end": 52,
+        "token_start": 8,
+        "token_end": 9
+      }
+    ]
+  },
+  {
+    "id": 6065,
+    "split": "test",
+    "entities": [
+      {
+        "text": "JERUSALEM POST",
+        "type": "ORG",
+        "start": 0,
+        "end": 14,
+        "token_start": 0,
+        "token_end": 2
+      }
+    ]
+  },
+  {
+    "id": 5820,
+    "split": "test",
+    "entities": []
+  },
+  {
+    "id": 3432,
+    "split": "test",
+    "entities": [
+      {
+        "text": "TOSHIBA CLASSIC",
+        "type": "MISC",
+        "start": 20,
+        "end": 35,
+        "token_start": 4,
+        "token_end": 6
+      }
+    ]
+  },
+  {
+    "id": 10980,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Chile",
+        "type": "LOC",
+        "start": 0,
+        "end": 5,
+        "token_start": 0,
+        "token_end": 1
+      },
+      {
+        "text": "ENAP",
+        "type": "ORG",
+        "start": 9,
+        "end": 13,
+        "token_start": 2,
+        "token_end": 3
+      },
+      {
+        "text": "Oriente",
+        "type": "ORG",
+        "start": 19,
+        "end": 26,
+        "token_start": 4,
+        "token_end": 5
+      },
+      {
+        "text": "Escravos",
+        "type": "ORG",
+        "start": 29,
+        "end": 37,
+        "token_start": 6,
+        "token_end": 7
+      }
+    ]
+  },
+  {
+    "id": 4374,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Sardinia",
+        "type": "LOC",
+        "start": 46,
+        "end": 54,
+        "token_start": 9,
+        "token_end": 10
+      },
+      {
+        "text": "Corsica",
+        "type": "LOC",
+        "start": 57,
+        "end": 64,
+        "token_start": 11,
+        "token_end": 12
+      },
+      {
+        "text": "Cyprus",
+        "type": "LOC",
+        "start": 69,
+        "end": 75,
+        "token_start": 13,
+        "token_end": 14
+      },
+      {
+        "text": "Cimicchi",
+        "type": "PER",
+        "start": 80,
+        "end": 88,
+        "token_start": 16,
+        "token_end": 17
+      }
+    ]
+  },
+  {
+    "id": 11498,
+    "split": "test",
+    "entities": [
+      {
+        "text": "African",
+        "type": "MISC",
+        "start": 14,
+        "end": 21,
+        "token_start": 3,
+        "token_end": 4
+      },
+      {
+        "text": "Burundi",
+        "type": "LOC",
+        "start": 86,
+        "end": 93,
+        "token_start": 16,
+        "token_end": 17
+      },
+      {
+        "text": "Terence",
+        "type": "PER",
+        "start": 98,
+        "end": 105,
+        "token_start": 19,
+        "token_end": 20
+      }
+    ]
+  },
+  {
+    "id": 11199,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Sofia Newsroom",
+        "type": "ORG",
+        "start": 3,
+        "end": 17,
+        "token_start": 1,
+        "token_end": 3
+      }
+    ]
+  },
+  {
+    "id": 10617,
+    "split": "test",
+    "entities": []
+  },
+  {
+    "id": 1169,
+    "split": "test",
+    "entities": [
+      {
+        "text": "Suwon",
+        "type": "ORG",
+        "start": 0,
+        "end": 5,
+        "token_start": 0,
+        "token_end": 1
+      }
+    ]
+  }
+]

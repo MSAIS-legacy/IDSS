@@ -1,0 +1,1443 @@
+[
+  {
+    "id": 10476,
+    "split": "dev",
+    "experiment": "qwen_baseline_grouped",
+    "tp": 1,
+    "fp": 1,
+    "fn": 1,
+    "valid": true,
+    "validation_error": "",
+    "exact": false,
+    "ordered_eligible": false,
+    "order_ok": true,
+    "sequence_exact": false,
+    "order_checkable": true,
+    "predicted": [
+      {
+        "text": "CINCINNATI",
+        "type": "LOC",
+        "start": 0,
+        "end": 10,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "COLORADO",
+        "type": "LOC",
+        "start": 14,
+        "end": 22,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      }
+    ],
+    "gold": [
+      {
+        "text": "CINCINNATI",
+        "type": "ORG",
+        "start": 0,
+        "end": 10,
+        "token_start": 0,
+        "token_end": 1
+      },
+      {
+        "text": "COLORADO",
+        "type": "LOC",
+        "start": 14,
+        "end": 22,
+        "token_start": 2,
+        "token_end": 3
+      }
+    ],
+    "wall_s": 35.021832181000036,
+    "ungrounded": 0,
+    "duplicates": 0
+  },
+  {
+    "id": 1824,
+    "split": "dev",
+    "experiment": "qwen_baseline_grouped",
+    "tp": 2,
+    "fp": 1,
+    "fn": 0,
+    "valid": true,
+    "validation_error": "",
+    "exact": false,
+    "ordered_eligible": false,
+    "order_ok": false,
+    "sequence_exact": false,
+    "order_checkable": true,
+    "predicted": [
+      {
+        "text": "Kuchma",
+        "type": "PER",
+        "start": 78,
+        "end": 84,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Russia",
+        "type": "LOC",
+        "start": 15,
+        "end": 21,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Kuchma",
+        "type": "MISC",
+        "start": 78,
+        "end": 84,
+        "grounded": true,
+        "duplicate": true,
+        "substring_present": true
+      }
+    ],
+    "gold": [
+      {
+        "text": "Russia",
+        "type": "LOC",
+        "start": 15,
+        "end": 21,
+        "token_start": 2,
+        "token_end": 3
+      },
+      {
+        "text": "Kuchma",
+        "type": "PER",
+        "start": 78,
+        "end": 84,
+        "token_start": 15,
+        "token_end": 16
+      }
+    ],
+    "wall_s": 16.26528521599994,
+    "ungrounded": 0,
+    "duplicates": 1
+  },
+  {
+    "id": 409,
+    "split": "dev",
+    "experiment": "qwen_baseline_grouped",
+    "tp": 0,
+    "fp": 2,
+    "fn": 0,
+    "valid": true,
+    "validation_error": "",
+    "exact": false,
+    "ordered_eligible": false,
+    "order_ok": true,
+    "sequence_exact": false,
+    "order_checkable": true,
+    "predicted": [
+      {
+        "text": "He",
+        "type": "PER",
+        "start": 0,
+        "end": 2,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "I",
+        "type": "PER",
+        "start": 31,
+        "end": 32,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      }
+    ],
+    "gold": [],
+    "wall_s": 12.610242880999976,
+    "ungrounded": 0,
+    "duplicates": 0
+  },
+  {
+    "id": 12149,
+    "split": "dev",
+    "experiment": "qwen_baseline_grouped",
+    "tp": 2,
+    "fp": 2,
+    "fn": 0,
+    "valid": true,
+    "validation_error": "",
+    "exact": false,
+    "ordered_eligible": false,
+    "order_ok": false,
+    "sequence_exact": false,
+    "order_checkable": true,
+    "predicted": [
+      {
+        "text": "Steve Weizman",
+        "type": "PER",
+        "start": 3,
+        "end": 16,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Copenhagen",
+        "type": "LOC",
+        "start": 19,
+        "end": 29,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Copenhagen newsroom",
+        "type": "ORG",
+        "start": 19,
+        "end": 38,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "+45 33969650",
+        "type": "MISC",
+        "start": 39,
+        "end": 51,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      }
+    ],
+    "gold": [
+      {
+        "text": "Steve Weizman",
+        "type": "PER",
+        "start": 3,
+        "end": 16,
+        "token_start": 1,
+        "token_end": 3
+      },
+      {
+        "text": "Copenhagen",
+        "type": "LOC",
+        "start": 19,
+        "end": 29,
+        "token_start": 4,
+        "token_end": 5
+      }
+    ],
+    "wall_s": 21.404699927000138,
+    "ungrounded": 0,
+    "duplicates": 0
+  },
+  {
+    "id": 4012,
+    "split": "dev",
+    "experiment": "qwen_baseline_grouped",
+    "tp": 0,
+    "fp": 6,
+    "fn": 2,
+    "valid": true,
+    "validation_error": "",
+    "exact": false,
+    "ordered_eligible": false,
+    "order_ok": false,
+    "sequence_exact": false,
+    "order_checkable": true,
+    "predicted": [
+      {
+        "text": "Graafschap",
+        "type": "LOC",
+        "start": 0,
+        "end": 10,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Doetinchem",
+        "type": "LOC",
+        "start": 11,
+        "end": 21,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Waalwijk",
+        "type": "LOC",
+        "start": 28,
+        "end": 36,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "RKC",
+        "type": "ORG",
+        "start": 24,
+        "end": 27,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "3",
+        "type": "MISC",
+        "start": 22,
+        "end": 23,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "2",
+        "type": "MISC",
+        "start": 37,
+        "end": 38,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      }
+    ],
+    "gold": [
+      {
+        "text": "Graafschap Doetinchem",
+        "type": "ORG",
+        "start": 0,
+        "end": 21,
+        "token_start": 0,
+        "token_end": 2
+      },
+      {
+        "text": "RKC Waalwijk",
+        "type": "ORG",
+        "start": 24,
+        "end": 36,
+        "token_start": 3,
+        "token_end": 5
+      }
+    ],
+    "wall_s": 20.931910843999958,
+    "ungrounded": 0,
+    "duplicates": 0
+  },
+  {
+    "id": 3657,
+    "split": "dev",
+    "experiment": "qwen_baseline_grouped",
+    "tp": 0,
+    "fp": 4,
+    "fn": 2,
+    "valid": true,
+    "validation_error": "",
+    "exact": false,
+    "ordered_eligible": false,
+    "order_ok": false,
+    "sequence_exact": false,
+    "order_checkable": true,
+    "predicted": [
+      {
+        "text": "Nottingham",
+        "type": "LOC",
+        "start": 0,
+        "end": 10,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Middlesbrough",
+        "type": "LOC",
+        "start": 20,
+        "end": 33,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Nottingham Forest",
+        "type": "MISC",
+        "start": 0,
+        "end": 17,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Middlesbrough",
+        "type": "MISC",
+        "start": 20,
+        "end": 33,
+        "grounded": true,
+        "duplicate": true,
+        "substring_present": true
+      }
+    ],
+    "gold": [
+      {
+        "text": "Nottingham Forest",
+        "type": "ORG",
+        "start": 0,
+        "end": 17,
+        "token_start": 0,
+        "token_end": 2
+      },
+      {
+        "text": "Middlesbrough",
+        "type": "ORG",
+        "start": 20,
+        "end": 33,
+        "token_start": 3,
+        "token_end": 4
+      }
+    ],
+    "wall_s": 17.111553383,
+    "ungrounded": 0,
+    "duplicates": 1
+  },
+  {
+    "id": 2286,
+    "split": "dev",
+    "experiment": "qwen_baseline_grouped",
+    "tp": 3,
+    "fp": 6,
+    "fn": 0,
+    "valid": true,
+    "validation_error": "",
+    "exact": false,
+    "ordered_eligible": false,
+    "order_ok": false,
+    "sequence_exact": false,
+    "order_checkable": false,
+    "predicted": [
+      {
+        "text": "Jose Maria Canizares",
+        "type": "PER",
+        "start": 8,
+        "end": 28,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Paul Lawrie",
+        "type": "PER",
+        "start": 55,
+        "end": 66,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Spain",
+        "type": "LOC",
+        "start": 35,
+        "end": 40,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Jose Maria Canizares",
+        "type": "ORG",
+        "start": 8,
+        "end": 28,
+        "grounded": true,
+        "duplicate": true,
+        "substring_present": true
+      },
+      {
+        "text": "Paul Lawrie",
+        "type": "ORG",
+        "start": 55,
+        "end": 66,
+        "grounded": true,
+        "duplicate": true,
+        "substring_present": true
+      },
+      {
+        "text": "69 66",
+        "type": "MISC",
+        "start": 0,
+        "end": 5,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "67 68",
+        "type": "MISC",
+        "start": 47,
+        "end": 52,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "LPR",
+        "type": "MISC",
+        "start": -8,
+        "end": -8,
+        "grounded": false,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "RPR",
+        "type": "MISC",
+        "start": -9,
+        "end": -9,
+        "grounded": false,
+        "duplicate": false,
+        "substring_present": true
+      }
+    ],
+    "gold": [
+      {
+        "text": "Jose Maria Canizares",
+        "type": "PER",
+        "start": 8,
+        "end": 28,
+        "token_start": 3,
+        "token_end": 6
+      },
+      {
+        "text": "Spain",
+        "type": "LOC",
+        "start": 35,
+        "end": 40,
+        "token_start": 7,
+        "token_end": 8
+      },
+      {
+        "text": "Paul Lawrie",
+        "type": "PER",
+        "start": 55,
+        "end": 66,
+        "token_start": 12,
+        "token_end": 14
+      }
+    ],
+    "wall_s": 28.919434804000048,
+    "ungrounded": 2,
+    "duplicates": 2
+  },
+  {
+    "id": 12066,
+    "split": "dev",
+    "experiment": "qwen_baseline_grouped",
+    "tp": 1,
+    "fp": 2,
+    "fn": 0,
+    "valid": true,
+    "validation_error": "",
+    "exact": false,
+    "ordered_eligible": false,
+    "order_ok": true,
+    "sequence_exact": false,
+    "order_checkable": true,
+    "predicted": [
+      {
+        "text": "Hwa Kay",
+        "type": "PER",
+        "start": 0,
+        "end": 7,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "rights issue",
+        "type": "MISC",
+        "start": 19,
+        "end": 31,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "earnings",
+        "type": "MISC",
+        "start": 34,
+        "end": 42,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      }
+    ],
+    "gold": [
+      {
+        "text": "Hwa Kay",
+        "type": "PER",
+        "start": 0,
+        "end": 7,
+        "token_start": 0,
+        "token_end": 2
+      }
+    ],
+    "wall_s": 14.731145922999985,
+    "ungrounded": 0,
+    "duplicates": 0
+  },
+  {
+    "id": 1679,
+    "split": "dev",
+    "experiment": "qwen_baseline_grouped",
+    "tp": 0,
+    "fp": 3,
+    "fn": 0,
+    "valid": true,
+    "validation_error": "",
+    "exact": false,
+    "ordered_eligible": false,
+    "order_ok": false,
+    "sequence_exact": false,
+    "order_checkable": true,
+    "predicted": [
+      {
+        "text": "analysts",
+        "type": "PER",
+        "start": 101,
+        "end": 109,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "1996/97",
+        "type": "MISC",
+        "start": 43,
+        "end": 50,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "20 percent",
+        "type": "MISC",
+        "start": 117,
+        "end": 127,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      }
+    ],
+    "gold": [],
+    "wall_s": 19.131660425999826,
+    "ungrounded": 0,
+    "duplicates": 0
+  },
+  {
+    "id": 11087,
+    "split": "dev",
+    "experiment": "qwen_baseline_grouped",
+    "tp": 1,
+    "fp": 2,
+    "fn": 0,
+    "valid": true,
+    "validation_error": "",
+    "exact": false,
+    "ordered_eligible": false,
+    "order_ok": false,
+    "sequence_exact": false,
+    "order_checkable": true,
+    "predicted": [
+      {
+        "text": "Reuters",
+        "type": "LOC",
+        "start": 119,
+        "end": 126,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Reuters",
+        "type": "ORG",
+        "start": 119,
+        "end": 126,
+        "grounded": true,
+        "duplicate": true,
+        "substring_present": true
+      },
+      {
+        "text": "one colleague",
+        "type": "MISC",
+        "start": 100,
+        "end": 113,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      }
+    ],
+    "gold": [
+      {
+        "text": "Reuters",
+        "type": "ORG",
+        "start": 119,
+        "end": 126,
+        "token_start": 22,
+        "token_end": 23
+      }
+    ],
+    "wall_s": 16.048178089999965,
+    "ungrounded": 0,
+    "duplicates": 1
+  },
+  {
+    "id": 12135,
+    "split": "dev",
+    "experiment": "qwen_baseline_grouped",
+    "tp": 1,
+    "fp": 1,
+    "fn": 0,
+    "valid": true,
+    "validation_error": "",
+    "exact": false,
+    "ordered_eligible": false,
+    "order_ok": false,
+    "sequence_exact": false,
+    "order_checkable": true,
+    "predicted": [
+      {
+        "text": "Iceland",
+        "type": "LOC",
+        "start": 86,
+        "end": 93,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "each alliance country",
+        "type": "MISC",
+        "start": 57,
+        "end": 78,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      }
+    ],
+    "gold": [
+      {
+        "text": "Iceland",
+        "type": "LOC",
+        "start": 86,
+        "end": 93,
+        "token_start": 14,
+        "token_end": 15
+      }
+    ],
+    "wall_s": 14.87547817299992,
+    "ungrounded": 0,
+    "duplicates": 0
+  },
+  {
+    "id": 8935,
+    "split": "dev",
+    "experiment": "qwen_baseline_grouped",
+    "tp": 3,
+    "fp": 5,
+    "fn": 3,
+    "valid": true,
+    "validation_error": "",
+    "exact": false,
+    "ordered_eligible": false,
+    "order_ok": false,
+    "sequence_exact": false,
+    "order_checkable": false,
+    "predicted": [
+      {
+        "text": "General Vyacheslav Tikhomirov",
+        "type": "PER",
+        "start": 43,
+        "end": 72,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Aslan Maskhadov",
+        "type": "PER",
+        "start": 236,
+        "end": 251,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Novye Atagi",
+        "type": "LOC",
+        "start": 112,
+        "end": 123,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Grozny",
+        "type": "LOC",
+        "start": 187,
+        "end": 193,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "LPR",
+        "type": "ORG",
+        "start": -5,
+        "end": -5,
+        "grounded": false,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "RPR",
+        "type": "ORG",
+        "start": -6,
+        "end": -6,
+        "grounded": false,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "20 km",
+        "type": "MISC",
+        "start": 131,
+        "end": 136,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "12 miles",
+        "type": "MISC",
+        "start": 143,
+        "end": 151,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      }
+    ],
+    "gold": [
+      {
+        "text": "Russian",
+        "type": "MISC",
+        "start": 4,
+        "end": 11,
+        "token_start": 1,
+        "token_end": 2
+      },
+      {
+        "text": "Vyacheslav Tikhomirov",
+        "type": "PER",
+        "start": 51,
+        "end": 72,
+        "token_start": 9,
+        "token_end": 11
+      },
+      {
+        "text": "Novye Atagi",
+        "type": "LOC",
+        "start": 112,
+        "end": 123,
+        "token_start": 18,
+        "token_end": 20
+      },
+      {
+        "text": "Chechen",
+        "type": "MISC",
+        "start": 171,
+        "end": 178,
+        "token_start": 31,
+        "token_end": 32
+      },
+      {
+        "text": "Grozny",
+        "type": "LOC",
+        "start": 187,
+        "end": 193,
+        "token_start": 33,
+        "token_end": 34
+      },
+      {
+        "text": "Aslan Maskhadov",
+        "type": "PER",
+        "start": 236,
+        "end": 251,
+        "token_start": 39,
+        "token_end": 41
+      }
+    ],
+    "wall_s": 32.44270855700006,
+    "ungrounded": 2,
+    "duplicates": 0
+  },
+  {
+    "id": 9674,
+    "split": "dev",
+    "experiment": "qwen_baseline_grouped",
+    "tp": 2,
+    "fp": 3,
+    "fn": 2,
+    "valid": true,
+    "validation_error": "",
+    "exact": false,
+    "ordered_eligible": false,
+    "order_ok": false,
+    "sequence_exact": false,
+    "order_checkable": true,
+    "predicted": [
+      {
+        "text": "U.S.",
+        "type": "LOC",
+        "start": 155,
+        "end": 159,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Israeli",
+        "type": "LOC",
+        "start": 164,
+        "end": 171,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Reuters",
+        "type": "ORG",
+        "start": 8,
+        "end": 15,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "A Chronic Mental Illness",
+        "type": "MISC",
+        "start": 73,
+        "end": 97,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "front-page editorial",
+        "type": "MISC",
+        "start": 39,
+        "end": 59,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      }
+    ],
+    "gold": [
+      {
+        "text": "Reuters",
+        "type": "ORG",
+        "start": 8,
+        "end": 15,
+        "token_start": 2,
+        "token_end": 3
+      },
+      {
+        "text": "Arab",
+        "type": "MISC",
+        "start": 130,
+        "end": 134,
+        "token_start": 23,
+        "token_end": 24
+      },
+      {
+        "text": "U.S.",
+        "type": "LOC",
+        "start": 155,
+        "end": 159,
+        "token_start": 27,
+        "token_end": 28
+      },
+      {
+        "text": "Israeli",
+        "type": "MISC",
+        "start": 164,
+        "end": 171,
+        "token_start": 29,
+        "token_end": 30
+      }
+    ],
+    "wall_s": 21.17074688499997,
+    "ungrounded": 0,
+    "duplicates": 0
+  },
+  {
+    "id": 6912,
+    "split": "dev",
+    "experiment": "qwen_baseline_grouped",
+    "tp": 1,
+    "fp": 3,
+    "fn": 1,
+    "valid": true,
+    "validation_error": "",
+    "exact": false,
+    "ordered_eligible": false,
+    "order_ok": false,
+    "sequence_exact": false,
+    "order_checkable": true,
+    "predicted": [
+      {
+        "text": "Sporting Sale",
+        "type": "LOC",
+        "start": 0,
+        "end": 13,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Meknes",
+        "type": "LOC",
+        "start": 16,
+        "end": 22,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Sporting Sale",
+        "type": "ORG",
+        "start": 0,
+        "end": 13,
+        "grounded": true,
+        "duplicate": true,
+        "substring_present": true
+      },
+      {
+        "text": "0",
+        "type": "MISC",
+        "start": 14,
+        "end": 15,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      }
+    ],
+    "gold": [
+      {
+        "text": "Sporting Sale",
+        "type": "ORG",
+        "start": 0,
+        "end": 13,
+        "token_start": 0,
+        "token_end": 2
+      },
+      {
+        "text": "Meknes",
+        "type": "ORG",
+        "start": 16,
+        "end": 22,
+        "token_start": 3,
+        "token_end": 4
+      }
+    ],
+    "wall_s": 16.84632217400008,
+    "ungrounded": 0,
+    "duplicates": 1
+  },
+  {
+    "id": 520,
+    "split": "dev",
+    "experiment": "qwen_baseline_grouped",
+    "tp": 4,
+    "fp": 2,
+    "fn": 1,
+    "valid": true,
+    "validation_error": "",
+    "exact": false,
+    "ordered_eligible": false,
+    "order_ok": false,
+    "sequence_exact": false,
+    "order_checkable": true,
+    "predicted": [
+      {
+        "text": "Bistrita",
+        "type": "LOC",
+        "start": 3,
+        "end": 11,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Valletta",
+        "type": "LOC",
+        "start": 52,
+        "end": 60,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Romania",
+        "type": "LOC",
+        "start": 36,
+        "end": 43,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Malta",
+        "type": "LOC",
+        "start": 67,
+        "end": 72,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Gloria Bistrita -LPR-",
+        "type": "MISC",
+        "start": 14,
+        "end": 35,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "-RPR-",
+        "type": "MISC",
+        "start": 44,
+        "end": 49,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      }
+    ],
+    "gold": [
+      {
+        "text": "Bistrita",
+        "type": "LOC",
+        "start": 3,
+        "end": 11,
+        "token_start": 1,
+        "token_end": 2
+      },
+      {
+        "text": "Gloria Bistrita",
+        "type": "ORG",
+        "start": 14,
+        "end": 29,
+        "token_start": 3,
+        "token_end": 5
+      },
+      {
+        "text": "Romania",
+        "type": "LOC",
+        "start": 36,
+        "end": 43,
+        "token_start": 6,
+        "token_end": 7
+      },
+      {
+        "text": "Valletta",
+        "type": "LOC",
+        "start": 52,
+        "end": 60,
+        "token_start": 9,
+        "token_end": 10
+      },
+      {
+        "text": "Malta",
+        "type": "LOC",
+        "start": 67,
+        "end": 72,
+        "token_start": 11,
+        "token_end": 12
+      }
+    ],
+    "wall_s": 24.012171468999895,
+    "ungrounded": 0,
+    "duplicates": 0
+  },
+  {
+    "id": 488,
+    "split": "dev",
+    "experiment": "qwen_baseline_grouped",
+    "tp": 3,
+    "fp": 3,
+    "fn": 1,
+    "valid": true,
+    "validation_error": "",
+    "exact": false,
+    "ordered_eligible": false,
+    "order_ok": false,
+    "sequence_exact": false,
+    "order_checkable": false,
+    "predicted": [
+      {
+        "text": "Alex Corretja",
+        "type": "PER",
+        "start": 45,
+        "end": 58,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "MaliVai Washington",
+        "type": "LOC",
+        "start": 4,
+        "end": 22,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "U.S.",
+        "type": "LOC",
+        "start": 29,
+        "end": 33,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Spain",
+        "type": "LOC",
+        "start": 65,
+        "end": 70,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "LPR",
+        "type": "MISC",
+        "start": -5,
+        "end": -5,
+        "grounded": false,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "RPR",
+        "type": "MISC",
+        "start": -6,
+        "end": -6,
+        "grounded": false,
+        "duplicate": false,
+        "substring_present": true
+      }
+    ],
+    "gold": [
+      {
+        "text": "MaliVai Washington",
+        "type": "PER",
+        "start": 4,
+        "end": 22,
+        "token_start": 2,
+        "token_end": 4
+      },
+      {
+        "text": "U.S.",
+        "type": "LOC",
+        "start": 29,
+        "end": 33,
+        "token_start": 5,
+        "token_end": 6
+      },
+      {
+        "text": "Alex Corretja",
+        "type": "PER",
+        "start": 45,
+        "end": 58,
+        "token_start": 8,
+        "token_end": 10
+      },
+      {
+        "text": "Spain",
+        "type": "LOC",
+        "start": 65,
+        "end": 70,
+        "token_start": 11,
+        "token_end": 12
+      }
+    ],
+    "wall_s": 22.617843511000046,
+    "ungrounded": 2,
+    "duplicates": 0
+  },
+  {
+    "id": 1535,
+    "split": "dev",
+    "experiment": "qwen_baseline_grouped",
+    "tp": 2,
+    "fp": 5,
+    "fn": 2,
+    "valid": true,
+    "validation_error": "",
+    "exact": false,
+    "ordered_eligible": false,
+    "order_ok": false,
+    "sequence_exact": false,
+    "order_checkable": true,
+    "predicted": [
+      {
+        "text": "Clinton",
+        "type": "PER",
+        "start": 0,
+        "end": 7,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Irish",
+        "type": "LOC",
+        "start": 26,
+        "end": 31,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Northern Ireland",
+        "type": "LOC",
+        "start": 47,
+        "end": 63,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Ballybunion",
+        "type": "LOC",
+        "start": 101,
+        "end": 112,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "triumphant Irish tour",
+        "type": "MISC",
+        "start": 15,
+        "end": 36,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "Northern Ireland peace process",
+        "type": "MISC",
+        "start": 47,
+        "end": 77,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "a packed schedule",
+        "type": "MISC",
+        "start": 118,
+        "end": 135,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      }
+    ],
+    "gold": [
+      {
+        "text": "Clinton",
+        "type": "PER",
+        "start": 0,
+        "end": 7,
+        "token_start": 0,
+        "token_end": 1
+      },
+      {
+        "text": "Irish",
+        "type": "MISC",
+        "start": 26,
+        "end": 31,
+        "token_start": 4,
+        "token_end": 5
+      },
+      {
+        "text": "Northern Ireland",
+        "type": "LOC",
+        "start": 47,
+        "end": 63,
+        "token_start": 9,
+        "token_end": 11
+      },
+      {
+        "text": "Ballybunion",
+        "type": "ORG",
+        "start": 101,
+        "end": 112,
+        "token_start": 18,
+        "token_end": 19
+      }
+    ],
+    "wall_s": 24.378724219000105,
+    "ungrounded": 0,
+    "duplicates": 0
+  },
+  {
+    "id": 3582,
+    "split": "dev",
+    "experiment": "qwen_baseline_grouped",
+    "tp": 0,
+    "fp": 2,
+    "fn": 1,
+    "valid": true,
+    "validation_error": "",
+    "exact": false,
+    "ordered_eligible": false,
+    "order_ok": true,
+    "sequence_exact": false,
+    "order_checkable": true,
+    "predicted": [
+      {
+        "text": "Essex",
+        "type": "LOC",
+        "start": 0,
+        "end": 5,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      },
+      {
+        "text": "532-8",
+        "type": "MISC",
+        "start": 6,
+        "end": 11,
+        "grounded": true,
+        "duplicate": false,
+        "substring_present": true
+      }
+    ],
+    "gold": [
+      {
+        "text": "Essex",
+        "type": "ORG",
+        "start": 0,
+        "end": 5,
+        "token_start": 0,
+        "token_end": 1
+      }
+    ],
+    "wall_s": 11.568024631000071,
+    "ungrounded": 0,
+    "duplicates": 0
+  }
+]
