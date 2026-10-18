@@ -1,0 +1,206 @@
+[
+  {
+    "query_id": "D01",
+    "split": "dev",
+    "difficulty": "перефразирование",
+    "query": "Read a whole text file into one string and make sure the file is closed afterwards."
+  },
+  {
+    "query_id": "D02",
+    "split": "dev",
+    "difficulty": "точный API",
+    "query": "re.findall: return all non-overlapping matches as strings."
+  },
+  {
+    "query_id": "D03",
+    "split": "dev",
+    "difficulty": "точный API",
+    "query": "json.dumps: serialize a Python dictionary to a JSON string."
+  },
+  {
+    "query_id": "D04",
+    "split": "dev",
+    "difficulty": "с ограничениями",
+    "query": "Copy a file to a new location while preserving its metadata as far as the platform permits."
+  },
+  {
+    "query_id": "D05",
+    "split": "dev",
+    "difficulty": "точный API",
+    "query": "itertools.product repeat: Cartesian product of an iterable with itself."
+  },
+  {
+    "query_id": "D06",
+    "split": "dev",
+    "difficulty": "перефразирование",
+    "query": "Which items occur most often, and how many times does each of them occur?"
+  },
+  {
+    "query_id": "D07",
+    "split": "dev",
+    "difficulty": "с ограничениями",
+    "query": "Run tasks in worker processes and replace each worker after a fixed number of completed tasks."
+  },
+  {
+    "query_id": "D08",
+    "split": "dev",
+    "difficulty": "с ограничениями",
+    "query": "An object has close() but no context manager methods. Ensure it is closed even when the body fails."
+  },
+  {
+    "query_id": "D09",
+    "split": "dev",
+    "difficulty": "перефразирование",
+    "query": "Create a callable with some arguments already filled in so callers only supply the remaining ones."
+  },
+  {
+    "query_id": "D10",
+    "split": "dev",
+    "difficulty": "перефразирование",
+    "query": "Infer the delimiter of a CSV file from a sample when its dialect is unknown."
+  },
+  {
+    "query_id": "Q01",
+    "split": "test",
+    "difficulty": "точный API",
+    "query": "functools.lru_cache: how do maxsize and typed affect caching?"
+  },
+  {
+    "query_id": "Q02",
+    "split": "test",
+    "difficulty": "перефразирование",
+    "query": "The same calculation keeps running for arguments I have already seen. How do I reuse earlier answers?"
+  },
+  {
+    "query_id": "Q03",
+    "split": "test",
+    "difficulty": "с ограничениями",
+    "query": "Implement setup and cleanup around a with block using a generator instead of writing a class."
+  },
+  {
+    "query_id": "Q04",
+    "split": "test",
+    "difficulty": "перефразирование",
+    "query": "I need a scratch workspace that disappears, including everything inside it, when the block finishes."
+  },
+  {
+    "query_id": "Q05",
+    "split": "test",
+    "difficulty": "с ограничениями",
+    "query": "I am consuming a stream and need packets of five items, without reading all of it into memory."
+  },
+  {
+    "query_id": "Q06",
+    "split": "test",
+    "difficulty": "перефразирование",
+    "query": "Given daily measurements, visit yesterday and today together, then today and tomorrow."
+  },
+  {
+    "query_id": "Q07",
+    "split": "test",
+    "difficulty": "перефразирование",
+    "query": "Several streams should behave like one long stream, one after the other, without creating a big intermediate list."
+  },
+  {
+    "query_id": "Q08",
+    "split": "test",
+    "difficulty": "с ограничениями",
+    "query": "Skip the first ten items in a generator, then take the next twenty."
+  },
+  {
+    "query_id": "Q09",
+    "split": "test",
+    "difficulty": "точный API",
+    "query": "Use json.dump to write a dictionary to an already opened file."
+  },
+  {
+    "query_id": "Q10",
+    "split": "test",
+    "difficulty": "точный API",
+    "query": "Use json.load to read a Python object from an opened JSON file."
+  },
+  {
+    "query_id": "Q11",
+    "split": "test",
+    "difficulty": "перефразирование",
+    "query": "Read a comma-separated table so that each row is a mapping keyed by its column headers."
+  },
+  {
+    "query_id": "Q12",
+    "split": "test",
+    "difficulty": "перефразирование",
+    "query": "Find all .py files anywhere below a folder using a glob pattern."
+  },
+  {
+    "query_id": "Q13",
+    "split": "test",
+    "difficulty": "точный API",
+    "query": "Path.mkdir parents=True exist_ok=True: create missing parent directories without failing if the target already exists."
+  },
+  {
+    "query_id": "Q14",
+    "split": "test",
+    "difficulty": "точный API",
+    "query": "shutil.rmtree: remove a directory and its entire contents."
+  },
+  {
+    "query_id": "Q15",
+    "split": "test",
+    "difficulty": "перефразирование",
+    "query": "Find out which installed executable would be launched for a command name using PATH."
+  },
+  {
+    "query_id": "Q16",
+    "split": "test",
+    "difficulty": "с ограничениями",
+    "query": "Keep temporary file data in RAM until it becomes too large, then move it to disk."
+  },
+  {
+    "query_id": "Q17",
+    "split": "test",
+    "difficulty": "точный API",
+    "query": "subprocess.run with capture_output=True and check=True: capture both output streams and fail for a nonzero exit status."
+  },
+  {
+    "query_id": "Q18",
+    "split": "test",
+    "difficulty": "с ограничениями",
+    "query": "Handle background jobs in the order they finish, not the order they were submitted."
+  },
+  {
+    "query_id": "Q19",
+    "split": "test",
+    "difficulty": "с ограничениями",
+    "query": "The number of files I open is decided at runtime. Close all successfully opened files if a later open fails."
+  },
+  {
+    "query_id": "Q20",
+    "split": "test",
+    "difficulty": "с ограничениями",
+    "query": "Validate that an entire string obeys a regular expression, rejecting a matching substring inside extra text."
+  },
+  {
+    "query_id": "Q21",
+    "split": "test",
+    "difficulty": "с ограничениями",
+    "query": "Search for user-provided text literally even if it contains dots, brackets or stars with special regex meanings."
+  },
+  {
+    "query_id": "Q22",
+    "split": "test",
+    "difficulty": "перефразирование",
+    "query": "Ignore only selected exception types inside a with block and continue after the block."
+  },
+  {
+    "query_id": "Q23",
+    "split": "test",
+    "difficulty": "с ограничениями",
+    "query": "After decorating a function, preserve its original name and documentation for introspection."
+  },
+  {
+    "query_id": "Q24",
+    "split": "test",
+    "difficulty": "точный API",
+    "query": "When defaultdict.__getitem__ cannot find a key, how does __missing__ use default_factory, and does get() do the same?"
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "cells": 126,
+  "code_cells": 75,
+  "errors": 0,
+  "saved_runs": 87,
+  "empty_answers": 0,
+  "reviewed_runs": 61,
+  "claim_units": 20,
+  "inputs_unchanged": true,
+  "generation_dates": [
+    "2026-10-14",
+    "2026-10-15",
+    "2026-10-17"
+  ],
+  "runtime_versions": {
+    "not recorded": 41,
+    "0.40.5": 46
+  },
+  "index_vectors_match": true,
+  "cache_and_contexts_verified": true,
+  "store_count": 430,
+  "stop_reasons": {
+    "stop": 87
+  },
+  "max_context_plus_output_tokens": 2191
+}

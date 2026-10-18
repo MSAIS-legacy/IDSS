@@ -1,0 +1,1168 @@
+{
+  "reviewer": "Codex: проверка ответов по предоставленным фрагментам; не независимая человеческая разметка",
+  "rubric_scale": [
+    0,
+    1,
+    2
+  ],
+  "reviews": [
+    {
+      "run_id": "base_Q01",
+      "query_id": "Q01",
+      "series": "baseline",
+      "answer_sha256": "06d9e5ce33600d84c47c78d9f414c49f9db663631843926bdc1edfe6dc3e85c7",
+      "relevance": 1,
+      "faithfulness": 1,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "typed=False treats types as equivalent except for scalar types like Decimal/Fraction."
+      ],
+      "error_stage": "generation",
+      "comment": "Параметры maxsize и typed=True объяснены. Но правило typed=False сформулировано слишком категорично: S1 допускает отдельные записи для str/int, а ответ подставил другой пример исключений.",
+      "evidence": "S1: implementation will usually regard them as equivalent; Some types such as str and int may be cached separately even when typed is false."
+    },
+    {
+      "run_id": "base_Q02",
+      "query_id": "Q02",
+      "series": "baseline",
+      "answer_sha256": "4d8903a6e89606d03c281e5e0ba8cf414c92f17ca318cecf6d645fd0f360f076",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 0,
+      "context_sufficiency": 0,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "search",
+      "comment": "Честный отказ: в top-5 нет сведений о кэшировании. Вопрос по существу не решён из-за поиска, а не выдуманного ответа.",
+      "evidence": "S1/S3/S5: itertools.accumulate; S2: re.sub; S4: itertools.product. Размеченных functools.cache/lru_cache нет."
+    },
+    {
+      "run_id": "base_Q03",
+      "query_id": "Q03",
+      "series": "baseline",
+      "answer_sha256": "ec371361df38b31a7f971c04ac191c3b5e2262e3ba3461d33933fd385c5a4415",
+      "relevance": 2,
+      "faithfulness": 1,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "Пример except Exception только печатает ошибку и не выполняет raise, тем самым неявно подавляя исключение."
+      ],
+      "error_stage": "generation",
+      "comment": "Задача setup/yield/finally решена, но модель добавила молчаливое подавление исключений. В S1/S2 явно сказано повторно возбуждать исключение, если оно перехвачено только для логирования.",
+      "evidence": "S1/S2: If an exception is trapped merely in order to log it ... the generator must reraise that exception."
+    },
+    {
+      "run_id": "base_Q05",
+      "query_id": "Q05",
+      "series": "baseline",
+      "answer_sha256": "ec90d33a277689b3d9c77a90a9f5324af3a6ec451d7c84e0de7f17fd563efb57",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 0,
+      "context_sufficiency": 0,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "search",
+      "comment": "Корректный отказ. В контексте есть chunksize у Executor.map, но это не искомое формирование пятёрок из потока; batched не найден.",
+      "evidence": "S1/S4/S5: архивные форматы; S2: read_bytes; S3: chunksize в Executor.map. Ни один из фрагментов не описывает itertools.batched."
+    },
+    {
+      "run_id": "base_Q07",
+      "query_id": "Q07",
+      "series": "baseline",
+      "answer_sha256": "c3e8c36e958bcf178cbf79769e3bcd4cec2e1d4bdb2bac5b04ee6f614b42c2b0",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "S5 полностью описывает chain и последовательный ленивый обход. Ответ решает задачу, хотя DocRecall=0.5: второй размеченный документ — альтернативный API, а не обязательная часть ответа.",
+      "evidence": "S5: Make an iterator that returns elements from the first iterable until it is exhausted, then proceeds to the next iterable; code: for iterable in iterables: yield from iterable."
+    },
+    {
+      "run_id": "base_Q18",
+      "query_id": "Q18",
+      "series": "baseline",
+      "answer_sha256": "58fc0d0a925e78fd06f7eb524b3435d662b628daf13c98aad2943fa6c4998227",
+      "relevance": 2,
+      "faithfulness": 1,
+      "completeness": 1,
+      "context_sufficiency": 0,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "To achieve this, one would typically use as_completed() with a future iterator."
+      ],
+      "error_stage": "search+generation",
+      "comment": "Недостаточность контекста названа верно, но затем добавлен полезный совет из внешнего знания. S5 только упоминает as_completed в связи с ожиданием Future; порядок выдачи и интерфейс итератора не описаны. Это неподтверждённый совет, а не утверждение о фактической неверности API.",
+      "evidence": "S5: Any threads waiting on the Future completing (i.e. through as_completed() or wait()) will be woken up. Полное описание as_completed отсутствует."
+    },
+    {
+      "run_id": "base_Q19",
+      "query_id": "Q19",
+      "series": "baseline",
+      "answer_sha256": "89278c702e828592b5a52d2ceb13751ed095a45b9cda278ae80ca679f4e652b9",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "ExitStack и enter_context применены по S1/S5; после остановки цикла выход из with закрывает ранее открытые файлы. Основное требование выполнено. Замечание к стилю примера: except/break скрывает причину ошибки, но сохранение исключения вопросом не требовалось.",
+      "evidence": "S1 и S5 явно показывают динамическое открытие через stack.enter_context(open(fname)) и закрытие уже открытых файлов, если последующее открытие завершилось ошибкой."
+    },
+    {
+      "run_id": "base_Q24",
+      "query_id": "Q24",
+      "series": "baseline",
+      "answer_sha256": "a5eb0fe522b26e62e5ae6facf599c95b9e0d6dd20cfcd3298f4c6a9e2133e1bb",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "Все запрошенные связи __getitem__/__missing__/default_factory/get описаны по S1, включая вызов без аргументов, вставку результата и KeyError при None.",
+      "evidence": "S1 полностью содержит все необходимые факты: default_factory called without arguments; value inserted and returned; __missing__ only via __getitem__; get returns None by default without using factory."
+    },
+    {
+      "run_id": "topk1_Q02",
+      "query_id": "Q02",
+      "series": "top_k",
+      "answer_sha256": "f16eea3d5b326bacbb1269181688d0b2310c1a9fd1bbcc3017216a94ff00973c",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 0,
+      "context_sufficiency": 0,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "search",
+      "comment": "Корректный отказ: поиск не доставил описание memoization/cache; извлечённые сведения относятся к другим операциям.",
+      "evidence": "В контексте accumulate (и при k=3 re.sub), без сведений о повторном использовании результатов вызова функции."
+    },
+    {
+      "run_id": "topk3_Q02",
+      "query_id": "Q02",
+      "series": "top_k",
+      "answer_sha256": "87afb7718ea62368f29f860cdeda8f5852e1f487370509dd4e9bb7bc3b594e03",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 0,
+      "context_sufficiency": 0,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "search",
+      "comment": "Корректный отказ: поиск не доставил описание memoization/cache; извлечённые сведения относятся к другим операциям.",
+      "evidence": "В контексте accumulate (и при k=3 re.sub), без сведений о повторном использовании результатов вызова функции."
+    },
+    {
+      "run_id": "topk8_Q02",
+      "query_id": "Q02",
+      "series": "top_k",
+      "answer_sha256": "b3a2300db4d4a8665b16fd103037052f52b8dc0db1a58ac987c8eb170054959c",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 0,
+      "context_sufficiency": 0,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "search",
+      "comment": "Даже восемь фрагментов не доставили описание cache/lru_cache; модель корректно отказалась. Рост k не исправил семантическую ошибку поиска.",
+      "evidence": "Восемь фрагментов описывают accumulate, re.sub, product, islice, partial и reduce, но не memoization."
+    },
+    {
+      "run_id": "topk1_Q03",
+      "query_id": "Q03",
+      "series": "top_k",
+      "answer_sha256": "f6952dcb8d2259cf7213cea4023d6939d9aa755add6b640cf16338a778aabf17",
+      "relevance": 2,
+      "faithfulness": 1,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "except Exception только печатает сообщение без raise, неявно подавляя исключение."
+      ],
+      "error_stage": "generation",
+      "comment": "Setup/yield/finally показаны правильно, но сохранено недокументированное подавление ошибки после логирования. Предупреждение о повторном raise уже есть в S1.",
+      "evidence": "S1: If an exception is trapped merely in order to log it ... the generator must reraise that exception."
+    },
+    {
+      "run_id": "topk3_Q03",
+      "query_id": "Q03",
+      "series": "top_k",
+      "answer_sha256": "61883b313203a369704d59e755cd73bb28675f65d7a33d17014c5877f27a22ce",
+      "relevance": 2,
+      "faithfulness": 1,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "except Exception только печатает сообщение без raise, неявно подавляя исключение."
+      ],
+      "error_stage": "generation",
+      "comment": "Setup/yield/finally показаны правильно, но сохранено недокументированное подавление ошибки после логирования. Предупреждение о повторном raise уже есть в S1.",
+      "evidence": "S1: If an exception is trapped merely in order to log it ... the generator must reraise that exception."
+    },
+    {
+      "run_id": "topk8_Q03",
+      "query_id": "Q03",
+      "series": "top_k",
+      "answer_sha256": "631661edbbc9cec2ba70e982ffd5b1f6b0997e5e585afebd0c15dd8e4d0bba8e",
+      "relevance": 2,
+      "faithfulness": 1,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "except Exception только печатает сообщение без raise, неявно подавляя исключение."
+      ],
+      "error_stage": "generation",
+      "comment": "Даже при top_k=8 модель вновь ловит исключение только ради печати и не делает raise. Предупреждение явно есть в S1 и S2; дополнительные фрагменты не устранили ошибку генерации.",
+      "evidence": "S1: If an exception is trapped merely in order to log it ... the generator must reraise that exception."
+    },
+    {
+      "run_id": "topk1_Q05",
+      "query_id": "Q05",
+      "series": "top_k",
+      "answer_sha256": "60f66e9e5be17a370ff726dab423be1702af3405c2dd2bbd5e6ec0f79d07b67e",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 0,
+      "context_sufficiency": 0,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "search",
+      "comment": "Корректный отказ: единственный результат описывает форматы архивов, а не разбиение потока на группы. Ответ безопасен, но задача не решена.",
+      "evidence": "S1: shutil.get_unpack_formats — список зарегистрированных форматов архивов; batched отсутствует."
+    },
+    {
+      "run_id": "topk3_Q05",
+      "query_id": "Q05",
+      "series": "top_k",
+      "answer_sha256": "3ca82e1f417bd318952c78495fcc8e959bb43d5f84c888fa1715248a20c6bb66",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 0,
+      "context_sufficiency": 0,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "search",
+      "comment": "Корректно указано, что chunksize у Executor.map не решает задачу ленивого формирования пятёрок. Нужного batched в контексте нет.",
+      "evidence": "S1 — форматы архивов; S2 — read_bytes читает содержимое целиком; S3 — chunksize Executor.map, а не генератор групп из потока."
+    },
+    {
+      "run_id": "topk8_Q05",
+      "query_id": "Q05",
+      "series": "top_k",
+      "answer_sha256": "70367cb112f24f55153d9c3ec3240d59272fae10e66152c1cf0a17590b0e8ec1",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 0,
+      "context_sufficiency": 0,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "search",
+      "comment": "Нужного batched по-прежнему нет. Модель корректно отвергает product и признаёт нехватку подходящего инструмента. Дополнительные фрагменты не решили ошибку поиска.",
+      "evidence": "S7: Before product() runs, it completely consumes the input iterables ... only useful with finite inputs. Среди S1–S8 нет batched."
+    },
+    {
+      "run_id": "topk1_Q18",
+      "query_id": "Q18",
+      "series": "top_k",
+      "answer_sha256": "6d1866be914769d3fec3c03dbcc1a3da3483a2198cabe4c2201496a8281aa51d",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 0,
+      "context_sufficiency": 0,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "search",
+      "comment": "Корректный отказ: фрагмент о файловых дескрипторах Popen не описывает получение результатов в порядке завершения задач.",
+      "evidence": "S1 — preexec_fn и close_fds; as_completed и порядок выдачи результатов отсутствуют."
+    },
+    {
+      "run_id": "topk3_Q18",
+      "query_id": "Q18",
+      "series": "top_k",
+      "answer_sha256": "07531932bce24293716dcce9832db084929cb6c6cda41a4c4eeef31f1ba3ff21",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 0,
+      "context_sufficiency": 0,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "search",
+      "comment": "Обоснованный отказ: модель отличает shutdown, управляющий завершением исполнителя, от выдачи результатов в порядке готовности. Описания as_completed ещё нет.",
+      "evidence": "S3 описывает освобождение ресурсов, wait и cancel_futures; S1/S2 — Popen/CompletedProcess, без итерации по завершившимся Future."
+    },
+    {
+      "run_id": "topk8_Q18",
+      "query_id": "Q18",
+      "series": "top_k",
+      "answer_sha256": "431fbd4f465ae5eeafc24ec01e9d56c10503d47f81260e1ee7e8e9af4b7a5b92",
+      "relevance": 2,
+      "faithfulness": 1,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "Пример получает значение через future.result(), но этот метод не описан ни в одном из предоставленных S1–S8."
+      ],
+      "error_stage": "generation",
+      "comment": "В S8 наконец найден as_completed, и основной ответ о порядке завершения верен и подтверждён. Полнота выросла до 2. В код добавлен обычный корректный API Future.result, не представленный в контексте: это внешняя деталь, а не утверждение, что API ошибочен. Поэтому по строгой рубрике опора на контекст равна 1.",
+      "evidence": "S8: yields futures as they complete; S4 показывает ThreadPoolExecutor/submit. Ни один из S1–S8 не описывает Future.result()."
+    },
+    {
+      "run_id": "topk1_Q19",
+      "query_id": "Q19",
+      "series": "top_k",
+      "answer_sha256": "1834dfd352979a530f51dc7da2e53b844fed2872256e66a6e20536fd2e8ed07b",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "Одного S1 достаточно: пример повторяет all-or-nothing открытие через ExitStack и enter_context; при неудаче уже открытые файлы закрываются. Поведение pop_all при успехе явно оговорено.",
+      "evidence": "S1 содержит полный пример files = [stack.enter_context(open(fname)) for fname in filenames], close_files = stack.pop_all().close и пояснение закрытия при ошибке."
+    },
+    {
+      "run_id": "topk3_Q19",
+      "query_id": "Q19",
+      "series": "top_k",
+      "answer_sha256": "4ffb792cf3ec8b8b1ff7afaaa99d21887fdea4f897de36bfc8c5a187e25feb00",
+      "relevance": 2,
+      "faithfulness": 1,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "Комментарий: If a later open fails, close_files() is called automatically."
+      ],
+      "error_stage": "generation",
+      "comment": "Код all-or-nothing соответствует S1 и обеспечивает закрытие. Но последний комментарий ошибочно приписывает автоматический вызов close_files: при ошибке в списковом включении переменная ещё не присвоена; очистку выполняет исходный ExitStack при выходе. Ответ внутренне противоречив.",
+      "evidence": "S1: pop_all не вызывает callbacks; close_files можно вызвать явно после успеха. При неудаче во время enter_context закрытие обеспечивает выход из with исходного stack."
+    },
+    {
+      "run_id": "topk8_Q19",
+      "query_id": "Q19",
+      "series": "top_k",
+      "answer_sha256": "63c7d9b1308fb9d87bdcbebb14807a536c731403c2d8776f78b6f323d76122cd",
+      "relevance": 1,
+      "faithfulness": 0,
+      "completeness": 1,
+      "context_sufficiency": 2,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "В обработчике ошибки stack.pop_all() якобы обеспечивает автоматическое закрытие ранее открытых файлов."
+      ],
+      "error_stage": "generation",
+      "comment": "Ключевое требование нарушено: pop_all переносит callbacks в новый стек, который здесь игнорируется; исходный стек при выходе пуст. Ранее открытые объекты остаются в files, а цикл f.close после ошибки недостижим. В S1 и S5 прямо объяснено, почему такой перенос не закрывает ресурсы.",
+      "evidence": "S1: No callbacks are invoked by this operation. S5: callbacks are not invoked implicitly when the context stack instance is garbage collected. В ответе pop_all вызван внутри except перед raise."
+    },
+    {
+      "run_id": "topk1_Q24",
+      "query_id": "Q24",
+      "series": "top_k",
+      "answer_sha256": "bb0c1a186420cbf951fcd88fc8c58e2ce7ca355fdd8b4e9bf68eb8f54df8fb4d",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "Для настроенной вызываемой фабрики правильно описаны вызов без аргументов, вставка и возврат, а также отсутствие вызова фабрики у get. Краевой случай default_factory=None отдельно не раскрыт, но он не входил в обязательные требования к этому ответу.",
+      "evidence": "S1: default_factory called without arguments; value inserted and returned; get returns None by default rather than using default_factory."
+    },
+    {
+      "run_id": "topk3_Q24",
+      "query_id": "Q24",
+      "series": "top_k",
+      "answer_sha256": "99345b7dc89d33a18da2c8fc428e9f29af8fc14d91962a589f98df8775f1e6c7",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "Все обязательные связи описаны по S1, включая условие непустой фабрики и распространение её исключений. Дополнительный CSV-фрагмент не отвлёк модель.",
+      "evidence": "S1 полностью покрывает __getitem__, __missing__, вызов default_factory без аргументов, вставку/возврат и отличие get."
+    },
+    {
+      "run_id": "topk8_Q24",
+      "query_id": "Q24",
+      "series": "top_k",
+      "answer_sha256": "6bcfe1c4210d8e3da85558236d809ca4c25095d8c7cb97d03e46b83b98e72060",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "Обязательный механизм __missing__/factory/get корректно передан по S1. Дополнительные документы не изменили качество ответа.",
+      "evidence": "S1: called without arguments; inserted and returned; get returns None as a default rather than using default_factory."
+    },
+    {
+      "run_id": "wording_Q02_api",
+      "query_id": "Q02",
+      "series": "wording",
+      "answer_sha256": "9c8461eb9dba4fe93f64de1e3c24dd83f735f50baf17e3f5b9eb39f56061453d",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "Подсказка с именами cache/lru_cache доставила нужные разделы; ответ верно объясняет повторное использование результата и отличие ограниченного кэша от неограниченного. Дополнительные замечания о потоках, hashable и побочных эффектах имеют опору в источниках.",
+      "evidence": "S3: memoizing callable ... same arguments; hashable; threadsafe. S5: unbounded function cache, dictionary lookup, пример повторного factorial. S1/S2: ограничения для side-effects и distinct mutable objects."
+    },
+    {
+      "run_id": "wording_Q02_natural",
+      "query_id": "Q02",
+      "series": "wording",
+      "answer_sha256": "9bea2b2cdedb599b605194caf7009725b62518510ea732c7100a2d0f44aec2b2",
+      "relevance": 1,
+      "faithfulness": 0,
+      "completeness": 0,
+      "context_sufficiency": 0,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "To achieve memoization, you must implement it manually or use external libraries."
+      ],
+      "error_stage": "search+generation",
+      "comment": "Поиск не нашёл кэширование. Вместо ограниченного отказа модель утверждает, что нужны ручная реализация или внешние библиотеки. Это не подтверждено контекстом и фактически исключает готовые cache/lru_cache из стандартной библиотеки. Ограниченность найденных источников неправомерно превращена в ограниченность Python.",
+      "evidence": "S1–S5 описывают ContextDecorator, sub/reduce/subn/partial, без кэширования. В повторно используемом корпусе есть functools.cache и functools.lru_cache, что видно в api-варианте."
+    },
+    {
+      "run_id": "wording_Q07_api",
+      "query_id": "Q07",
+      "series": "wording",
+      "answer_sha256": "6de9645f5e644e6e576836517d3cb12fc732e7d6b6a51755ef9a52ddf1ec4369",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "Ответ правильно объясняет последовательный ленивый обход chain и chain.from_iterable. Вывод об отсутствии полной материализации следует из показанного в обоих источниках yield from.",
+      "evidence": "S1: single iterable argument evaluated lazily; for iterable in iterables: yield from iterable. S2: first iterable until exhausted, then next; тот же ленивый цикл."
+    },
+    {
+      "run_id": "wording_Q07_natural",
+      "query_id": "Q07",
+      "series": "wording",
+      "answer_sha256": "82c49cb79f86fde0fa6315c70e740b8d05a24084b0bc5906f689d3b9b199ec6a",
+      "relevance": 1,
+      "faithfulness": 2,
+      "completeness": 1,
+      "context_sufficiency": 0,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "search+generation",
+      "comment": "chain не найден. Модель выбрала zip_longest: описанный попарный ленивый обход подтверждён S5, но последовательное прохождение всех элементов одного генератора перед следующим не выполнено. Ответ опирается на контекст и всё же решает другую задачу.",
+      "evidence": "S5: aggregates elements from each of the iterables, iteration until the longest exhausted. Код выводит (1,a),(2,b), а не 1,2,a,b. Нужных chain/chain.from_iterable среди S1–S5 нет."
+    },
+    {
+      "run_id": "wording_Q18_api",
+      "query_id": "Q18",
+      "series": "wording",
+      "answer_sha256": "a2af99f61134d9d4accd937622c872605a672b687e3bd1b16c76ef7d75b851be",
+      "relevance": 2,
+      "faithfulness": 1,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "В примере используется future.result(), который не описан в переданных фрагментах."
+      ],
+      "error_stage": "generation",
+      "comment": "as_completed найден первым и правильно объяснён; задача решена. Как и в topk8_Q18, код добавляет корректный, но внешний по отношению к контексту Future.result. Одно правило применяется ко всем сериям.",
+      "evidence": "S1 полностью описывает as_completed; S2 говорит о создании Future через submit; S4 показывает ThreadPoolExecutor/submit. Описания метода result нет в S1–S5."
+    },
+    {
+      "run_id": "wording_Q18_natural",
+      "query_id": "Q18",
+      "series": "wording",
+      "answer_sha256": "bec7580c5e6b46bd7e78f18e3c8827d1d0ae95d15f686664440ab798ee64554a",
+      "relevance": 1,
+      "faithfulness": 0,
+      "completeness": 1,
+      "context_sufficiency": 2,
+      "unsupported_count": 2,
+      "unsupported_claims": [
+        "You cannot process the next finished background job immediately while an earlier job is still running using concurrent.futures.as_completed.",
+        "В примере используется future.result(), который не описан в переданных источниках."
+      ],
+      "error_stage": "generation",
+      "comment": "Несмотря на найденный S4, модель смешала завершение текущей задачи с завершением всех других. Отрицание возможности обработки готовой задачи при ещё работающих других противоречит смыслу yields futures as they complete и собственному коду ответа. Сохранилась и внешняя деталь result().",
+      "evidence": "S4: iterator ... yields futures as they complete (finished or cancelled futures). Ожидания завершения всех задач для выдачи первой нет. S1–S5 не описывают Future.result()."
+    },
+    {
+      "run_id": "wording_Q24_api",
+      "query_id": "Q24",
+      "series": "wording",
+      "answer_sha256": "bc667ab94f82f318bc84efc41650745f36c9ee0aab18bcce1e0c61aa2688f5ac",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 1,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "generation",
+      "comment": "Ответ корректно объясняет вызов фабрики без аргументов, KeyError и отличие get, но не говорит, что результат фабрики вставляется в словарь. По общим заранее заданным требованиям к Q24 полнота частичная, хотя нужный факт есть в S1.",
+      "evidence": "S1: this value is inserted in the dictionary for the key, and returned. В ответе описан только возврат, сохранение отсутствует."
+    },
+    {
+      "run_id": "wording_Q24_natural",
+      "query_id": "Q24",
+      "series": "wording",
+      "answer_sha256": "01a073bb0f62dff1a12ba0585dfbdede0773e263dfece561f0bae9b3f8f794f0",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 1,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "generation",
+      "comment": "На короткий вопрос дан правильный ответ: [] создаёт значение через фабрику, get — нет. По единым исходным требованиям к Q24 не раскрыты вызов без аргументов и сохранение результата в словаре. Это неполное покрытие первоначальной задачи, а не неверность ответа на укороченный вопрос.",
+      "evidence": "S1: default_factory called without arguments; this value is inserted in the dictionary for the key and returned. Эти детали в ответе явно не раскрыты."
+    },
+    {
+      "run_id": "sample_Q03_101",
+      "query_id": "Q03",
+      "series": "variation",
+      "answer_sha256": "5d565809b1048e1916c5a9af29596ab528d048bee0b6049b59213564dd32eac4",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "Корректный generator-based context manager: один yield внутри try/finally, setup до него, cleanup после. Лишнего except с подавлением ошибки нет.",
+      "evidence": "S1: generator must yield exactly one value; try/finally ensures cleanup. S2: повторный raise требуется лишь при перехвате ради логирования; здесь исключения не перехватываются."
+    },
+    {
+      "run_id": "sample_Q03_102",
+      "query_id": "Q03",
+      "series": "variation",
+      "answer_sha256": "2d6ab82096e137ef2adedb7b0387a20d028ecbb3893ec10f7f887922f1a53d36",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "Корректный generator-based context manager: один yield внутри try/finally, setup до него, cleanup после. Лишнего except с подавлением ошибки нет.",
+      "evidence": "S1: generator must yield exactly one value; try/finally ensures cleanup. S2: повторный raise требуется лишь при перехвате ради логирования; здесь исключения не перехватываются."
+    },
+    {
+      "run_id": "sample_Q03_103",
+      "query_id": "Q03",
+      "series": "variation",
+      "answer_sha256": "e72c82092cc1ea4e10d13bfcfd05b7350585941f655cdd7e01d48cafbae1a9ed",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "Setup/один yield/finally показаны верно. Исключение не перехвачено, поэтому нет молчаливого подавления после логирования.",
+      "evidence": "S1: generator must yield exactly one value; try/finally ensures cleanup. S2: повторный raise требуется лишь при перехвате ради логирования; здесь исключения не перехватываются."
+    },
+    {
+      "run_id": "sample_Q03_104",
+      "query_id": "Q03",
+      "series": "variation",
+      "answer_sha256": "faf7e840c9758d6d884dbcb11d070bad4e7bdaa5e8903b96d5728441778d78d3",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "Setup/один yield/finally показаны верно. Исключение не перехвачено, поэтому нет молчаливого подавления после логирования.",
+      "evidence": "S1: generator must yield exactly one value; try/finally ensures cleanup. S2: повторный raise требуется лишь при перехвате ради логирования; здесь исключения не перехватываются."
+    },
+    {
+      "run_id": "sample_Q03_105",
+      "query_id": "Q03",
+      "series": "variation",
+      "answer_sha256": "867ca39306f7c8a62c7734b815fde06b07df763baf57687c193d3f94c0c3c81a",
+      "relevance": 2,
+      "faithfulness": 1,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "Пример except Exception только печатает ошибку и не выполняет raise, тем самым неявно подавляя исключение."
+      ],
+      "error_stage": "generation",
+      "comment": "В пятом повторе вернулась исходная ошибка: except Exception только печатает сообщение без raise. При том же контексте первые четыре повтора её не содержали.",
+      "evidence": "S1/S2: If an exception is trapped merely in order to log it ... the generator must reraise that exception."
+    },
+    {
+      "run_id": "sample_Q19_101",
+      "query_id": "Q19",
+      "series": "variation",
+      "answer_sha256": "6e2ae7512db057b4fed0cecad626a32b21936f68a11daf29857fbf0bc48d2465",
+      "relevance": 2,
+      "faithfulness": 1,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "Комментарий All files are now closed if we reach here расположен ещё внутри with: закрытие исходного стека происходит при выходе, а не сразу после цикла."
+      ],
+      "error_stage": "generation",
+      "comment": "Ключевое закрытие при сбое выполнено правильно: исключение распространяется, ExitStack очищается. Но комментарий внутри with ошибочно утверждает, что после успешного цикла файлы уже закрыты.",
+      "evidence": "S5: callbacks called when instance is closed, explicitly or implicitly at the end of a with statement. В ответе комментарий имеет тот же отступ, что и цикл внутри with."
+    },
+    {
+      "run_id": "sample_Q19_102",
+      "query_id": "Q19",
+      "series": "variation",
+      "answer_sha256": "b73a098b7c4ba00f2900fdd6538e8fc8c97c71be4f37a2bc501e0e0245e59fed",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "ExitStack/enter_context обеспечивают очистку при исключении, исключение повторно возбуждается. При успехе файлы явно закрываются; ложного вызова pop_all при ошибке нет.",
+      "evidence": "S5 содержит динамический enter_context(open(fname)) и автоматическое закрытие при выходе/ошибке следующего open. S1 подчёркивает семантику переноса callbacks; ответ их не снимает."
+    },
+    {
+      "run_id": "sample_Q19_103",
+      "query_id": "Q19",
+      "series": "variation",
+      "answer_sha256": "e8686b5ebc82429b5f209f20184cd2b607a3f13994f71cd2cb0c20aea3349809",
+      "relevance": 2,
+      "faithfulness": 1,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "If we reach here, all files were opened successfully: сюда попадают и после except/break при неудачном открытии."
+      ],
+      "error_stage": "generation",
+      "comment": "При выходе из with ранее открытые файлы закроются, поэтому ключевая задача решена. Но утверждение об успешном открытии всех файлов после цикла ложно на пути break; причина ошибки скрыта. Само подавление исключения не штрафуется отдельно, поскольку его распространение вопросом не требовалось.",
+      "evidence": "S5: закрытие зарегистрированных ресурсов при выходе из with. В собственном коде except Exception: break допускает достижение комментария после неудачного open."
+    },
+    {
+      "run_id": "sample_Q19_104",
+      "query_id": "Q19",
+      "series": "variation",
+      "answer_sha256": "7b9ee422381b81c52014a740d5d6c66b9262cc3f551c20ac0f381583db0917c5",
+      "relevance": 2,
+      "faithfulness": 1,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "Комментарий All files are now closed if we reach here расположен ещё внутри with: закрытие исходного стека происходит при выходе, а не сразу после цикла."
+      ],
+      "error_stage": "generation",
+      "comment": "Очистка при сбое корректна, но комментарий All files are closed if no exception occurred стоит внутри with: успешно открытые файлы ещё открыты до выхода из блока.",
+      "evidence": "S5: callbacks called when instance is closed, explicitly or implicitly at the end of a with statement. В ответе комментарий имеет тот же отступ, что и цикл внутри with."
+    },
+    {
+      "run_id": "sample_Q19_105",
+      "query_id": "Q19",
+      "series": "variation",
+      "answer_sha256": "f967fd20b26aeefc18c7fc0a4396eb084b669cd475a5f51971d9b25db128ff43",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "При ошибке исключение распространяется и исходный ExitStack закрывает зарегистрированные файлы. При успехе момент закрытия описан верно и показан явный close; снятия callbacks через pop_all нет.",
+      "evidence": "S5: callbacks вызываются при закрытии стека или выходе из with; динамическая регистрация enter_context(open(fname)) прямо показана. В ответе исходный стек остаётся ответственным за очистку."
+    },
+    {
+      "run_id": "sample_Q24_101",
+      "query_id": "Q24",
+      "series": "variation",
+      "answer_sha256": "50a37c5aeff4843d769e372bcd33eeb0e74bd5097781845da82ff6f53ac8f72b",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "Полный и подтверждённый ответ: вызов фабрики без аргументов, сохранение/возврат, распространение её исключений и отсутствие вызова фабрики через get.",
+      "evidence": "Все перечисленные связи прямо описаны в S1 collections.defaultdict.__missing__:0."
+    },
+    {
+      "run_id": "sample_Q24_102",
+      "query_id": "Q24",
+      "series": "variation",
+      "answer_sha256": "6a56617a326fdd64d99ba3c08e95a3747d8fd2e2eba34bfea52afaa792b7855c",
+      "relevance": 2,
+      "faithfulness": 1,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "В примере d.get('x') якобы возвращает None после того, как d['x'] уже вставил 0 для этого ключа."
+      ],
+      "error_stage": "generation",
+      "comment": "Основной механизм описан верно, но пример противоречит ему: после первой строки ключ x уже существует, поэтому get возвращает сохранённый 0. Отсутствие вызова фабрики у get не означает игнорирование уже существующего значения.",
+      "evidence": "S1: this value is inserted in the dictionary for the key, and returned. После d['x'] сохранённый ключ уже не отсутствует."
+    },
+    {
+      "run_id": "sample_Q24_103",
+      "query_id": "Q24",
+      "series": "variation",
+      "answer_sha256": "a5eb0fe522b26e62e5ae6facf599c95b9e0d6dd20cfcd3298f4c6a9e2133e1bb",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "Все обязательные связи __missing__/вызов фабрики без аргументов/вставка и возврат/отличие get корректны и подтверждены S1.",
+      "evidence": "Все перечисленные связи прямо описаны в S1 collections.defaultdict.__missing__:0."
+    },
+    {
+      "run_id": "sample_Q24_104",
+      "query_id": "Q24",
+      "series": "variation",
+      "answer_sha256": "38a2f3ae63393c94d235de1b7f231066645be7a868ef28fc97c264f596ed039c",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "Все обязательные связи __missing__/вызов фабрики без аргументов/вставка и возврат/отличие get корректны и подтверждены S1.",
+      "evidence": "Все перечисленные связи прямо описаны в S1 collections.defaultdict.__missing__:0."
+    },
+    {
+      "run_id": "sample_Q24_105",
+      "query_id": "Q24",
+      "series": "variation",
+      "answer_sha256": "0e718e1ad32d1bc4e1c22ac2a6c75fcdd5719314ec1ffc47378df278e615addc",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 1,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "generation",
+      "comment": "Описание корректно и содержит вставку/возврат и отличие get, но не уточняет обязательную по рубрике деталь вызова фабрики без аргументов. Снижение относится только к полноте исходных требований.",
+      "evidence": "S1 явно: it is called without arguments. В ответе указано лишь invokes default_factory без описания аргументов или вызова ()."
+    },
+    {
+      "run_id": "greedy_Q19_repeat1",
+      "query_id": "Q19",
+      "series": "greedy_control",
+      "answer_sha256": "3150c095654f25a03bf8eca618b9d967ad3236e72816e44f9fdc38aaf749359e",
+      "relevance": 2,
+      "faithfulness": 1,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "If we reach here, all files were opened successfully: сюда попадают и после except/break при неудачном открытии."
+      ],
+      "error_stage": "generation",
+      "comment": "Очистка при выходе выполняется. Но комментарий If we reach here, all files were opened successfully неверен при выходе из цикла через except/break. Это тот же класс ошибки объяснения, что в sample_Q19_103.",
+      "evidence": "S5: закрытие зарегистрированных ресурсов при выходе из with. В собственном коде except Exception: break допускает достижение комментария после неудачного open."
+    },
+    {
+      "run_id": "greedy_Q19_repeat2",
+      "query_id": "Q19",
+      "series": "greedy_control",
+      "answer_sha256": "3150c095654f25a03bf8eca618b9d967ad3236e72816e44f9fdc38aaf749359e",
+      "relevance": 2,
+      "faithfulness": 1,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "If we reach here, all files were opened successfully: сюда попадают и после except/break при неудачном открытии."
+      ],
+      "error_stage": "generation",
+      "comment": "Второй новый вызов с тем же телом запроса совпал с первым дословно. Повторилась та же ошибка комментария об успешном открытии всех файлов после except/break.",
+      "evidence": "S5: закрытие зарегистрированных ресурсов при выходе из with. В собственном коде except Exception: break допускает достижение комментария после неудачного open."
+    },
+    {
+      "run_id": "cited_Q01",
+      "query_id": "Q01",
+      "series": "citations",
+      "answer_sha256": "a5701efa146fe77dd6b7d45105e546e7578642cf7c8dac960d9a54a1fa11cd07",
+      "relevance": 1,
+      "faithfulness": 0,
+      "completeness": 1,
+      "context_sufficiency": 2,
+      "unsupported_count": 2,
+      "unsupported_claims": [
+        "if set to None, caching is disabled [S1].",
+        "if False, some types (like str and int) may still be treated as equivalent [S1]."
+      ],
+      "error_stage": "generation",
+      "comment": "maxsize=None ошибочно назван отключением кэширования: отключается ограничение/вытеснение LRU. Оговорка про str/int перевёрнута относительно предупреждения источника о возможности отдельных записей. Все ID существуют, но это не делает утверждения подтверждёнными.",
+      "evidence": "S1: If maxsize is set to None, the LRU feature is disabled and the cache can grow without bound. Там же: Some types such as str and int may be cached separately even when typed is false."
+    },
+    {
+      "run_id": "cited_Q02",
+      "query_id": "Q02",
+      "series": "citations",
+      "answer_sha256": "94486b5624a8363d31ed645d9f58ff550aad8030983123796ad7a0661b8b289a",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 0,
+      "context_sufficiency": 0,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "search",
+      "comment": "Корректный отказ с перечислением существующих ID. Цитаты не заменили отсутствующую документацию о кэшировании; полнота остаётся 0. Отказ без положительных фактов об API не добавлен в знаменатель аудита фактических утверждений.",
+      "evidence": "S1/S3/S5: itertools.accumulate; S2: re.sub; S4: itertools.product. Размеченных functools.cache/lru_cache нет."
+    },
+    {
+      "run_id": "cited_Q03",
+      "query_id": "Q03",
+      "series": "citations",
+      "answer_sha256": "e63c7a437d1f255048b68011457dea3d8c9033cf08899d73dc68a7075a4a1adc",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "В отличие от базового ответа, пример использует try/finally без лишнего except. Настройка до yield, очистка после, в том числе при исключении, соответствуют S1. Ссылка после итогового объяснения верна.",
+      "evidence": "S1: generator must yield exactly one value; try/finally ensures cleanup. S2: повторный raise требуется лишь при перехвате ради логирования; здесь исключения не перехватываются."
+    },
+    {
+      "run_id": "cited_Q05",
+      "query_id": "Q05",
+      "series": "citations",
+      "answer_sha256": "bcaef23279d6990a790e19aa91ab9d0db730ca240af87505471e84ef843f1648",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 0,
+      "context_sufficiency": 0,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "search",
+      "comment": "Корректно отличает chunksize у Executor.map от выдачи пятёрок из потока и отказывается предлагать неподтверждённое решение. Положительное утверждение о chunksize процитировано по S3.",
+      "evidence": "S1/S4/S5: архивные форматы; S2: read_bytes; S3: chunksize в Executor.map. Ни один из фрагментов не описывает itertools.batched."
+    },
+    {
+      "run_id": "cited_Q07",
+      "query_id": "Q07",
+      "series": "citations",
+      "answer_sha256": "62dbbeffb76d092e357fde3efe7a47fc586b867ac8e5a34c211d95c6a26291e2",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "chain выбран верно и показан ленивый последовательный обход. S5 подтверждает объяснение; исходные небольшие списки в примере — учебные входы, а не материализация объединённого результата.",
+      "evidence": "S5: Make an iterator that returns elements from the first iterable until it is exhausted, then proceeds to the next iterable; code: for iterable in iterables: yield from iterable."
+    },
+    {
+      "run_id": "cited_Q18",
+      "query_id": "Q18",
+      "series": "citations",
+      "answer_sha256": "96d1bcd3437a2c8a0053281f5b9e271dc627f6be3085c863e2d0886484499690",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 0,
+      "context_sufficiency": 0,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "search",
+      "comment": "Корректно ограничивает вывод имеющимися фрагментами и не дополняет ответ внешним советом as_completed, как базовая версия. Опора на контекст выше, но исходная задача не решена. Упоминание as_completed в S5 не описывает его порядок выдачи.",
+      "evidence": "S3/S4 — shutdown, S5 — внутренние состояния Future и пробуждение ожидающих потоков; описания итерации в порядке завершения нет."
+    },
+    {
+      "run_id": "cited_Q19",
+      "query_id": "Q19",
+      "series": "citations",
+      "answer_sha256": "aad35ecdb455eae8df26ede1feaa3717166514880677f0ba98ac0dc94503f439",
+      "relevance": 2,
+      "faithfulness": 1,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 1,
+      "unsupported_claims": [
+        "If we exit the loop normally, all files are already closed: комментарий стоит внутри with, до закрытия исходного стека."
+      ],
+      "error_stage": "generation",
+      "comment": "Код регистрирует файлы в ExitStack и закрывает их при выходе из with после сбоя; снятия callbacks нет. Но неверно назван момент закрытия при успешном цикле: внутри блока файлы ещё открыты. S1/S5 не подтверждают этот комментарий.",
+      "evidence": "S5: callbacks are called when instance is closed, explicitly or at end of with statement. Нормальный выход только из for не закрывает стек."
+    },
+    {
+      "run_id": "cited_Q24",
+      "query_id": "Q24",
+      "series": "citations",
+      "answer_sha256": "c0952442fce10621f1e391f6bd396a2b5f5e1d6328ffd6e94025b05374e7eefa",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "Все обязательные связи описаны правильно и полностью: вызов __missing__, фабрика без аргументов (показано ()), вставка/возврат и отличие get. S1 подтверждает утверждения; пример с неверным состоянием словаря не добавлен.",
+      "evidence": "S1 полностью содержит все необходимые факты: default_factory called without arguments; value inserted and returned; __missing__ only via __getitem__; get returns None by default without using factory."
+    },
+    {
+      "run_id": "oracle_Q02",
+      "query_id": "Q02",
+      "series": "oracle",
+      "answer_sha256": "81a811bd7d2f17f60365e1c1ad3c7d63ea7465ea90ef60398281a142557e541c",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "С заведомо релевантными фрагментами модель правильно выбрала functools.cache и объяснила повторное использование вычислений, в отличие от исходного отказа. Пример factorial и свойства кэша подтверждены S1/S2. Девять чанков избыточны для сути ответа; это диагностический контекст, не выбранный рабочий top_k.",
+      "evidence": "S1: unbounded function cache, dictionary lookup by arguments, пример повторного factorial, threadsafe. S2 уточняет поведение при конкурентных вызовах."
+    },
+    {
+      "run_id": "oracle_Q07",
+      "query_id": "Q07",
+      "series": "oracle",
+      "answer_sha256": "eb564f853e73aa84369722c1f258bf7b9db397160d90430a0b6016d546afdfca",
+      "relevance": 2,
+      "faithfulness": 2,
+      "completeness": 2,
+      "context_sufficiency": 2,
+      "unsupported_count": 0,
+      "unsupported_claims": [],
+      "error_stage": "none",
+      "comment": "Два релевантных раздела дали тот же корректный выбор chain и ленивого обхода, что и базовый ответ. Добавление всех размеченных альтернатив не улучшило качество, поскольку исходного S5 уже хватало.",
+      "evidence": "S1: first iterable until exhausted, then next, for iterable in iterables: yield from iterable. S2 содержит ленивый chain.from_iterable."
+    }
+  ],
+  "claims": [
+    {
+      "run_id": "cited_Q01",
+      "claim": "maxsize ограничивает размер кэша",
+      "cited_ids": [
+        "S1"
+      ],
+      "supported": true,
+      "evidence": "S1 описывает maxsize и неограниченный рост при None; ограничение относится к размеру кэша.",
+      "answer_quote": "maxsize limits the cache size"
+    },
+    {
+      "run_id": "cited_Q01",
+      "claim": "maxsize=None отключает кэширование",
+      "cited_ids": [
+        "S1"
+      ],
+      "supported": false,
+      "evidence": "S1 говорит об отключении ограничения LRU и неограниченном росте, а не об отключении кэша.",
+      "answer_quote": "if set to None, caching is disabled [S1]."
+    },
+    {
+      "run_id": "cited_Q01",
+      "claim": "typed=True разделяет вызовы с разными типами непосредственных аргументов",
+      "cited_ids": [
+        "S1"
+      ],
+      "supported": true,
+      "evidence": "S1: arguments of different types will be cached separately.",
+      "answer_quote": "if typed is True, distinct types are treated as separate calls"
+    },
+    {
+      "run_id": "cited_Q01",
+      "claim": "При typed=False str/int приведены как пример эквивалентного кэширования",
+      "cited_ids": [
+        "S1"
+      ],
+      "supported": false,
+      "evidence": "S1 предупреждает, что str/int могут кэшироваться раздельно; процитированное правило не подтверждает перевёрнутый пример ответа.",
+      "answer_quote": "if False, some types (like str and int) may still be treated as equivalent [S1]."
+    },
+    {
+      "run_id": "cited_Q01",
+      "claim": "Различение типов относится к аргументам, а не их содержимому",
+      "cited_ids": [
+        "S5"
+      ],
+      "supported": true,
+      "evidence": "S5 показывает различение скалярных Decimal/Fraction и эквивалентность кортежей с ними; полная формулировка также есть в предоставленном S1.",
+      "answer_quote": "Type specificity applies only to immediate arguments, not their contents [S5]."
+    },
+    {
+      "run_id": "cited_Q01",
+      "claim": "cache_info показывает попадания, промахи и размер",
+      "cited_ids": [
+        "S5"
+      ],
+      "supported": true,
+      "evidence": "S5 прямо перечисляет hits, misses, maxsize, currsize у cache_info().",
+      "answer_quote": "The cache tracks hits, misses, and size via cache_info() [S5]."
+    },
+    {
+      "run_id": "cited_Q03",
+      "claim": "contextmanager создаёт контекстный менеджер на основе генератора",
+      "cited_ids": [],
+      "supported": true,
+      "evidence": "Вступление верно по предоставленному S1, но в этом отдельном предложении ссылки нет; S1 указан только после заключения о поведении кода.",
+      "answer_quote": "Use `@contextmanager` to create a generator-based context manager for setup and cleanup:"
+    },
+    {
+      "run_id": "cited_Q03",
+      "claim": "Показанный код выполняет setup до блока и cleanup после, в том числе при исключении",
+      "cited_ids": [
+        "S1"
+      ],
+      "supported": true,
+      "evidence": "S1 описывает ровно один yield, исполнение блока в этой точке, повторное возбуждение исключения в генераторе и cleanup через try/finally. В коде нет перехвата с подавлением.",
+      "answer_quote": "This ensures setup before entry and cleanup after exit, even on exceptions [S1]."
+    },
+    {
+      "run_id": "cited_Q05",
+      "claim": "У Executor.map есть параметр chunksize, управляющий разбиением работы",
+      "cited_ids": [
+        "S3"
+      ],
+      "supported": true,
+      "evidence": "S3: approximate size of these chunks can be specified by setting chunksize to a positive integer.",
+      "answer_quote": "`concurrent.futures.Executor.map` supports chunking with a `chunksize` parameter [S3]"
+    },
+    {
+      "run_id": "cited_Q05",
+      "claim": "Описанный chunksize относится к параллельной обработке, а не к интерфейсу выдачи потоковых пятёрок",
+      "cited_ids": [
+        "S3"
+      ],
+      "supported": true,
+      "evidence": "Сравнение в том же предложении опирается на S3: обсуждаются Executor.map, ThreadPoolExecutor и chunksize; выдача фиксированных кортежей из потока не описана.",
+      "answer_quote": "it is designed for parallel processing, not for streaming data into fixed-size packets."
+    },
+    {
+      "run_id": "cited_Q07",
+      "claim": "chain объединяет потоки в один итератор без промежуточного общего списка",
+      "cited_ids": [],
+      "supported": true,
+      "evidence": "По переданному S5 это верно: for iterable in iterables: yield from iterable. В первом самостоятельном предложении ссылки нет.",
+      "answer_quote": "Use `itertools.chain` to combine multiple streams into a single iterator without creating an intermediate list."
+    },
+    {
+      "run_id": "cited_Q07",
+      "claim": "Входные итераторы обходятся последовательно, элементы потребляются по одному",
+      "cited_ids": [
+        "S5"
+      ],
+      "supported": true,
+      "evidence": "S5: first iterable until exhausted, then next; пример yield from подтверждает ленивый обход. Код ответа иллюстрирует тот же факт.",
+      "answer_quote": "It efficiently iterates through each input iterable sequentially, consuming elements one by one [S5]."
+    },
+    {
+      "run_id": "cited_Q18",
+      "claim": "concurrent.futures поддерживает выполнение задач и управление Future",
+      "cited_ids": [],
+      "supported": true,
+      "evidence": "Это видно по S4 с ThreadPoolExecutor.submit и S5 о состояниях Future. В этом отдельном предложении ID не указан.",
+      "answer_quote": "`concurrent.futures` supports executing tasks and managing futures"
+    },
+    {
+      "run_id": "cited_Q18",
+      "claim": "S3/S4 описывают shutdown, S5 — состояния Future, без описания порядка выдачи заданий",
+      "cited_ids": [
+        "S3",
+        "S4",
+        "S5"
+      ],
+      "supported": true,
+      "evidence": "S3/S4 описывают wait/cancel_futures и выход из контекстного менеджера; S5 — set_running_or_notify_cancel. Упоминание as_completed касается пробуждения потоков, не интерфейса и порядка итерации.",
+      "answer_quote": "[S3, S4, S5] discuss executor shutdown and future states, but not job execution order."
+    },
+    {
+      "run_id": "cited_Q19",
+      "claim": "ExitStack и enter_context обеспечивают закрытие ранее открытых файлов при выходе после неудачи следующего open",
+      "cited_ids": [
+        "S1",
+        "S5"
+      ],
+      "supported": true,
+      "evidence": "Следующие за кодом [S1][S5] подтверждают показанный enter_context и очистку при выходе. Тот же факт во вступлении и коде считаем одной единицей.",
+      "answer_quote": "Use `contextlib.ExitStack` to manage file openings and ensure all successfully opened files are closed if a later open fails."
+    },
+    {
+      "run_id": "cited_Q19",
+      "claim": "После нормального завершения цикла внутри with файлы уже закрыты",
+      "cited_ids": [
+        "S1",
+        "S5"
+      ],
+      "supported": false,
+      "evidence": "S5 привязывает вызов callbacks к закрытию стека/концу with, а не к окончанию for. В коде комментарий стоит до выхода из with.",
+      "answer_quote": "# If we exit the loop normally, all files are already closed."
+    },
+    {
+      "run_id": "cited_Q24",
+      "claim": "При отсутствующем ключе __getitem__ вызывает __missing__",
+      "cited_ids": [
+        "S1"
+      ],
+      "supported": true,
+      "evidence": "S1 прямо описывает вызов __missing__ методом __getitem__ при отсутствии ключа.",
+      "answer_quote": "When `defaultdict.__getitem__` cannot find a key, it calls `__missing__`"
+    },
+    {
+      "run_id": "cited_Q24",
+      "claim": "Настроенная фабрика вызывается без аргументов; результат вставляется и возвращается",
+      "cited_ids": [
+        "S1"
+      ],
+      "supported": true,
+      "evidence": "S1: called without arguments; value inserted in dictionary for key and returned. В ответе вызов () явно показан.",
+      "answer_quote": "`default_factory()` (if not `None`) to generate a default value, inserting and returning it [S1]."
+    },
+    {
+      "run_id": "cited_Q24",
+      "claim": "При default_factory=None возникает KeyError",
+      "cited_ids": [],
+      "supported": true,
+      "evidence": "Утверждение верно по S1, но самостоятельное второе предложение не снабжено ID.",
+      "answer_quote": "If `default_factory` is `None`, a `KeyError` is raised."
+    },
+    {
+      "run_id": "cited_Q24",
+      "claim": "get не использует фабрику и по умолчанию возвращает None",
+      "cited_ids": [
+        "S1"
+      ],
+      "supported": true,
+      "evidence": "S1: get will, like normal dictionaries, return None as a default rather than using default_factory.",
+      "answer_quote": "`get()` does **not** use `default_factory`; it returns `None` by default, like a normal dictionary [S1]."
+    }
+  ],
+  "notes": "Парные сравнения: 8 вопросов для инструкций, 6 для top_k, 4 для формулировок. Отказы без фактических утверждений не включены в знаменатель покрытия цитатами."
+}

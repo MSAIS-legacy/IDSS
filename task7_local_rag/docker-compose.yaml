@@ -1,0 +1,40 @@
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: task7_local_rag_container
+    depends_on:
+      ollama:
+        condition: service_started
+      ollama-pull:
+        condition: service_completed_successfully
+    environment:
+      JUPYTER_TOKEN: local_rag
+      OLLAMA_HOST: http://ollama:11434
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./work:/home/jovyan/work
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama
+    container_name: task7_local_rag_ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - task7_local_rag_ollama:/root/.ollama
+    restart: unless-stopped
+
+  ollama-pull:
+    image: docker/genai:ollama-pull
+    environment:
+      OLLAMA_BASE_URL: http://ollama:11434
+      LLM: qwen3:4b-instruct
+    depends_on:
+      - ollama
+
+volumes:
+  task7_local_rag_ollama:
+    name: task7_local_rag_ollama

@@ -1,0 +1,9 @@
+run_id,query_id,citation_occurrences,invalid_ids,unique_cited,allowed_ids
+cited_Q01,Q01,4,0,2,"['S1', 'S2', 'S3', 'S4', 'S5']"
+cited_Q02,Q02,5,0,5,"['S1', 'S2', 'S3', 'S4', 'S5']"
+cited_Q03,Q03,1,0,1,"['S1', 'S2', 'S3', 'S4', 'S5']"
+cited_Q05,Q05,1,0,1,"['S1', 'S2', 'S3', 'S4', 'S5']"
+cited_Q07,Q07,1,0,1,"['S1', 'S2', 'S3', 'S4', 'S5']"
+cited_Q18,Q18,3,0,3,"['S1', 'S2', 'S3', 'S4', 'S5']"
+cited_Q19,Q19,2,0,2,"['S1', 'S2', 'S3', 'S4', 'S5']"
+cited_Q24,Q24,2,0,1,"['S1', 'S2', 'S3', 'S4', 'S5']"

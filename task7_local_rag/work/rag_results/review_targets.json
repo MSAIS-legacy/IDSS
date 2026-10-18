@@ -1,0 +1,13 @@
+{
+  "reviewer": "Codex, source-based content review; not independent human annotation",
+  "requirements": {
+    "Q01": ["maxsize limits retained recent calls; None disables eviction", "typed=True separates different argument types"],
+    "Q02": ["Use functools.cache or lru_cache for reusable function results", "Repeated calls with the same arguments reuse cached results"],
+    "Q03": ["contextmanager turns a generator into a context manager", "Setup occurs before one yield, cleanup after it", "try/finally ensures cleanup on exceptions"],
+    "Q05": ["Use itertools.batched(iterable, 5)", "Consumes lazily and yields batches as tuples", "The final batch can be shorter under the default strict=False"],
+    "Q07": ["chain traverses inputs consecutively", "chain(*iterables) or chain.from_iterable handles multiple input streams", "Does not materialize the full concatenation"],
+    "Q18": ["as_completed yields futures in completion order", "Contrast with submitting-order iteration; completed future results can then be processed"],
+    "Q19": ["Use ExitStack as a context manager", "Register each opened file with enter_context dynamically", "Previously entered resources close when a later open fails; stack unwinds on exit"],
+    "Q24": ["Missing __getitem__ calls __missing__", "A callable default_factory is called without arguments, and the result is inserted and returned", "get() does not invoke __missing__ or the default factory"]
+  }
+}

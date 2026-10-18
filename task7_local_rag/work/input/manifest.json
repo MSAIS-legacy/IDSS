@@ -1,0 +1,34 @@
+{
+  "corpus.json": {
+    "source": "task4_sentence_transformers/work/search_data/corpus.json",
+    "sha256": "ba8bea5cd3b8b977c7d1b3cdc8cc52d0431ed1531b6be02d96337d25376b0dbb"
+  },
+  "chunks_fixed.json": {
+    "source": "task4_sentence_transformers/work/search_data/chunks_fixed.json",
+    "sha256": "9cddac8c74a5ae8e1576191a56e02411c2feb77be93c9c0bf0c129996d8eab3e"
+  },
+  "queries.json": {
+    "source": "task4_sentence_transformers/work/search_data/queries.json",
+    "sha256": "3b3af057d1b7943a3b27cad7f89eaf2f825894d2ceb1a7c5011b046e861724c0"
+  },
+  "qrels.csv": {
+    "source": "task4_sentence_transformers/work/search_data/qrels.csv",
+    "sha256": "a07d98c3125181cd82aa840ec86903f99106067cdd7ea79fae376f62793aa046"
+  },
+  "model_revisions.json": {
+    "source": "task4_sentence_transformers/work/search_data/model_revisions.json",
+    "sha256": "e3373187055ccd4f076acfc56a024916099df15f36345a92c754d1441ae44fe7"
+  },
+  "previous_experiment.json": {
+    "source": "task4_sentence_transformers/work/search_results/experiment.json",
+    "sha256": "3919b23ca5e14b3245ee98d2d01cf8c3e44c9e1a6cc4c1abaa82bd897ef19958"
+  },
+  "BGE_fixed.npz": {
+    "source": "task4_sentence_transformers/work/search_cache/BGE_fixed_f731e2460697c883.npz",
+    "sha256": "fccc1657a83fc347c402a2e2b028f1c68c50bc72eed034bcc2b15f80f13701fa"
+  },
+  "BGE_queries.npz": {
+    "source": "task4_sentence_transformers/work/search_cache/BGE_queries_f6543e4ceb978c94.npz",
+    "sha256": "b60fd99a31900aa95a3d648dc6da405123e1f0466c91b08e069f93846b885b3b"
+  }
+}

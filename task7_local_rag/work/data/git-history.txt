@@ -1,0 +1,14 @@
+2026-03-14  add Pattern-GOLD detection
+Holmes теперь обнаруживает Pattern-GOLD после четырёх последовательных событий. Новый детектор отключён в стандартном процессе Beta 0.8.
+
+2026-03-18  fix Watson validation for empty CaseReport
+Watson больше не формирует объяснение, если Holmes возвращает пустой CaseReport.
+
+2026-03-21  update Lestrade review rules
+Случаи без идентификатора источника теперь переводятся в статус REVIEW.
+
+2026-03-27  improve GOLD test cases
+Тестовые случаи Moriarty для Pattern-GOLD теперь включают неполные и противоречивые последовательности событий.
+
+2026-04-01  archive experimental GOLD cases
+Экспериментальные случаи GOLD теперь сохраняются в архиве со статусом EXPERIMENTAL.
